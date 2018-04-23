@@ -60,7 +60,7 @@ export class EmployeesComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(AddUserComponent, {width: '500px'});
-    this.ngOnInit();
+
   }
 
 
@@ -108,7 +108,7 @@ export class EmployeesComponent implements OnInit {
       } ;
       this.id = result.id;
 
-      console.log('new user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
+      // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
       this.as.updateUser(result.id, this.user)
         .subscribe(data => {
           if (data.success){
