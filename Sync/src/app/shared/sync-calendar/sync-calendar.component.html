@@ -1,0 +1,36 @@
+<div class="calendar">
+      <div class="calendar-navs">
+        <div class="month-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
+          <button mat-icon-button color="primary" (click)="prevMonth()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+          <span class="p4">{{ currentDate.format('MMMM') }}</span>
+          <button mat-icon-button color="primary" (click)="nextMonth()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+        <div class="year-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
+          <button  mat-icon-button color="primary" (click)="prevYear()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+          <span>{{ currentDate.format('YYYY') }}</span>
+          <button  mat-icon-button color="primary" (click)="nextYear()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        </div>
+      </div>
+      <div class="month-grid" fxLayout="column">
+        <div class="day-names" fxFlex="10" fxLayout="row" fxLayoutAlign="center center">
+          <div *ngFor="let name of dayNames" class="day-name">
+            {{ name }}
+          </div>
+        </div>
+        <div class="weeks" fxLayout="column" fxLayoutAlign="space-evenly center">
+          <div *ngFor="let week of weeks" class="week" fxLayout="row">
+            <ng-container *ngFor="let day of week">
+              <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)" fxLayoutAlign="center center">
+                <span class="date-text">{{ day.mDate.date() }}</span>
+              </div>
+              <div class="week-date enabled"
+                   *ngIf="isSelectedMonth(day.mDate)"
+                   (click)="selectDate(day)"
+                   [ngClass]="{ today: day.today, selected: day.selected }">
+                <span class="date-text">{{ day.mDate.date() }}</span>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,19 @@
+@import "../../../src/styles.scss";
+
+
+
+h1 {
+  color: black;
+  font-size: 76px;
+  font-weight: 100;
+  font-family: 'Dosis', sans-serif;
+  margin: 10px
+}
+
+#clubVid {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+}

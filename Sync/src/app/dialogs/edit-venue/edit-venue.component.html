@@ -1,0 +1,40 @@
+<form  fxLayout="column" class="example-form" fxLayoutGap="20px">
+  <h1 mat-dialog-title>Edit Venue</h1>
+<mat-dialog-content>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" [(ngModel)]="data.name"  placeholder="Name" name="name" value="{{data.name}}">
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" [(ngModel)]="data.address"  placeholder="Address"  name="address" value="{{data.address}}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput type="text" [(ngModel)]="data.city"  placeholder="City"  name="city" value="{{data.city}}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <mat-select placeholder="Select a state" [(ngModel)]="data.state" name="state">
+      <mat-option *ngFor="let state of states" [value]="state.value">
+        {{state.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput #postalCode type="number" maxlength="5" [(ngModel)]="data.zip"  placeholder="Zip(5 digit)"  name="zip" value="{{data.zip}}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput type="number" [(ngModel)]="data.phone" maxlength="10"  placeholder="Phone"  name="phone" value="{{data.phone}}">
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width">
+    <input matInput type="email" [(ngModel)]="data.email"  placeholder="email"  name="email" value="{{data.email}}">
+  </mat-form-field>
+
+  <div fxLayoutAlign="center center">
+    <button mat-raised-button type="submit" [mat-dialog-close]="data">Submit</button>
+    <button mat-raised-button type="button" mat-dialog-close="true"> Done </button>
+  </div>
+</mat-dialog-content>
+</form>

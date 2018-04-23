@@ -1,0 +1,120 @@
+<ng-template #modalContent let-close="close">
+  <div class="modal-header">
+    <h5 class="modal-title">Event action occurred</h5>
+    <button type="button" class="close" (click)="close()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div>
+      Action:
+      <pre>{{ modalData?.action }}</pre>
+    </div>
+    <div>
+      Event:
+      <pre>{{ modalData?.event | json }}</pre>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-secondary" (click)="close()">OK</button>
+  </div>
+</ng-template>
+
+<div class="headline" fxLayout="row" fxLayoutAlign="center center">
+  <div fxFlex="33" fxLayoutAlign="row">
+      <button mat-raised-button
+        fxLayoutAlign="center center"
+        mwlCalendarPreviousView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        <span>Previous</span>
+      </button>
+      <button mat-raised-button
+        class="mat-button"
+        mwlCalendarToday
+        [(viewDate)]="viewDate">
+        Today
+      </button>
+      <button mat-raised-button
+        fxLayoutAlign="center center"
+        class="mat-raised-button"
+        mwlCalendarNextView
+        [view]="view"
+        [(viewDate)]="viewDate"
+        (viewDateChange)="activeDayIsOpen = false">
+        Next
+      </button>
+  </div>
+  <div fxFlex="33" fxLayoutAlign="center center">
+    <div class="month-header" fxLayoutAlign="center center">
+      {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+    </div>
+  </div>
+  <div fxFlex="33" fxLayoutAlign="row">
+    <mat-button-toggle-group class="btn-group">
+      <mat-button-toggle
+        (click)="view = 'month'"
+        [class.active]="view === 'month'">
+        Month
+      </mat-button-toggle>
+      <mat-button-toggle
+        (click)="view = 'week'"
+        [class.active]="view === 'week'">
+        Week
+      </mat-button-toggle>
+      <mat-button-toggle
+        (click)="view = 'day'"
+        [class.active]="view === 'day'">
+        Day
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+</div>
+
+
+<br>
+
+
+<div [ngSwitch]="view">
+  <mwl-calendar-month-view
+    *ngSwitchCase="'month'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    [activeDayIsOpen]="activeDayIsOpen"
+    (dayClicked)="dayClicked($event.day)"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-month-view>
+  <mwl-calendar-week-view
+    *ngSwitchCase="'week'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-week-view>
+  <mwl-calendar-day-view
+    *ngSwitchCase="'day'"
+    [viewDate]="viewDate"
+    [events]="events"
+    [refresh]="refresh"
+    (eventClicked)="handleEvent('Clicked', $event.event)"
+    (eventTimesChanged)="eventTimesChanged($event)">
+  </mwl-calendar-day-view>
+</div>
+
+<br><br><br>
+
+<h3>
+  Edit events
+  <button
+    class="btn btn-primary pull-right"
+    (click)="addEvent()">
+    Add new
+  </button>
+  <div class="clearfix"></div>
+</h3>
+
+

@@ -1,0 +1,20 @@
+<div class="login-page" fxLayout="column" fxLayoutAlign="center center">
+  <mat-card class="login-card">
+    <div fxLayout="column" fxLayoutAlign="space-evenly" fxLayoutGap="20px" fxFlex>
+      <mat-card-header><h1>Login</h1></mat-card-header>
+
+      <form (submit)="onLoginSubmit()" fxLayout="column" fxLayoutAlign="center center" class="example-form" fxLayoutGap="20px">
+            <mat-form-field fxFlex="40">
+              <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Username" required="required">
+            </mat-form-field>
+            <mat-form-field fxFlex="40">
+              <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
+            </mat-form-field>
+            <div>
+              <button mat-raised-button type="submit" value="login">LOGIN</button>
+            </div>
+            <div fxFlex="20">
+              <a class="forgot-password" routerLink="reset-password">Forgot Password?</a>
+            </div>
+        </form>
+</div>

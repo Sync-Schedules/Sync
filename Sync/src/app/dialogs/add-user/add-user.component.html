@@ -1,0 +1,36 @@
+<form (submit)="onRegisterSubmit()" class="example-form" fxLayout="column"  fxLayoutGap="20px">
+  <h1 mat-dialog-title>Add User</h1>
+  <mat-dialog-content fxLayout="column" fxLayoutAlign="center">
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  placeholder="Name" required="required">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="last" [ngModelOptions]="{standalone: true}"  placeholder="Last" required="required">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}"  placeholder="Username" required="required">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email" required="required">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Select a role" [(ngModel)]="role" name="role" required="required">
+              <mat-option *ngFor="let role of roles" [value]="role.value">
+                {{role.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="center center">
+      <button mat-raised-button type="submit">Submit</button>
+      <button mat-raised-button  mat-dialog-close type="button">Cancel</button>
+  </mat-dialog-actions>
+</form>
+

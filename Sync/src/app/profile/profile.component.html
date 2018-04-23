@@ -1,0 +1,60 @@
+<div  class="profile-container" fxFlex>
+  <mat-card class="profile-content">
+    <mat-card-header>
+      <h1>{{user?.role}}</h1>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-tab-group>
+        <mat-tab label="Profile">
+          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+            <div fxFlex="50">
+              <mat-card class="profile-card">
+                <h1 mat-card-title>Hello, {{user?.name}}</h1>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item><b>Username: </b> {{user?.username}}</mat-list-item>
+                    <mat-list-item>ID: {{user?._id}}</mat-list-item>
+                    <mat-list-item>Email: {{user?.email}}</mat-list-item>
+                    <!--<mat-list-item>Password: {{user.password}}</mat-list-item>-->
+                    <mat-list-item>Role: {{user?.role}}</mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+                <mat-card-actions>
+                  <button mat-raised-button>Edit</button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+            <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
+              <div>
+              <mat-card class="profile-options">
+                <h1 mat-card-title>Notifications</h1>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item>
+                      E-mail Notifications
+                      <mat-slide-toggle>
+                        yes
+                      </mat-slide-toggle>
+                    </mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+              </div>
+              <div>
+              <mat-card class="profile-options">
+                <h1 mat-card-title>Preferences</h1>
+                <mat-card-content>
+                  <mat-list>
+                    <mat-list-item>Let employees see my email address<mat-slide-toggle>yes</mat-slide-toggle></mat-list-item>
+                    <mat-list-item>Let employees see my phone #<mat-slide-toggle>yes</mat-slide-toggle></mat-list-item>
+                  </mat-list>
+                </mat-card-content>
+              </mat-card>
+              </div>
+            </div>
+          </div>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

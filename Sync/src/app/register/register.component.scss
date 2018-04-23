@@ -1,0 +1,19 @@
+@import "../../styles";
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+
+.mat-raised-button{
+  width: 100%;
+  background-color: #0BA5DB;
+  color: white;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  border: none;
+}

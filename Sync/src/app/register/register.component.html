@@ -1,0 +1,47 @@
+<div class="login-page" fxLayout="column" fxLayoutAlign="center center">
+
+<mat-card class="login-card">
+  <div fxLayout="column" fxLayoutAlign="space-evenly" fxLayoutGap="10px" fxFlex>
+  <mat-card-header><h1>Register</h1></mat-card-header>
+  <mat-card-content>
+    <form (submit)="onRegisterSubmit()" class="example-form" fxLayoutGap="20px">
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" [(ngModel)]="name" [ngModelOptions]="{standalone: true}"  placeholder="Name" required="required">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" [(ngModel)]="last" [ngModelOptions]="{standalone: true}"  placeholder="Last" required="required">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}"  placeholder="Username" required="required">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="Email" required="required">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Select a role" [(ngModel)]="role" name="role">
+          <mat-option *ngFor="let role of roles" [value]="role.value">
+            {{role.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+
+      <div fxLayoutAlign="center center">
+        <button mat-raised-button type="submit">Submit</button>
+      </div>
+
+    </form>
+  </mat-card-content>
+    <div fxLayoutAlign="center center">
+    <a routerLink="" class="cancel">cancel</a>
+    </div>
+  </div>
+</mat-card>
+</div>

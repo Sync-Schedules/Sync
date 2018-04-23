@@ -1,0 +1,30 @@
+{
+  "name": "sync-node",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "bcryptjs": "*",
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "express-handlebars": "^3.0.0",
+    "jade": "~1.11.0",
+    "jsonwebtoken": "^8.2.0",
+    "mongoose": "^5.0.9",
+    "morgan": "~1.9.0",
+    "nodemailer": "^4.6.4",
+    "passport": "^0.4.0",
+    "passport-jwt": "^3.0.1",
+    "serve-favicon": "~2.4.5"
+  },
+  "description": "SYNC scheduling application for bars and venues",
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "Pablo",
+  "license": "ISC"
+}

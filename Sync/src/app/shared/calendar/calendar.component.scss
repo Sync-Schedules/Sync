@@ -1,0 +1,31 @@
+@import "../../../styles";
+
+h3 {
+  margin: 0 0 10px;
+}
+
+pre {
+  background-color: #f5f5f5;
+  padding: 15px;
+}
+
+.mat-raised-button {
+  background-color: #0BA5DB;
+  color: white;
+  .mat-button{
+    background-color: white;
+    color: #0BA5DB;
+  }
+}
+
+.mat-button-toggle{
+  background-color: #1fc8db;
+  color: white;
+}
+
+.month-header{
+  font-family: Righteous, sans-serif;
+  font-size: 21px;
+  font-weight: bold;
+  color: #1a4843;
+}
