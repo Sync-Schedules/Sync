@@ -61,6 +61,7 @@ import { EditVenueComponent } from './dialogs/edit-venue/edit-venue.component';
 import { PhoneNumComponent } from './shared/phone-num/phone-num.component';
 import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
 import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
+import {DjsComponent} from "./portal/djs/djs.component";
 
 @NgModule({
   declarations: [
@@ -69,7 +70,6 @@ import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
     HomeComponent,
     PortalComponent,
     LoginBarComponent,
-    EmployeesComponent,
     RegisterComponent,
     NavbarComponent,
     ProfileComponent,
@@ -85,7 +85,10 @@ import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
     EditVenueComponent,
     PhoneNumComponent,
     PortalHomeComponent,
-    AddShiftComponent
+    AddShiftComponent,
+    EmployeesComponent,
+    DjsComponent
+
 
   ],
   imports: [

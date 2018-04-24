@@ -17,11 +17,7 @@ export class AddShiftComponent implements OnInit {
 
   constructor(private us: UserService) { }
 
-  djs = [
-    {value: '001', viewValue: 'John'},
-    {value: '002', viewValue: 'Tom'},
-    {value: '003', viewValue: 'April'}
-  ];
+  djs = this.user;
 
   venues = [
     {value: '001', viewValue: 'Valley Park'},
@@ -34,8 +30,7 @@ export class AddShiftComponent implements OnInit {
   ];
 
   ngOnInit() {
-    this.us.getUser();
-    console.log(this.user);
+    this.us.getDJ();
   }
 
 

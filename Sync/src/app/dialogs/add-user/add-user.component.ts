@@ -10,6 +10,7 @@ import { Router} from "@angular/router";
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit {
+  user: any;
   name: String;
   last: String;
   username: String;
@@ -30,7 +31,19 @@ export class AddUserComponent implements OnInit {
     {value: 'DJ', viewValue: 'DJ'}
   ];
 
+  managerViewRoles = [
+    {value: 'Manager', viewValue: 'Manager'},
+    {value: 'DJ', viewValue: 'DJ'}
+    ];
+
   ngOnInit() {
+    this.authService.getProfile().subscribe(profile => {
+        this.user = profile.user;
+      },
+      err =>{
+        console.log(err);
+        return false;
+      });
   }
 
 

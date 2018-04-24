@@ -28,19 +28,19 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     availability: {
-        monday: Boolean,
-        tuesday: Boolean,
-        wednesday: Boolean,
-        thursday: Boolean,
-        friday: Boolean,
-        saturday: Boolean,
-        sunday: Boolean
+        monday: {type: Boolean},
+        tuesday: {type: Boolean},
+        wednesday: {type: Boolean},
+        thursday: {type: Boolean},
+        friday: {type: Boolean},
+        saturday: {type: Boolean},
+        sunday: {type: Boolean}
     },
     shift: {
-        Date: Date,
-        Time: String,
-        Venue: String,
-        DJ: String
+        Date: {type: Date},
+        Time: {type: String},
+        Venue: {type: String},
+        DJ: {type: String}
     }
 });
 
@@ -62,6 +62,10 @@ module.exports.FindUserByIdAndDelete = function (id, callback) {
 module.exports.FindUserByIdAndUpdate = function (id, callback) {
     User.findOneAndUpdate(id, callback)
 };
+
+module.exports.FindShiftByIdAndUpdate = function (id, callback){
+    User.findOneAndUpdate(id, callback)
+}
 
 module.exports.addUser = function(newUser, callback){
     bcrypt.genSalt(10, (err, salt) => {

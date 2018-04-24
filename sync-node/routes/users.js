@@ -78,6 +78,17 @@ router.get('/users', function(req, res) {
     });
 });
 
+//Get DJs only
+router.get('/djs', function(req, res) {
+    User.find({role: 'DJ'}, function (err, role){
+    if(err){
+        console.log(err);
+    } else{
+        res.json(role);
+    }
+    });
+});
+
 //DELETE USER BY ID
 router.delete('/user/:id', function (req, res) {
     console.log('deleting user...');
@@ -117,6 +128,21 @@ router.put('/update/:id', function (req, res) {
             console.log('Updated User: ' + updatedUser);
         }
     });
+});
+
+
+//POST SCHEDULE
+
+router.post('/addShift', function (req, res) {
+   console.log('Adding Shift: ' + req.params.id, req.body);
+   User.findByIdAndUpdate(req.params.id, req.body, function (err, addedShift) {
+       if(err){
+           res.json({success: false, msg: 'Failed'});
+       } else{
+           res.json({success: true, data: addedShift, msg: 'Success!'});
+           console.log('Shift added: ' + addedShift);
+       }
+   });
 });
 
 

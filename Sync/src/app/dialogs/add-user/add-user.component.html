@@ -20,13 +20,23 @@
             <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
           </mat-form-field>
 
-          <mat-form-field class="example-full-width">
+          <mat-form-field class="example-full-width" *ngIf="user?.role === 'Admin'" >
             <mat-select placeholder="Select a role" [(ngModel)]="role" name="role" required="required">
               <mat-option *ngFor="let role of roles" [value]="role.value">
                 {{role.viewValue}}
               </mat-option>
             </mat-select>
           </mat-form-field>
+
+    <mat-form-field class="example-full-width" *ngIf="user?.role === 'Manager'" >
+      <mat-select placeholder="Select a role" [(ngModel)]="role" name="role" required="required">
+        <mat-option *ngFor="let role of managerViewRoles" [value]="role.value">
+          {{role.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
   </mat-dialog-content>
   <mat-dialog-actions fxLayoutAlign="center center">
       <button mat-raised-button type="submit">Submit</button>

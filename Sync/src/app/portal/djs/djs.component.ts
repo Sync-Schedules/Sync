@@ -1,23 +1,23 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import 'rxjs/add/observable/of';
-import { Venue} from "../../models/venue.model";
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
-import {AuthService} from "../../services/auth.service";
+import {AddUserComponent} from "../../dialogs/add-user/add-user.component";
+import { ConfirmDialogComponent} from "../../dialogs/delete-dialog/confirm-dialog.component";
 import {Router} from "@angular/router";
 import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
-import {Shift} from "../../models/shift.model";
-import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
+import {User} from "../../models/user.model";
+import {AuthService} from "../../services/auth.service";
 
 @Component({
-  selector: 'app-schedule',
-  templateUrl: './schedule.component.html',
-  styleUrls: ['./schedule.component.scss']
+  selector: 'app-djs',
+  templateUrl: './djs.component.html',
+  styleUrls: ['./djs.component.scss']
 })
-export class ScheduleComponent implements OnInit {
+export class DjsComponent implements OnInit {
 
-  displayedColumns = ['DJ', 'Venue', 'Date', 'Time'];
-  dataSource = new MatTableDataSource<Shift>();
+  displayedColumns = ['name', 'last', 'username', 'email', 'role', 'actions'];
+  dataSource = new MatTableDataSource<User>();
   id: string;
   user:any;
   name: string;
@@ -43,6 +43,7 @@ export class ScheduleComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    this.us.getDJ().subscribe(data => this.dataSource.data = data);
   }
 
   ngAfterViewInit(){
@@ -57,7 +58,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});
+    let dialogRef = this.dialog.open(AddUserComponent, {width: '500px'});
 
   }
 
@@ -121,6 +122,5 @@ export class ScheduleComponent implements OnInit {
 
     });
   }
-
 
 }
