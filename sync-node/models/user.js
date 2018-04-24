@@ -35,6 +35,12 @@ const UserSchema = mongoose.Schema({
         friday: Boolean,
         saturday: Boolean,
         sunday: Boolean
+    },
+    shift: {
+        Date: Date,
+        Time: String,
+        Venue: String,
+        DJ: String
     }
 });
 

@@ -1,18 +1,13 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import { Observable} from "rxjs/Observable";
 import 'rxjs/add/observable/of';
-import { DataSource } from "@angular/cdk/collections";
 import { Venue} from "../../models/venue.model";
-import { VenueService} from "../../services/venue.service";
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {AuthService} from "../../services/auth.service";
 import {Router} from "@angular/router";
-import {AddVenueComponent} from "../../dialogs/add-venue/add-venue.component";
 import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
-import {EditVenueComponent} from "../../dialogs/edit-venue/edit-venue.component";
 import {UserService} from "../../services/user.service";
-import {AddUserComponent} from "../../dialogs/add-user/add-user.component";
 import {User} from "../../models/user.model";
+import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
 
 @Component({
   selector: 'app-schedule',
@@ -63,7 +58,7 @@ export class ScheduleComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddUserComponent, {width: '500px'});
+    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});
 
   }
 
