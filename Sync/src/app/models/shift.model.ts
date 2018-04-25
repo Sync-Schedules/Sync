@@ -1,5 +1,5 @@
 export interface Shift {
-  user: String,
+  username: String,
   venue: String,
   date: Date,
   time: String

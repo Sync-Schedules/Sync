@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs/Observable";
 import {User} from "../models/user.model";
+import {Shift} from "../models/shift.model";
 
 @Injectable()
 export class UserService {
 
   private serviceUrl = 'http://localhost:3000/users/users';
   private DjsURL = 'http://localhost:3000/users/djs';
+  private shiftUrl='http://localhost:3000/users/getShifts';
 
   constructor(private http: HttpClient) { }
 
@@ -18,9 +20,12 @@ export class UserService {
   }
 
   getDJ(): Observable<User[]>{
-    return this.http.get<User[]>(this.DjsURL)
+    return this.http.get<User[]>(this.DjsURL);
   }
 
+  getShifts(): Observable<Shift[]>{
+    return this.http.get<Shift[]>(this.shiftUrl);
+  }
 }
 
 

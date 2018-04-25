@@ -16,16 +16,15 @@ import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
 })
 export class ScheduleComponent implements OnInit {
 
-  displayedColumns = ['DJ', 'Venue', 'Date', 'Time'];
+  displayedColumns = ['DJ', 'Venue', 'Date', 'Time', 'Actions'];
   dataSource = new MatTableDataSource<Shift>();
-  id: string;
-  user:any;
-  name: string;
-  last: string;
-  username: string;
-  email: string;
-  role: string;
-
+  name: String;
+  // last: String;
+  username: String;
+  // email: string;
+  // role: string;
+time: String;
+date: Date;
 
   constructor(
     public dialog: MatDialog,
@@ -43,7 +42,10 @@ export class ScheduleComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    this.us.getShifts().subscribe(data => this.dataSource.data = data);
+    console.log(this.dataSource.data);
   }
+
 
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
@@ -67,60 +69,60 @@ export class ScheduleComponent implements OnInit {
     this.ngOnInit();
   }
 
-  DeleteUser(_id) {
-    this.as.deleteUser(_id)
-      .subscribe(data => {
-        if (data.success) {
-          this.ngOnInit();
-          this.snackBar.open('User has been deleted', '', {duration: 3000});
-        } else{
-          this.snackBar.open('ERROR', '',{duration:2000} )
-        }
-      });
-    // this.router.navigate(['./admin']);
-  }
-
-  updateUser(user){
-
-    console.log(user, user._id, user.name, user.last);
-    let dialogRef = this.dialog.open(EditUserComponent, {
-      width: '500px',
-      data: {
-        id: user._id,
-        name: user.name,
-        last: user.last,
-        username: user.username,
-        email: user.email,
-        role: user.role
-
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      this.user = {
-        name: result.name,
-        last: result.last,
-        email: result.email,
-        username: result.username,
-        role: result.role
-      } ;
-      this.id = result.id;
-
-      // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
-      this.as.updateUser(result.id, this.user)
-        .subscribe(data => {
-          if (data.success){
-            this.snackBar.open('user has been updated!' , 'Cool', {duration: 2000});
-            this.dialog.closeAll();
-            this.ngOnInit();
-          }
-          else{
-            this.snackBar.open('something went wrong');
-          }
-        })
-
-    });
-  }
+  // DeleteUser() {
+  //   this.as.deleteUser(_id)
+  //     .subscribe(data => {
+  //       if (data.success) {
+  //         this.ngOnInit();
+  //         this.snackBar.open('User has been deleted', '', {duration: 3000});
+  //       } else{
+  //         this.snackBar.open('ERROR', '',{duration:2000} )
+  //       }
+  //     });
+  //   // this.router.navigate(['./admin']);
+  // }
+  //
+  // updateUser(user){
+  //
+  //   console.log(user, user._id, user.name, user.last);
+  //   let dialogRef = this.dialog.open(EditUserComponent, {
+  //     width: '500px',
+  //     data: {
+  //       id: user._id,
+  //       name: user.name,
+  //       last: user.last,
+  //       username: user.username,
+  //       email: user.email,
+  //       role: user.role
+  //
+  //     }
+  //   });
+  //
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     this.user = {
+  //       name: result.name,
+  //       last: result.last,
+  //       email: result.email,
+  //       username: result.username,
+  //       role: result.role
+  //     } ;
+  //     this.id = result.id;
+  //
+  //     // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
+  //     this.as.updateUser(result.id, this.user)
+  //       .subscribe(data => {
+  //         if (data.success){
+  //           this.snackBar.open('user has been updated!' , 'Cool', {duration: 2000});
+  //           this.dialog.closeAll();
+  //           this.ngOnInit();
+  //         }
+  //         else{
+  //           this.snackBar.open('something went wrong');
+  //         }
+  //       })
+  //
+  //   });
+  // }
 
 
 }

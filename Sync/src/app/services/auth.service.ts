@@ -9,6 +9,7 @@ export class AuthService {
   authToken: any;
   user: any;
   venue: any;
+  shift: any;
   availability: any;
 
   constructor(private http: Http, public jwtHelper: JwtHelper) { }
@@ -30,6 +31,13 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  addShift(shift){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.post('http://localhost:3000/users/addShift', shift, {headers: headers})
+      .map(res => res.json());
+  }
+
   //READ
 
   getProfile(){
@@ -43,6 +51,11 @@ export class AuthService {
 
   getUsers(){
     return this.http.get('http://localhost:3000/users/usersList')
+      .map(res => res.json());
+  }
+
+  getDJ(){
+    return this.http.get('http://localhost:3000/users/djs')
       .map(res => res.json());
   }
 

@@ -1,4 +1,4 @@
-<form (submit)="onRegisterSubmit()" class="example-form" fxLayout="column"  fxLayoutGap="20px">
+<form (submit)="addShift()" class="example-form" fxLayout="column"  fxLayoutGap="20px">
   <h1 mat-dialog-title>Add Shift</h1>
   <mat-dialog-content fxLayout="column" fxLayoutAlign="center">
 
@@ -6,8 +6,8 @@
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Select a DJ" [(ngModel)]="dj" name="dj" required="required">
-        <mat-option *ngFor="let dj of djs" [value]="dj.value">
-          {{dj.viewValue}}
+        <mat-option *ngFor="let dj of djs" [value]="dj" (click)="onClick()">
+          {{dj}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -15,8 +15,8 @@
     <!--SELECT VENUE-->
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Select a Venue" [(ngModel)]="venue" name="venue" required="required">
-        <mat-option *ngFor="let venue of venues" [value]="venue.value">
-          {{venue.viewValue}}
+        <mat-option *ngFor="let venue of venues" [value]="venue">
+          {{venue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -25,8 +25,8 @@
 
     <mat-form-field class="example-full-width">
       <mat-select placeholder="Select a Time" [(ngModel)]="time" name="time" required="required">
-        <mat-option *ngFor="let time of times" [value]="time.value">
-          {{time.viewValue}}
+        <mat-option *ngFor="let time of times" [value]="time">
+          {{time}}
         </mat-option>
       </mat-select>
     </mat-form-field>

@@ -146,5 +146,18 @@ router.post('/addShift', function (req, res) {
 });
 
 
+// GET SCHEDULE
+
+router.get('/getShifts', function(req, res) {
+    const shift = User.shift;
+   User.find({role: 'DJ'}, function (err, shift){
+        if(err){
+            console.log(err);
+        } else{
+            res.json(shift);
+        }
+    });
+});
+
 module.exports = router;
 
