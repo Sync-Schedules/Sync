@@ -70,15 +70,23 @@ export class EmployeesComponent implements OnInit {
   }
 
   DeleteUser(_id) {
-    this.as.deleteUser(_id)
-      .subscribe(data => {
-        if (data.success) {
-          this.ngOnInit();
-          this.snackBar.open('User has been deleted', '', {duration: 3000});
-        } else{
-          this.snackBar.open('ERROR', '',{duration:2000} )
-        }
-      });
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.as.deleteUser(_id)
+        .subscribe(data => {
+          if (data.success) {
+            this.ngOnInit();
+            this.snackBar.open('User has been deleted', '', {duration: 3000});
+          } else{
+            this.snackBar.open('ERROR', '',{duration:2000} )
+          }
+        });
+
+    });
+
     // this.router.navigate(['./admin']);
   }
 

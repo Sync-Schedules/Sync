@@ -88,7 +88,7 @@ export class VenueDataComponent implements OnInit {
 
   updateVenue(venue){
 
-    console.log(venue, venue._id, venue.name, venue.last);
+    // console.log(venue, venue._id, venue.name, venue.last);
     let dialogRef = this.dialog.open(EditVenueComponent, {
       width: '500px',
       data: {
@@ -114,7 +114,7 @@ export class VenueDataComponent implements OnInit {
       } ;
       this.id = result.id;
 
-      console.log('updated: ' + this.venue + ',' + this.id + ',' +this.name);
+      // console.log('updated: ' + this.venue + ',' + this.id + ',' +this.name);
       this.as.updateVenue(result.id, this.venue)
         .subscribe(data => {
           if (data.success){

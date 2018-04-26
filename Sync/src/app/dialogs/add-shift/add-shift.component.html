@@ -1,16 +1,17 @@
-<form (submit)="addShift()" class="example-form" fxLayout="column"  fxLayoutGap="20px">
+<form class="example-form" fxLayout="column"  fxLayoutGap="20px">
   <h1 mat-dialog-title>Add Shift</h1>
   <mat-dialog-content fxLayout="column" fxLayoutAlign="center">
 
     <!--SELECT DJ-->
 
-    <mat-form-field class="example-full-width">
-      <mat-select placeholder="Select a DJ" [(ngModel)]="dj" name="dj" required="required">
-        <mat-option *ngFor="let dj of djs" [value]="dj" (click)="onClick()">
-          {{dj}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div class="example-full-width">
+      <!--<mat-select placeholder="Select a DJ" [(ngModel)]="dj" name="dj" required="required">-->
+        <!--<mat-option *ngFor="let dj of djs" [value]="dj" (click)="onClick()">-->
+          <!--{{dj}}-->
+        <!--</mat-option>-->
+      <!--</mat-select>-->
+      <p>{{data.name}}<span> </span>{{data.last}}</p>
+    </div>
 
     <!--SELECT VENUE-->
     <mat-form-field class="example-full-width">
@@ -45,7 +46,7 @@
 
   </mat-dialog-content>
   <mat-dialog-actions fxLayoutAlign="center center">
-    <button mat-raised-button type="submit">Submit</button>
+    <button mat-raised-button type="submit" [mat-dialog-close]="data">Submit</button>
     <button mat-raised-button  mat-dialog-close type="button">Cancel</button>
   </mat-dialog-actions>
 </form>

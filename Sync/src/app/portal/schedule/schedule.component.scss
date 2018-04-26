@@ -4,6 +4,9 @@
   min-width: 300px;
 }
 
+::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+  opacity: 0;
+}
 .example-header {
   min-height: 64px;
   padding: 8px 24px 0;
@@ -27,4 +30,30 @@
 }
 .phone-responsive{
   width: 100%;
+}
+
+.s-container{
+  height: 100vh;
+}
+
+.mat-card {
+  width: 200px;
+  border-radius: 5px;
+  font-weight: 300;
+  font-size: 16px;
+}
+  .emp-card {
+    background-color: #0BA5DB;
+    color: white;
+  }
+  .day-card,.card-header{
+    background-color: white;
+    color: #0BA5DB;
+  }
+
+.mat-icon-button{
+  color: transparent;
+  &:hover, &:active{
+    color: #777777;
+  }
 }

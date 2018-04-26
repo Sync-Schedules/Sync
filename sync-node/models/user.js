@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
+
 // User Schema
 const UserSchema = mongoose.Schema({
     name: {
@@ -27,21 +28,15 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability: {
-        monday: {type: Boolean},
-        tuesday: {type: Boolean},
-        wednesday: {type: Boolean},
-        thursday: {type: Boolean},
-        friday: {type: Boolean},
-        saturday: {type: Boolean},
-        sunday: {type: Boolean}
-    },
-    shift: {
-        Date: {type: Date},
-        Time: {type: String},
-        Venue: {type: String},
-        DJ: {type: String}
-    }
+    availability: [{
+        day: [String],
+        available: [Boolean]
+    }],
+    shift: [{
+        venue: String,
+        date: Date,
+        time: String
+    }]
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -65,7 +60,7 @@ module.exports.FindUserByIdAndUpdate = function (id, callback) {
 
 module.exports.FindShiftByIdAndUpdate = function (id, callback){
     User.findOneAndUpdate(id, callback)
-}
+};
 
 module.exports.addUser = function(newUser, callback){
     bcrypt.genSalt(10, (err, salt) => {

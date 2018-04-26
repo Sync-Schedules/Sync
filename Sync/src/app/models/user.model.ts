@@ -6,4 +6,11 @@ export interface User {
   email: string;
   // password: string;
   role: string;
+  shift: [{
+    name: string;
+    venue: string,
+    date: Date,
+    time: string
+  }]
+
 }

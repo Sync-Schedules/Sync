@@ -1,13 +1,15 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import 'rxjs/add/observable/of';
-import { Venue} from "../../models/venue.model";
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
-import {AuthService} from "../../services/auth.service";
+import {AddUserComponent} from "../../dialogs/add-user/add-user.component";
+import { ConfirmDialogComponent} from "../../dialogs/delete-dialog/confirm-dialog.component";
 import {Router} from "@angular/router";
 import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
-import {Shift} from "../../models/shift.model";
+import {User} from "../../models/user.model";
+import {AuthService} from "../../services/auth.service";
 import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
+
 
 @Component({
   selector: 'app-schedule',
@@ -16,15 +18,23 @@ import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
 })
 export class ScheduleComponent implements OnInit {
 
-  displayedColumns = ['DJ', 'Venue', 'Date', 'Time', 'Actions'];
-  dataSource = new MatTableDataSource<Shift>();
-  name: String;
-  // last: String;
-  username: String;
-  // email: string;
-  // role: string;
-time: String;
-date: Date;
+  displayedColumns = ['name', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+  dataSource = new MatTableDataSource<User>();
+  id: string;
+  user:any;
+  name: string;
+  last: string;
+  username: string;
+  email: string;
+  role: string;
+  shift: [{
+    venue: any,
+    date: Date,
+    time: string
+  }];
+
+
+
 
   constructor(
     public dialog: MatDialog,
@@ -42,10 +52,8 @@ date: Date;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.us.getShifts().subscribe(data => this.dataSource.data = data);
-    console.log(this.dataSource.data);
+    this.us.getDJ().subscribe(data => this.dataSource.data = data);
   }
-
 
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
@@ -58,10 +66,6 @@ date: Date;
     this.dataSource.filter = filterValue;
   }
 
-  openDialog(): void {
-    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});
-
-  }
 
 
   onRowClicked(row){
@@ -69,60 +73,58 @@ date: Date;
     this.ngOnInit();
   }
 
-  // DeleteUser() {
-  //   this.as.deleteUser(_id)
-  //     .subscribe(data => {
-  //       if (data.success) {
-  //         this.ngOnInit();
-  //         this.snackBar.open('User has been deleted', '', {duration: 3000});
-  //       } else{
-  //         this.snackBar.open('ERROR', '',{duration:2000} )
-  //       }
-  //     });
-  //   // this.router.navigate(['./admin']);
-  // }
-  //
-  // updateUser(user){
-  //
-  //   console.log(user, user._id, user.name, user.last);
-  //   let dialogRef = this.dialog.open(EditUserComponent, {
-  //     width: '500px',
-  //     data: {
-  //       id: user._id,
-  //       name: user.name,
-  //       last: user.last,
-  //       username: user.username,
-  //       email: user.email,
-  //       role: user.role
-  //
-  //     }
-  //   });
-  //
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     this.user = {
-  //       name: result.name,
-  //       last: result.last,
-  //       email: result.email,
-  //       username: result.username,
-  //       role: result.role
-  //     } ;
-  //     this.id = result.id;
-  //
-  //     // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
-  //     this.as.updateUser(result.id, this.user)
-  //       .subscribe(data => {
-  //         if (data.success){
-  //           this.snackBar.open('user has been updated!' , 'Cool', {duration: 2000});
-  //           this.dialog.closeAll();
-  //           this.ngOnInit();
-  //         }
-  //         else{
-  //           this.snackBar.open('something went wrong');
-  //         }
-  //       })
-  //
-  //   });
-  // }
+  DeleteUser(_id) {
+    this.as.deleteUser(_id)
+      .subscribe(data => {
+        if (data.success) {
+          this.ngOnInit();
+          this.snackBar.open('User has been deleted', '', {duration: 3000});
+        } else{
+          this.snackBar.open('ERROR', '',{duration:2000} )
+        }
+      });
+    // this.router.navigate(['./admin']);
+  }
 
+  addShift(user){
+
+    console.log('!!!DATE: '+ user.shift.date + '  !!!USER:' + user.name);
+    let dialogRef = this.dialog.open(AddShiftComponent, {
+      width: '500px',
+      data: {
+        id: user._id,
+        name: user.name,
+        last: user.last,
+        // venue: shift,
+        // date: shift.date,
+        // time: shift.time
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result);
+      this.shift = [{
+        venue: result.venue,
+        date: result.date,
+        time: result.time
+      }] ;
+      this.id = result.id;
+
+      console.log('updated shift: '+ this.id + ',' +this.shift[0]);
+      this.as.updateUser(result.id, this.user)
+        .subscribe(data => {
+          if (data.success){
+            this.snackBar.open('venue created!' , 'Cool', {duration: 2000});
+            this.dialog.closeAll();
+            console.log(this.shift);
+            this.ngOnInit();
+          }
+          else{
+            this.snackBar.open('something went wrong');
+          }
+        })
+
+    });
+  }
 
 }

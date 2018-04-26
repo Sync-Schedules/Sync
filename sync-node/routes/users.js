@@ -13,7 +13,13 @@ router.post('/register', (req, res, next) => {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
-        role: req.body.role
+        role: req.body.role,
+        availability: req.body.availability,
+        shift: {
+            venue: req.body.venue,
+            date: req.body.date,
+            time: req.body.time
+        }
     });
 
     User.addUser(newUser, (err, user) => {
@@ -149,8 +155,8 @@ router.post('/addShift', function (req, res) {
 // GET SCHEDULE
 
 router.get('/getShifts', function(req, res) {
-    const shift = User.shift;
-   User.find({role: 'DJ'}, function (err, shift){
+    console.log('req: ' + req + 'res: '+ res)
+   User.find(function (err, shift){
         if(err){
             console.log(err);
         } else{
