@@ -31,11 +31,6 @@ const UserSchema = mongoose.Schema({
     availability: [{
         day: [String],
         available: [Boolean]
-    }],
-    shift: [{
-        venue: String,
-        date: Date,
-        time: String
     }]
 });
 

@@ -27,6 +27,8 @@ export class EmployeesComponent implements OnInit {
   email: string;
   role: string;
 
+  users =[]
+  roles =[];
 
   constructor(
     public dialog: MatDialog,
@@ -44,9 +46,27 @@ export class EmployeesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.us.getUser().subscribe(data => this.dataSource.data = data);
+    this.us.getUser().subscribe(data => {
+      this.dataSource.data = data;
+      console.log(data);
+      for(let i=0; i<data.length; i++){
+        console.log(data[i]);
+        this.users.push(data[i]);
+      }
+    });
   }
 
+  getColor(user){
+    switch(user){
+      case 'Admin':
+        return 'purple';
+      case 'Manager':
+        return 'green';
+      case 'DJ':
+        return 'blue';
+
+    }
+  }
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;

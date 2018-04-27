@@ -1,36 +1,92 @@
-<div class="calendar">
-      <div class="calendar-navs">
-        <div class="month-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
-          <button mat-icon-button color="primary" (click)="prevMonth()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-          <span class="p4">{{ currentDate.format('MMMM') }}</span>
-          <button mat-icon-button color="primary" (click)="nextMonth()"><mat-icon>keyboard_arrow_right</mat-icon></button>
-        </div>
-        <div class="year-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
-          <button  mat-icon-button color="primary" (click)="prevYear()"><mat-icon>keyboard_arrow_left</mat-icon></button>
-          <span>{{ currentDate.format('YYYY') }}</span>
-          <button  mat-icon-button color="primary" (click)="nextYear()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+<div class="calendar-view" fxLayout="row" fxLayout.lt-sm="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+  <div class="calendar" fxFlex="50">
+    <div class="calendar-navs">
+      <div class="month-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
+        <button mat-icon-button color="primary" (click)="prevMonth()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <span class="p4">{{ currentDate.format('MMMM') }}</span>
+        <button mat-icon-button color="primary" (click)="nextMonth()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+      <div class="year-nav" fxFlex fxLayout="row" fxLayoutAlign="space-evenly center">
+        <button  mat-icon-button color="primary" (click)="prevYear()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+        <span>{{ currentDate.format('YYYY') }}</span>
+        <button  mat-icon-button color="primary" (click)="nextYear()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+      </div>
+    </div>
+    <div class="month-grid" fxLayout="column">
+      <div class="day-names" fxFlex="10" fxLayout="row" fxLayoutAlign="center center">
+        <div *ngFor="let name of dayNames" class="day-name">
+          {{ name }}
         </div>
       </div>
-      <div class="month-grid" fxLayout="column">
-        <div class="day-names" fxFlex="10" fxLayout="row" fxLayoutAlign="center center">
-          <div *ngFor="let name of dayNames" class="day-name">
-            {{ name }}
-          </div>
-        </div>
-        <div class="weeks" fxLayout="column" fxLayoutAlign="space-evenly center">
-          <div *ngFor="let week of weeks" class="week" fxLayout="row">
-            <ng-container *ngFor="let day of week">
-              <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)" fxLayoutAlign="center center">
-                <span class="date-text">{{ day.mDate.date() }}</span>
-              </div>
-              <div class="week-date enabled"
-                   *ngIf="isSelectedMonth(day.mDate)"
-                   (click)="selectDate(day)"
-                   [ngClass]="{ today: day.today, selected: day.selected }">
-                <span class="date-text">{{ day.mDate.date() }}</span>
-              </div>
-            </ng-container>
-          </div>
+      <div class="weeks" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <div *ngFor="let week of weeks" class="week" fxLayout="row">
+          <ng-container *ngFor="let day of week">
+            <div class="week-date disabled" *ngIf="!isSelectedMonth(day.mDate)" fxLayoutAlign="center center">
+              <span class="date-text">{{ day.mDate.date() }}</span>
+            </div>
+            <div class="week-date enabled"
+                 *ngIf="isSelectedMonth(day.mDate)"
+                 (click)="selectDate(day)"
+                 [ngClass]="{ today: day.today, selected: day.selected }">
+              <span class="date-text">{{ day.mDate.date() }}</span>
+            </div>
+          </ng-container>
         </div>
       </div>
+    </div>
+  </div>
+
+
+  <div class="actions" fxFlex="50">
+    <form (submit)="onClickSubmit()" class="example-form" fxLayout="column"  fxLayoutGap="30px">
+      <h1 mat-dialog-title>Add Shift</h1>
+
+
+      <!--SELECT DATE-->
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Choose a date" [(ngModel)]="date" value="{{dateClicked}}" required="required">
+      </mat-form-field>
+
+      <!--SELECT DJ-->
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Select a DJ" [(ngModel)]="dj" name="time" required="required">
+          <mat-option *ngFor="let dj of djs" [value]="dj">
+            {{dj}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+        <!--SELECT VENUE-->
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Select a Venue" [(ngModel)]="venue" name="venue" required="required">
+            <mat-option *ngFor="let venue of venues" [value]="venue">
+              {{venue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <!--SELECT TIME-->
+
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Select a Time" [(ngModel)]="time" name="time" required="required">
+            <mat-option *ngFor="let time of times" [value]="time">
+              {{time}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+      <mat-dialog-actions fxLayoutAlign="center center">
+        <button mat-raised-button type="submit">Submit</button>
+        <button mat-raised-button type="button">Cancel</button>
+      </mat-dialog-actions>
+    </form>
+
+
+  </div>
 </div>
+
+

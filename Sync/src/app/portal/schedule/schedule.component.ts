@@ -9,6 +9,7 @@ import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
 import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
+import {errorObject} from "rxjs/util/errorObject";
 
 
 @Component({
@@ -21,17 +22,18 @@ export class ScheduleComponent implements OnInit {
   displayedColumns = ['name', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
   dataSource = new MatTableDataSource<User>();
   id: string;
-  user:any;
+  user: any;
   name: string;
   last: string;
   username: string;
   email: string;
   role: string;
-  shift: [{
-    venue: any,
-    date: Date,
-    time: string
-  }];
+  shift: [
+    {venue: any;},
+    {date: Date},
+    {time: string}
+    ];
+
 
 
 
@@ -53,6 +55,7 @@ export class ScheduleComponent implements OnInit {
 
   ngOnInit() {
     this.us.getDJ().subscribe(data => this.dataSource.data = data);
+    console.log(this.shift);
   }
 
   ngAfterViewInit(){
@@ -88,39 +91,39 @@ export class ScheduleComponent implements OnInit {
 
   addShift(user){
 
-    console.log('!!!DATE: '+ user.shift.date + '  !!!USER:' + user.name);
+    // console.log('!!!DATE: '+ user.shift + '  !!!USER:' + user.shift[1]);
     let dialogRef = this.dialog.open(AddShiftComponent, {
       width: '500px',
       data: {
         id: user._id,
         name: user.name,
         last: user.last,
-        // venue: shift,
-        // date: shift.date,
-        // time: shift.time
+        venue: this.shift,
+        date: this.shift,
+        time: this.shift
       }
     });
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(result);
-      this.shift = [{
+      this.user = {
         venue: result.venue,
         date: result.date,
         time: result.time
-      }] ;
+      } ;
       this.id = result.id;
 
-      console.log('updated shift: '+ this.id + ',' +this.shift[0]);
+      // console.log('updated shift: '+ this.id + ',' +this.user.venue);
       this.as.updateUser(result.id, this.user)
         .subscribe(data => {
           if (data.success){
             this.snackBar.open('venue created!' , 'Cool', {duration: 2000});
             this.dialog.closeAll();
-            console.log(this.shift);
+            console.log(this.user);
             this.ngOnInit();
           }
           else{
-            this.snackBar.open('something went wrong');
+
           }
         })
 

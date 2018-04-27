@@ -24,7 +24,8 @@
                 </mat-card-actions>
               </mat-card>
             </div>
-            <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
+
+            <div *ngIf="user?.role === 'DJ'" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
               <div>
               <mat-card class="profile-options">
                 <h1 mat-card-title>Notifications</h1>
@@ -52,6 +53,28 @@
               </mat-card>
               </div>
             </div>
+
+            <div *ngIf="user?.role === 'Manager'" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
+              <div>
+                <mat-card class="profile-options">
+                  <h1 mat-card-title>Set Availability Deadline</h1>
+                  <mat-card-content>
+                    <mat-list>
+                      <mat-list-item>
+                        Set Deadline?
+                        <mat-slide-toggle>
+                          yes
+                        </mat-slide-toggle>
+                      </mat-list-item>
+                    </mat-list>
+                  </mat-card-content>
+                </mat-card>
+              </div>
+              <div>
+               djfhsd
+              </div>
+            </div>
+
           </div>
         </mat-tab>
       </mat-tab-group>
