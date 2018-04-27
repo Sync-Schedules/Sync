@@ -37,6 +37,17 @@ body{
   background: white;
   border-radius: 5px;
 
+  .mat-card-title{
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 24px;
+  font-weight: 200;
+}
+  .mat-card-subtitle{
+    color: #000;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+    font-size: 16px;
+    font-weight: 200;
+  }
 }
 
 

@@ -15,6 +15,8 @@ export class ProfileComponent implements OnInit {
   show: boolean = false;
   users: Object[];
   errorMessage: any;
+  checked:boolean = false;
+
 
 
   constructor(
@@ -33,6 +35,14 @@ export class ProfileComponent implements OnInit {
       });
   }
 
+  toggle()
+  {
+    console.log(this.checked);
+  }
+
+  onSubmit(){
+this.checked= !this.checked
+  }
 
 
 }

@@ -1,14 +1,14 @@
 <div  class="profile-container" fxFlex>
-  <mat-card class="profile-content">
+  <mat-card class="profile-content" fxLayout="column">
     <mat-card-header>
       <h1>{{user?.role}}</h1>
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
         <mat-tab label="Profile">
-          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="10px">
             <div fxFlex="50">
-              <mat-card class="profile-card">
+              <mat-card class="Info-card">
                 <h1 mat-card-title>Hello, {{user?.name}}</h1>
                 <mat-card-content>
                   <mat-list>
@@ -54,15 +54,15 @@
               </div>
             </div>
 
-            <div *ngIf="user?.role === 'Manager'" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
-              <div>
-                <mat-card class="profile-options">
+            <div *ngIf="user?.role === 'Manager'" fxFlex="50" fxLayoutGap="10px" fxLayout="column">
+              <div fxLayout="column">
+                <mat-card class="profile-options" fxLayout="column">
                   <h1 mat-card-title>Set Availability Deadline</h1>
                   <mat-card-content>
                     <mat-list>
                       <mat-list-item>
                         Set Deadline?
-                        <mat-slide-toggle>
+                        <mat-slide-toggle [(ngModel)]="checked" (change)="toggle()">
                           yes
                         </mat-slide-toggle>
                       </mat-list-item>
@@ -70,8 +70,28 @@
                   </mat-card-content>
                 </mat-card>
               </div>
-              <div>
-               djfhsd
+              <div *ngIf="checked" style="max-height: 70vh">
+                <mat-card class="profile-options">
+                  <h1 mat-card-title>Choose Dates: </h1>
+                  <mat-card-content fxLayout="column">
+                    <form (submit)="onSubmit()" fxLayout="column">
+                      <!--Start-->
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="startpicker" placeholder="Choose a start date">
+                        <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #startpicker touchUi="true"></mat-datepicker>
+                      </mat-form-field>
+                      <!--End-->
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="endpicker" placeholder="Choose end date">
+                        <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+                        <mat-datepicker #endpicker touchUi="true"></mat-datepicker>
+                      </mat-form-field>
+
+                      <button mat-raised-button type="submit">Submit</button>
+                    </form>
+                  </mat-card-content>
+                </mat-card>
               </div>
             </div>
 
