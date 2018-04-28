@@ -1,3 +1,25 @@
-<p>
-  availabilty works!
-</p>
+<div fxLayoutAlign="center center">
+  <mat-card class="avail-card" fxLayout="column" fxLayoutGap="20px">
+    <h1 mat-card-title>
+      {{user.name}}<span> </span> {{user.last}}'s Availability
+    </h1>
+    <div class="example-spacer"></div>
+    <button mat-raised-button color="primary" [disabled]="!disabled"(click)="enable()">
+      Edit availability<span></span><mat-icon>mode_edit</mat-icon>
+    </button>
+    <mat-card-content>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px" *ngFor="let day of days">
+        <mat-card-header class="day">
+          {{day}}
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+    </mat-card-content>
+    <mat-card-actions fxLayout="row">
+      <span fxFlex></span>
+      <button mat-raised-button color="primary" [disabled]="disabled" (click)="disable()"><mat-icon>send</mat-icon><span> </span>Submit Availability</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

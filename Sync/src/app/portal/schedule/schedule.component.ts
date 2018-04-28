@@ -19,31 +19,17 @@ import {errorObject} from "rxjs/util/errorObject";
 })
 export class ScheduleComponent implements OnInit {
 
-  displayedColumns = ['name', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-  dataSource = new MatTableDataSource<User>();
-  id: string;
-  user: any;
-  name: string;
-  last: string;
-  username: string;
-  email: string;
-  role: string;
-  shift: [
-    {venue: any;},
-    {date: Date},
-    {time: string}
-    ];
+  shift: any;
+  venue: String;
+  time: String;
+  date: Date;
 
 
-
-
-
-  constructor(
-    public dialog: MatDialog,
-    private us: UserService,
-    private as: AuthService,
-    private snackBar: MatSnackBar,
-    private router: Router) {
+  constructor(public dialog: MatDialog,
+              private us: UserService,
+              private as: AuthService,
+              private snackBar: MatSnackBar,
+              private router: Router) {
   }
 
   // resultsLength = 0;
@@ -54,80 +40,11 @@ export class ScheduleComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.us.getDJ().subscribe(data => this.dataSource.data = data);
-    console.log(this.shift);
+
   }
 
-  ngAfterViewInit(){
-    this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;
+  openDialog(shift): void {
+    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});
+
   }
-
-  applyFilter(filterValue: string) {
-    filterValue = filterValue.trim(); // Remove whitespace
-    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
-    this.dataSource.filter = filterValue;
-  }
-
-
-
-  onRowClicked(row){
-    console.log('Row clicked: ', row);
-    this.ngOnInit();
-  }
-
-  DeleteUser(_id) {
-    this.as.deleteUser(_id)
-      .subscribe(data => {
-        if (data.success) {
-          this.ngOnInit();
-          this.snackBar.open('User has been deleted', '', {duration: 3000});
-        } else{
-          this.snackBar.open('ERROR', '',{duration:2000} )
-        }
-      });
-    // this.router.navigate(['./admin']);
-  }
-
-  addShift(user){
-
-    // console.log('!!!DATE: '+ user.shift + '  !!!USER:' + user.shift[1]);
-    let dialogRef = this.dialog.open(AddShiftComponent, {
-      width: '500px',
-      data: {
-        id: user._id,
-        name: user.name,
-        last: user.last,
-        venue: this.shift,
-        date: this.shift,
-        time: this.shift
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result);
-      this.user = {
-        venue: result.venue,
-        date: result.date,
-        time: result.time
-      } ;
-      this.id = result.id;
-
-      // console.log('updated shift: '+ this.id + ',' +this.user.venue);
-      this.as.updateUser(result.id, this.user)
-        .subscribe(data => {
-          if (data.success){
-            this.snackBar.open('venue created!' , 'Cool', {duration: 2000});
-            this.dialog.closeAll();
-            console.log(this.user);
-            this.ngOnInit();
-          }
-          else{
-
-          }
-        })
-
-    });
-  }
-
 }

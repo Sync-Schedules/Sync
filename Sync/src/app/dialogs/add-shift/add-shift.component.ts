@@ -15,8 +15,9 @@ import {VenueService} from "../../services/venue.service";
 })
 export class AddShiftComponent implements OnInit {
 
+  shift: any;
   venue: any;
-  time: any;
+  time: String;
   date: Date;
 
 
@@ -46,5 +47,27 @@ export class AddShiftComponent implements OnInit {
         console.log(err);
         return false;
       });
+  }
+
+
+   addShift() {
+
+     const shift = {
+       venue: this.venue,
+       time: this.time,
+       date: this.date,
+     };
+
+     console.log(this.venue);
+    console.log('shift added');
+     this.as.addShift(shift).subscribe(data => {
+       if (data.success) {
+         this.snackBar.open('shift created', '', {duration: 3000});
+         this.dialog.closeAll();
+         console.log(shift);
+       } else {
+         this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
+       }
+     });
   }
 }

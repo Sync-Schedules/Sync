@@ -1,20 +1,27 @@
-<div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
-  <div fxLayoutAlign="center center"><img height="50%" width="50%" src="../../assets/images/Sync.png"/></div>
-
-  <form (submit)="onLoginSubmit()" class="example-form" fxLayoutGap="20px">
-    <div class="login-bar" fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="center center" fxLayout.lt-md ="column">
-      <mat-form-field fxFlex="40">
-        <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Username" required="required">
-      </mat-form-field>
-      <mat-form-field fxFlex="40">
-        <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
-      </mat-form-field>
-      <div>
-        <button mat-raised-button type="submit" value="login">LOGIN</button>
+<div fxLayoutAlign="center center" fxLayout="column">
+<mat-card class="login-card">
+  <mat-card-header fxLayoutAlign="center center">
+    <span class="sync-logo">
+      Sync
+    </span>
+  </mat-card-header>
+  <mat-card-content>
+    <form (submit)="onLoginSubmit()" class="example-form" fxLayoutGap="20px">
+      <div class="login-bar" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
+        <mat-form-field class="example-full-width">
+          <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Username" required="required">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput type="password" [(ngModel)]="password" [ngModelOptions]="{standalone: true}" placeholder="Password" required="required">
+        </mat-form-field>
+        <div>
+          <button mat-raised-button type="submit" value="login">LOGIN</button>
+        </div>
+        <div fxFlex="20">
+          <a class="forgot-password" routerLink="reset-password">Forgot Password?</a>
+        </div>
       </div>
-      <div fxFlex="20">
-        <a class="forgot-password" routerLink="reset-password">Forgot Password?</a>
-      </div>
-    </div>
-  </form>
+    </form>
+  </mat-card-content>
+</mat-card>
 </div>

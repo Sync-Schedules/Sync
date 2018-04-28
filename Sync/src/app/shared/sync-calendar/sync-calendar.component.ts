@@ -58,7 +58,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
       console.log(data);
       for(let i=0; i<data.length; i++){
         console.log(data[i].name);
-        this.djs.push(data[i].username + ' - ' + data[i].name + ' ' + data[i].last);
+        this.djs.push(data[i].username);
       }
       return this.user = data;
     });

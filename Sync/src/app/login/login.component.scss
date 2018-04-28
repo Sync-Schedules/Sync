@@ -1,10 +1,5 @@
 @import "../../../src/styles.scss";
 
-.login-page{
-  background-color: #0BA5DB;
-  height: 100vh;
-}
-
 .login-card {
   margin-top: 60px;
   width: 400px;
@@ -26,4 +21,12 @@
   }
 }
 
+
+.sync-logo{
+  font-family: Righteous, sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  letter-spacing: 0;
+  color: #0BA5DB;
+}
 

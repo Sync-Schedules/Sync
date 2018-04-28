@@ -9,7 +9,7 @@ export class UserService {
 
   private serviceUrl = 'http://localhost:3000/users/users';
   private DjsURL = 'http://localhost:3000/users/djs';
-  private shiftUrl='http://localhost:3000/users/getShifts';
+  private shiftUrl='http://localhost:3000/shifts/shifts';
 
   constructor(private http: HttpClient) { }
 

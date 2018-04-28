@@ -1,0 +1,15 @@
+.avail-card{
+  width: 500px;
+  margin: 16px;
+  .mat-card-header{
+    font-weight: bolder;
+  }
+  .day-avail{
+    width: auto;
+    .day {
+      width: 50%;
+      font-size: 20px;
+      font-weight: 300;
+    }
+  }
+}

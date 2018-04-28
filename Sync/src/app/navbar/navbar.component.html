@@ -1,6 +1,6 @@
-<mat-toolbar class="syncbar" color="primary">
-  <span fxLayout="row" fxShow="true" fxHide.lt-md *ngIf="authService.loggedIn()">
-        <img src="../assets/images/sync-small@0.5x.png">
+<mat-toolbar scroll class="mat-elevation-z6" color="primary">
+  <span class="sync-logo" fxLayout="row" fxShow="true" fxHide.lt-md *ngIf="authService.loggedIn()">
+    Sync
     </span>
 
   <span class="example-spacer"></span>

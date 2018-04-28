@@ -34,7 +34,7 @@ export class AuthService {
   addShift(shift){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/users/addShift', shift, {headers: headers})
+    return this.http.post('http://localhost:3000/shifts/createshift', shift, {headers: headers})
       .map(res => res.json());
   }
 
