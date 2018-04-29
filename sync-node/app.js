@@ -22,7 +22,8 @@ const shifts = require('./routes/shifts');
 const mailer = require('./routes/mailer');
 
 // Port Number
-const port = 3000;
+const port = 3000; //(local)
+// const port = process.env.port || 8080; //(Heroku)
 
 // CORS Middleware
 app.use(cors());
