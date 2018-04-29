@@ -1,115 +1,24 @@
-<!--<div class="example-header" fxLayout="row">-->
-  <!--<mat-form-field>-->
-    <!--<mat-icon matPrefix>search</mat-icon>-->
-    <!--<input label="Filter" matInput (keyup)="applyFilter($event.target.value)" >-->
-  <!--</mat-form-field>-->
-<!--</div>-->
-
-<!--<div class="table-container">-->
-  <!--<mat-table [dataSource]="dataSource" matSort>-->
-
-    <!--&lt;!&ndash;<ng-container matColumnDef="id">&ndash;&gt;-->
-    <!--&lt;!&ndash;<mat-header-cell *matHeaderCellDef mat-sort-header> ID </mat-header-cell>&ndash;&gt;-->
-    <!--&lt;!&ndash;<mat-cell *matCellDef="let user">{{user._id}}</mat-cell>&ndash;&gt;-->
-    <!--&lt;!&ndash;</ng-container>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;[Name Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="name">-->
-      <!--<mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">{{user.name}}<span> </span>{{user.last}}</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;&lt;!&ndash;[Last Name Column]&ndash;&gt;&ndash;&gt;-->
-    <!--&lt;!&ndash;<ng-container matColumnDef="last">&ndash;&gt;-->
-      <!--&lt;!&ndash;<mat-header-cell *matHeaderCellDef mat-sort-header> Last </mat-header-cell>&ndash;&gt;-->
-      <!--&lt;!&ndash;<mat-cell *matCellDef="let user">{{user.last}}</mat-cell>&ndash;&gt;-->
-    <!--&lt;!&ndash;</ng-container>&ndash;&gt;-->
-
-    <!--&lt;!&ndash;[Monday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Monday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Monday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Tuesday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Tuesday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Tuesday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Wednesday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Wednesday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Wednesday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Thursday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Thursday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Thursday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Friday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Friday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Friday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Saturday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Saturday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Saturday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--&lt;!&ndash;[Sunday Column]&ndash;&gt;-->
-    <!--<ng-container matColumnDef="Sunday">-->
-      <!--<mat-header-cell *matHeaderCellDef> Sunday </mat-header-cell>-->
-      <!--<mat-cell *matCellDef="let user">-->
-        <!--<div fxLayout="row">-->
-          <!--<button mat-icon-button (click)="addShift(user)"><mat-icon>add</mat-icon></button>-->
-        <!--</div>-->
-      <!--</mat-cell>-->
-    <!--</ng-container>-->
-
-    <!--<mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>-->
-    <!--<mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>-->
-
-  <!--</mat-table>-->
-  <!--<mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>-->
-<!--</div>-->
-
-
-<!--<div class="phone-responsive" fxShow="false" fxFlex fxShow.lt-md="true" fxLayout="column" fxLayoutAlign="center">-->
-<!--<mat-list>-->
-<!--<mat-list-item *ngFor="let user of users">-->
-<!--<mat-icon mat-list-icon>account_circle</mat-icon>-->
-<!--<h4 mat-line>{{user.name}} {{user.last}}</h4>-->
-<!--</mat-list-item>-->
-<!--</mat-list>-->
-<!--</div>-->
-
-<button mat-raised-button (click)="openDialog(shift)">OPEN</button>
+<div fxFlex>
+  <mat-card class="Info-card">
+    <mat-toolbar color="primary">
+      <h1>Assign Shift</h1>
+    </mat-toolbar>
+    <mat-card-content>
+      <mat-card class="profile-attribute" *ngFor="let shift of shifts" fxLayout="row">
+        <mat-card class="label" fxLayoutAlign="center center">
+          <mat-icon>work</mat-icon>
+        </mat-card>
+        <mat-card class="info">
+          {{shift}}
+        </mat-card>
+        <mat-card>
+          <mat-select placeholder="Select DJ...">
+            <mat-option *ngFor="let dj of djs" [value]="dj">
+            {{dj.username}}
+            </mat-option>
+          </mat-select>
+        </mat-card>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

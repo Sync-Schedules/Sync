@@ -119,7 +119,7 @@ router.put('/update/:id', function (req, res) {
                 success: false,
                 msg: 'Failed'
             });
-            console.log(err + res)
+            console.log('ERROR ' + err + res)
         }else{
             res.json({
                 success: true,

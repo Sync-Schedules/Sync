@@ -28,10 +28,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability: [{
-        day: [String],
-        available: [Boolean]
-    }]
+    availability:[ { type: Boolean}]
+
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);

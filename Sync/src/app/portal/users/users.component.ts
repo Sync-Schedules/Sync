@@ -8,6 +8,7 @@ import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
+import {Angular2Csv} from "angular2-csv";
 
 @Component({
   selector: 'usertable',
@@ -48,9 +49,9 @@ export class EmployeesComponent implements OnInit {
   ngOnInit() {
     this.us.getUser().subscribe(data => {
       this.dataSource.data = data;
-      console.log(data);
+      // console.log(data);
       for(let i=0; i<data.length; i++){
-        console.log(data[i]);
+        // console.log(data[i]);
         this.users.push(data[i]);
       }
     });
@@ -63,7 +64,7 @@ export class EmployeesComponent implements OnInit {
       case 'Manager':
         return 'green';
       case 'DJ':
-        return 'blue';
+        return '#0BA5DB';
 
     }
   }
@@ -84,8 +85,23 @@ export class EmployeesComponent implements OnInit {
   }
 
 
+exportUsers(){
+    const options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: true,
+      useBom: true
+    };
+
+    new Angular2Csv(this.users, 'Users', options)
+  console.log(this.users);
+    console.log(Angular2Csv);
+}
+
   onRowClicked(row){
-    console.log('Row clicked: ', row);
+    // console.log('Row clicked: ', row);
     this.ngOnInit();
   }
 

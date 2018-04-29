@@ -16,13 +16,23 @@
       <input matInput type="email" [(ngModel)]="data.email"  placeholder="email" name="email" value="{{data.email}}">
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="example-full-width" *ngIf="user?.role === 'Admin'" >
       <mat-select placeholder="Select a role" [(ngModel)]="data.role" name="role">
         <mat-option *ngFor="let role of roles" [value]="role.value">
           {{role.viewValue}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+
+    <mat-form-field class="example-full-width" *ngIf="user?.role === 'Manager'" >
+      <mat-select placeholder="Select a role" [(ngModel)]="role" name="role" required="required">
+        <mat-option [value]="user?.role" *ngIf="user?.role === 'DJ'">{{user.role}}</mat-option>
+        <mat-option *ngFor="let role of managerViewRoles" [value]="role.value">
+          {{role.viewValue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
   </mat-dialog-content>
   <mat-dialog-actions fxLayoutAlign="center center">
     <button mat-raised-button type="submit" [mat-dialog-close]="data">Submit</button>

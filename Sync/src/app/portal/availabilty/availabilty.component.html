@@ -1,25 +1,83 @@
-<div fxLayoutAlign="center center">
+<div fxLayoutAlign="center center" xmlns="http://www.w3.org/1999/html">
   <mat-card class="avail-card" fxLayout="column" fxLayoutGap="20px">
     <h1 mat-card-title>
-      {{user.name}}<span> </span> {{user.last}}'s Availability
+      {{user.name}} {{user.last}}'s Availability
     </h1>
     <div class="example-spacer"></div>
     <button mat-raised-button color="primary" [disabled]="!disabled"(click)="enable()">
-      Edit availability<span></span><mat-icon>mode_edit</mat-icon>
+      Edit Availability<span>  </span><mat-icon>mode_edit</mat-icon>
     </button>
+    <form (submit)="saveAvailability(user)">
     <mat-card-content>
-      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px" *ngFor="let day of days">
+      <mat-card class="day-avail all" fxLayout="row" fxLayoutGap="20px">
         <mat-card-header class="day">
-          {{day}}
+          All
         </mat-card-header>
         <div>
-          <mat-slide-toggle color="primary" [disabled]="disabled">Available</mat-slide-toggle>
+          <mat-slide-toggle color="accent" [disabled]="disabled" [(ngModel)]= "all" [ngModelOptions]="{standalone: true}" (change)="enableAll()">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Monday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "monday" [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Tuesday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "tuesday" [ngModelOptions]="{standalone: true}"[disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Wednesday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "wednesday" [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Thursday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "thursday" [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Friday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "friday" [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Saturday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "saturday"  [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
+        </div>
+      </mat-card>
+      <mat-card class="day-avail" fxLayout="row" fxLayoutGap="20px">
+        <mat-card-header class="day">
+          Sunday
+        </mat-card-header>
+        <div>
+          <mat-slide-toggle color="primary" [(ngModel)]= "sunday" [ngModelOptions]="{standalone: true}" [disabled]="disabled">Available</mat-slide-toggle>
         </div>
       </mat-card>
     </mat-card-content>
     <mat-card-actions fxLayout="row">
       <span fxFlex></span>
-      <button mat-raised-button color="primary" [disabled]="disabled" (click)="disable()"><mat-icon>send</mat-icon><span> </span>Submit Availability</button>
+      <button mat-raised-button color="primary" [disabled]="disabled" type="submit"><mat-icon>send</mat-icon><span> </span>Submit Availability</button>
     </mat-card-actions>
+    </form>
   </mat-card>
 </div>

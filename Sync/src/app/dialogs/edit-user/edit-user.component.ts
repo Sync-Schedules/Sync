@@ -7,7 +7,7 @@ import {MAT_DIALOG_DATA, MatDialog, MatDialogRef, MatSnackBar} from "@angular/ma
   templateUrl: './edit-user.component.html',
   styleUrls: ['./edit-user.component.scss']
 })
-export class EditUserComponent {
+export class EditUserComponent implements OnInit{
 
   constructor(private as: AuthService,
               private snackBar: MatSnackBar,
@@ -31,10 +31,20 @@ export class EditUserComponent {
     {value: 'DJ', viewValue: 'DJ'}
   ];
 
-  // ngOnInit() {
-  //
-  //   console.log('ID: ' + this.data._id)
-  // }
+  managerViewRoles = [
+    {value: 'Manager', viewValue: 'Manager'},
+    {value: 'DJ', viewValue: 'DJ'}
+  ];
+
+  ngOnInit() {
+
+    this.as.getProfile().subscribe(profile => {
+        this.user = profile.user;
+      },
+      err =>{
+        console.log(err);
+        return false;
+      });  }
 
   // onEditSubmit(_id){
   //   this.as.updateUser(_id)

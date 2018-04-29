@@ -19,6 +19,7 @@ const app = express();
 const users = require('./routes/users');
 const venues = require('./routes/venues');
 const shifts = require('./routes/shifts');
+const mailer = require('./routes/mailer');
 
 // Port Number
 const port = 3000;
