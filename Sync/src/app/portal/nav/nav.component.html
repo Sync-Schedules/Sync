@@ -1,7 +1,7 @@
 <div fxLayoutAlign="center center" fxFlex>
   <mat-card>
     <mat-card-header>
-      <!--<h1>{{user.role}}</h1>-->
+      <h1>{{user.role}}</h1>
     </mat-card-header>
     <mat-card-content>
       <mat-tab-group>
@@ -10,7 +10,7 @@
         <mat-tab label="SCHEDULE" *ngIf="user?.role === 'Manager' || user?.role === 'DJ'"><app-schedule></app-schedule></mat-tab>
         <mat-tab label="AVAILABILIY" *ngIf="user?.role === 'DJ'"><app-venue-data></app-venue-data> </mat-tab>
         <mat-tab label="CALENDAR" *ngIf="user?.role === 'Manager'|| user?.role === 'DJ'"><app-sync-calendar></app-sync-calendar> </mat-tab>
-        <mat-tab label="VENUES" *ngIf="user?.role === 'Admin' || user?.role ==='Manager'"><p>{{user.role}}</p><app-venue-data></app-venue-data> </mat-tab>
+        <mat-tab label="VENUES" *ngIf="user?.role === 'Admin' || user?.role ==='Manager'"><app-venue-data></app-venue-data> </mat-tab>
         <mat-tab label="EMPLOYEES" *ngIf="user?.role === 'Manager'"><usertable></usertable> </mat-tab>
 
 
