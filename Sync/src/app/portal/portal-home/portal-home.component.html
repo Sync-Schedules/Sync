@@ -1,3 +1,42 @@
-<p>
-  home works!
-</p>
+
+<div class ="manager" *ngIf="user?.role === 'Manager'">
+<div class="portalhome" fxShow="true" fxHide.lt-md>
+ <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
+  <h2 mat-card-subtitle>{{user?.role}}</h2>
+  <div class="wrapper" fxLayout="column" fxLayoutGap="20px">
+      <mat-card>
+        <h1 mat-card-title>Week of {{week}} </h1>
+      </mat-card>
+      <mat-card>
+        <h1 mat-card-title>Available Shifts</h1>
+      </mat-card>
+      <mat-card>
+        <h1 mat-card-title>Alerts</h1>
+      </mat-card>
+    </div>
+</div>
+<div fxShow="false" fxShow.lt-md>
+MEDIUM TO SMALL
+</div>
+</div>
+
+<div class="djportal" *ngIf="user?.role === 'DJ'">
+  <div class="portalhome" fxShow="true" fxHide.lt-md>
+    <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
+    <h2 mat-card-subtitle>{{user?.role}}</h2>
+    <div class="wrapper" fxLayout="column" fxLayoutGap="20px">
+      <mat-card>
+        <h1 mat-card-title>Week of {{week}} </h1>
+      </mat-card>
+      <mat-card>
+        <h1 mat-card-title>Approve/ Decline</h1>
+      </mat-card>
+      <mat-card>
+        <h1 mat-card-title>Alerts</h1>
+      </mat-card>
+    </div>
+    <div fxShow="false" fxShow.lt-md>
+      MEDIUM TO SMALL
+    </div>
+  </div>
+</div>

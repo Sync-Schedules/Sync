@@ -19,15 +19,12 @@ export class ConfirmDialogComponent implements OnInit {
   users: Object[];
   errorMessage: any;
 
-  constructor(private as: AuthService, private us: UserService, private employeeComponent: EmployeesComponent) {
+  constructor() {
   }
 
   ngOnInit() {
 
+  }
 
-  }
-  onClickDelete(){
-    this.employeeComponent.DeleteUser(this._id);
-  }
 }
 

@@ -1,12 +1,13 @@
-@import '../../../styles.scss';
-@import '~@angular/material/theming';
+@import "../../../styles";
+$dayBase: 70px;
+$base: 16px;
 
-$dayBase: 50px;
-$base: 90px;
-
+.calendar-view{
+  padding-top: 33px;
+}
 .calendar {
   display: block;
-  width:  85%;
+  width: $dayBase * 7;
   margin: 0 auto;
 
   * {
@@ -14,76 +15,49 @@ $base: 90px;
   }
 
   .calendar-navs {
-    background-color: white;
+    background-color: ghostwhite;
   }
 
   .month-nav {
-    //padding;
-    font-family: Righteous, sans-serif;
-    color: #0BA5DB;
-    font-size: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .year-nav {
-    //padding: $base;
-    font-family: Righteous, sans-serif;
-    color: #0BA5DB;
-    font-size: 16px;
-
+    padding: $base;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
   }
 
   .month-grid {
     .day-names {
-      //display: flex;
-      background-color: #0BA5DB;
-      color: white;
-      font-family: Righteous, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
+      display: flex;
+      flex-direction: row;
+      background: lightgrey;
       border-bottom-right-radius: 3px;
       border-bottom-left-radius: 3px;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
-      &:active{
-        @include mat-elevation(8);
-      }
     }
     .weeks {
-      //border: 1px solid #0BA5DB;
-      background-color: #0BA5DB;
-      border-bottom-right-radius: 3px;
-      border-bottom-left-radius: 3px;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
-
-
+      display: flex;
+      flex-direction: column;
     }
     .week {
-      background-color: white;
-      @include mat-elevation-transition;
-      @include mat-elevation(1);
-
-
+      display: flex;
+      flex-direction: row;
     }
-
-    .week-date{
+    .week-date,
+    .day-name {
       text-align: center;
       padding: $base;
+      display: block;
       width: $dayBase;
       display: flex;
       justify-content: center;
       align-items: center;
-      //border: 1px solid darkmagenta;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
-      &:active{
-        @include mat-elevation(8);
-      }
-    }
-    .day-name {
-      padding: $base;
-      width: $dayBase;
-
     }
 
     .week-date {
@@ -91,14 +65,12 @@ $base: 90px;
       position: relative;
 
       .date-text {
-        //z-index: 10;
-        font-size: 13px;
-        font-weight: 600;
-        font-family: Roboto, "Helvetica Neue", sans-serif
-
+        z-index: 10;
+        font-size: 10px;
+        font-family: 'Montserrat', sans-serif;
       }
 
-      &:after {
+      &::after {
         content: '';
         height: $dayBase * 0.9;
         width: $dayBase * 0.9;
@@ -113,10 +85,9 @@ $base: 90px;
 
       &.enabled {
         cursor: pointer;
-        color: darkblue;
         &:hover {
           &:after {
-            color: white;
+            background-color: lightcyan;
           }
         }
       }
@@ -133,13 +104,12 @@ $base: 90px;
       }
 
       &.disabled {
-        color: lightgrey;
+        color: lightsteelblue;
       }
     }
 
     .today {
       font-weight: bold;
-      color: red;
     }
   }
 }

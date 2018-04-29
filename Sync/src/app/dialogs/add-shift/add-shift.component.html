@@ -1,0 +1,53 @@
+<form (submit)="addShift()" class="example-form" fxLayout="column"  fxLayoutGap="20px">
+  <h1 mat-dialog-title>Add Shift</h1>
+  <mat-dialog-content fxLayout="column" fxLayoutAlign="center">
+
+    <!--SELECT DJ-->
+
+    <!--<div class="example-full-width">-->
+      <!--&lt;!&ndash;<mat-select placeholder="Select a DJ" [(ngModel)]="dj" name="dj" required="required">&ndash;&gt;-->
+        <!--&lt;!&ndash;<mat-option *ngFor="let dj of djs" [value]="dj" (click)="onClick()">&ndash;&gt;-->
+          <!--&lt;!&ndash;{{dj}}&ndash;&gt;-->
+        <!--&lt;!&ndash;</mat-option>&ndash;&gt;-->
+      <!--&lt;!&ndash;</mat-select>&ndash;&gt;-->
+      <!--<p>{{data.name}}<span> </span>{{data.last}}</p>-->
+    <!--</div>-->
+
+    <!--SELECT VENUE-->
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Select a Venue" [(ngModel)]="venue" name="venue" required="required">
+        <mat-option *ngFor="let venue of venues" [value]="venue">
+          {{venue}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!--SELECT TIME-->
+
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Select a Time" [(ngModel)]="time" name="time" required="required">
+        <mat-option *ngFor="let time of times" [value]="time">
+          {{time}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!--SELECT DATE-->
+
+    <mat-form-field class="example-full-width">
+      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" required="required">
+      <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
+      <mat-datepicker [touchUi]="true" #picker> </mat-datepicker>
+    </mat-form-field>
+
+
+
+
+
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayoutAlign="center center">
+    <button mat-raised-button type="submit">Submit</button>
+    <button mat-raised-button  mat-dialog-close type="button">Cancel</button>
+  </mat-dialog-actions>
+</form>
+
