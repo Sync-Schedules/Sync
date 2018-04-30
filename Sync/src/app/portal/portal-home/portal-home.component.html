@@ -1,13 +1,62 @@
-
-<div class ="manager" *ngIf="user?.role === 'Manager'">
+<mat-sidenav-container fxFlex (keydown.escape)="sidenav.close()">
+  <mat-sidenav #sidenav position="end">
+    HEKEJFKNFJEN
+  </mat-sidenav>
+  <div class ="manager" *ngIf="user?.role === 'Manager'">
 <div class="portalhome" fxShow="true" fxHide.lt-md>
  <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
-  <h2 mat-card-subtitle>{{user?.role}}</h2>
   <div class="wrapper" fxLayout="column" fxLayoutGap="20px">
+    <div class="wrapper" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20x">
+      <mat-card class="Info-card">
+        <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+          <button mat-icon-button style="{color: white}" (click)="prevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+          <span class="p4">Week of {{currentDate.format("MMM Do YY")}} </span>
+          <button mat-icon-button (click)="nextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+        </mat-toolbar>
+        <mat-card class="profile-attribute" fxLayoutAlign="center" fxLayout="row">
+          <div class="week" fxLayout="column" fxFlex fxLayoutAlign="space-evenly center">
+            <div *ngFor="let week of weeks" class="week" fxLayout="row">
+              <ng-container *ngFor="let day of week">
+                <!--Disabled-->
+                <div class="week-date disabled" fxFlex *ngIf="!isSelectedWeek(day.wDate)" fxLayoutAlign="center center">
+                  <mat-card class="date-text" fxFlex>
+                    <mat-card-header>
+                      {{ day.wDate.date() }}
+                    </mat-card-header>
+                    <mat-card-content>
+                      fgh
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+                <!--Enabled-->
+                <div class="week-date enabled"
+                     *ngIf="isSelectedWeek(day.wDate)"
+                     (click)="selectDate(day)"
+                     [ngClass]="{ today: day.today, selected: day.selected }"
+                     fxFlex>
+                  <mat-card class="date-text" fxFlex (click)="sidenav.open()">
+                    <mat-card-header>
+                      <h1 mat-card-title>{{ day.wDate.date() }}</h1>
+                    </mat-card-header>
+                    <mat-card-content fxLayoutAlign="center center">
+
+                    </mat-card-content>
+                  </mat-card>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </mat-card>
+      </mat-card>
+
       <mat-card>
-        <h1 mat-card-title>Week of {{week}} </h1>
+        <h1 mat-card-title>Pickup Shifts</h1>
       </mat-card>
       <mat-card>
+        <h1 mat-card-title>Alerts</h1>
+      </mat-card>
+    </div>
+    <mat-card>
         <h1 mat-card-title>Available Shifts</h1>
       </mat-card>
       <mat-card>
@@ -19,24 +68,59 @@
 MEDIUM TO SMALL
 </div>
 </div>
+  <div class="djportal" *ngIf="user?.role === 'DJ'" fxLayoutAlign="center">
+    <div class="portalhome" fxShow="true">
+      <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
+      <div class="wrapper" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20x">
+        <mat-card class="Info-card">
+          <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+            <button mat-icon-button style="{color: white}" (click)="prevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <span class="p4">Week of {{currentDate.format("MMM Do YY")}} </span>
+            <button mat-icon-button (click)="nextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          </mat-toolbar>
+          <mat-card class="profile-attribute" fxLayout="row">
+            <div class="week" fxLayout="column" fxFlex fxLayoutAlign="space-evenly center">
+              <div *ngFor="let week of weeks" class="week" fxLayout="row">
+                <ng-container *ngFor="let day of week">
+                  <!--Disabled-->
+                  <div class="week-date disabled" fxFlex *ngIf="!isSelectedWeek(day.wDate)" fxLayoutAlign="center center">
+                    <mat-card class="date-text" fxFlex>
+                      <mat-card-header>
+                        {{ day.wDate.date() }}
+                      </mat-card-header>
+                      <mat-card-content>
+                        fgh
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <!--Enabled-->
+                  <div class="week-date enabled"
+                       *ngIf="isSelectedWeek(day.wDate)"
+                       (click)="selectDate(day)"
+                       [ngClass]="{ today: day.today, selected: day.selected }"
+                       fxFlex>
+                    <mat-card class="date-text" fxFlex (click)="sidenav.open()">
+                      <mat-card-header>
+                        <h1 mat-card-title>{{ day.wDate.date() }}</h1>
+                      </mat-card-header>
+                      <mat-card-content fxLayoutAlign="center center">
 
-<div class="djportal" *ngIf="user?.role === 'DJ'">
-  <div class="portalhome" fxShow="true" fxHide.lt-md>
-    <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
-    <h2 mat-card-subtitle>{{user?.role}}</h2>
-    <div class="wrapper" fxLayout="column" fxLayoutGap="20px">
-      <mat-card>
-        <h1 mat-card-title>Week of {{week}} </h1>
-      </mat-card>
-      <mat-card>
-        <h1 mat-card-title>Approve/ Decline</h1>
-      </mat-card>
-      <mat-card>
-        <h1 mat-card-title>Alerts</h1>
-      </mat-card>
-    </div>
-    <div fxShow="false" fxShow.lt-md>
-      MEDIUM TO SMALL
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-card>
+        </mat-card>
+
+        <mat-card>
+          <h1 mat-card-title>Pickup Shifts</h1>
+        </mat-card>
+        <mat-card>
+          <h1 mat-card-title>Alerts</h1>
+        </mat-card>
+      </div>
     </div>
   </div>
-</div>
+</mat-sidenav-container>

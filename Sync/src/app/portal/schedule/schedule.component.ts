@@ -21,11 +21,12 @@ import {VenueService} from "../../services/venue.service";
 })
 export class ScheduleComponent implements OnInit {
 
+  user: any;
   shift: any;
   venue: any;
   time: String;
   date: Date;
-
+  open: boolean = false;
   djs = [];
   venues = [];
   shifts =[];
@@ -47,40 +48,47 @@ export class ScheduleComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
+    //GET DJ LIST
     this.us.getDJ().subscribe(data => {
-      // this.dataSource.data = data;
-      // console.log(data);
       for(let i=0; i<data.length; i++){
-        // console.log(data[i]);
         this.djs.push(data[i]);
       }
     });
+    //GET VENUE LIST
     this.vs.getVenue().subscribe(data =>{
         this.venue = data;
         for (let i = 0; i < this.venue.length; i++ ) {
           this.venues.push(this.venue[i].name);
-          console.log(this.venue[i].name);
         }
       } ,
       err =>{
         console.log(err);
         return false;
       });
-
+    //GET SHIFT LIST
     this.us.getShifts().subscribe(data =>{
       this.shift = data;
-      console.log("DATA: " + data);
       for (let i=0; data.length; i++){
-        this.shifts.push(this.shift[i].venue + ' / ' + this.shift[i].date + ' / ' +  this.shift[i].time)
-        console.log(this.shift[i]);
+        this.shifts.push(this.shift[i].venue + ' / ' + this.shift[i].day + ' / ' +  this.shift[i].time)
       }
 
     });
-
+    //GET PROFILE
+    this.as.getProfile().subscribe(profile => {
+        this.user = profile.user;
+      },
+      err =>{
+        console.log(err);
+        return false;
+      });
   }
 
   openDialog(shift): void {
     let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});
 
+  }
+
+  openPanel(){
+    this.open= !this.open
   }
 }

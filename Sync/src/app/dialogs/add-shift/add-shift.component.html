@@ -35,9 +35,11 @@
     <!--SELECT DATE-->
 
     <mat-form-field class="example-full-width">
-      <input matInput [matDatepicker]="picker" placeholder="Choose a date" [(ngModel)]="date" [ngModelOptions]="{standalone: true}" required="required">
-      <mat-datepicker-toggle matSuffix [for]="picker"> </mat-datepicker-toggle>
-      <mat-datepicker [touchUi]="true" #picker> </mat-datepicker>
+      <mat-select placeholder="Select a Day" [(ngModel)]="day" name="day" required="required">
+        <mat-option *ngFor="let day of dates" [value]="day">
+          {{day}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
 
 

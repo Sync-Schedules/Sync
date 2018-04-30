@@ -71,6 +71,11 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  getShifts(){
+    return this.http.get('http://localhost:3000/shifts/shifts')
+      .map(res => res.json());
+  }
+
   //UPDATE
 
   updateUser(id, body){
@@ -90,6 +95,15 @@ export class AuthService {
       .map(res => res.json());
   }
 
+  updateShift(id, body){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/shifts/update/'+id,body,{headers:headers})
+    //    return this.http.put('venues/update/'+id,body,{headers:headers})
+
+      .map(res => res.json());
+  }
+
   //DELETE
 
   deleteVenue(id){
@@ -101,6 +115,11 @@ export class AuthService {
   deleteUser(id){
     return this.http.delete('http://localhost:3000/users/user/'+id)
     //return this.http.delete('users/user/'+id)
+      .map(res => res.json());
+  }
+
+  deleteShift(id){
+    return this.http.delete('http://localhost:3000/shifts/delete/'+id)
       .map(res => res.json());
   }
 

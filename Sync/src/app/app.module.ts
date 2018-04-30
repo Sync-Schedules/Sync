@@ -63,6 +63,7 @@ import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
 import {DjsComponent} from "./portal/djs/djs.component";
 import { ShiftsComponent } from './portal/shifts/shifts.component';
 import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component";
+import { CalWeekComponent } from './shared/cal-week/cal-week.component';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component"
     EmployeesComponent,
     DjsComponent,
     ShiftsComponent,
-    AvailabiltyComponent
+    AvailabiltyComponent,
+    CalWeekComponent
 
   ],
   imports: [

@@ -21,7 +21,7 @@ export interface CalendarDate {
 export class SyncCalendarComponent implements OnInit, OnChanges {
 
   currentDate = moment();
-  dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+  dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   weeks: CalendarDate[][] = [];
   sortedDates: CalendarDate[] = [];
   dateClicked: any;
@@ -46,7 +46,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
         this.venue = data;
         for (let i = 0; i < this.venue.length; i++ ) {
           this.venues.push(this.venue[i].name);
-          console.log(this.venue[i].name);
+          // console.log(this.venue[i].name);
         }
       } ,
       err =>{
@@ -57,7 +57,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
     this.us.getDJ().subscribe(data => {
       console.log(data);
       for(let i=0; i<data.length; i++){
-        console.log(data[i].name);
+        // console.log(data[i].name);
         this.djs.push(data[i].username);
       }
       return this.user = data;

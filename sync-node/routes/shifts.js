@@ -9,7 +9,7 @@ const Shift = require('../models/shift');
 router.post('/createshift', (req, res, next) => {
     let newShift = new Shift({
         venue: req.body.venue,
-        date: req.body.date,
+        day: req.body.day,
         time: req.body.time,
     });
 
@@ -48,7 +48,7 @@ router.post('/authenticate', (req, res, next) => {
                         id: shift._id,
                         dj: shift.dj,
                         location: shift.location,
-                        date: shift.date
+                        day: shift.day
                     }
                 });
             } else {
@@ -75,16 +75,7 @@ router.get('/shifts', function(req, res) {
     });
 });
 
-//Get shift only
-// router.get('/djs', function(req, res) {
-//     User.find({role: 'DJ'}, function (err, role){
-//         if(err){
-//             console.log(err);
-//         } else{
-//             res.json(role);
-//         }
-//     });
-// });
+
 
 //DELETE shift BY ID
 router.delete('/delete/:id', function (req, res) {
@@ -122,7 +113,7 @@ router.put('/update/:id', function (req, res) {
                 data: updatedShift,
                 msg: 'Success!'
             });
-            console.log('Updated User: ' + updatedUser);
+            console.log('Updated Shift: ' + updatedShift);
         }
     });
 });

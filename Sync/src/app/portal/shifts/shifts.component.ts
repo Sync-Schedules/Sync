@@ -1,19 +1,20 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import 'rxjs/add/observable/of';
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
-import {AddUserComponent} from "../../dialogs/add-user/add-user.component";
-import { ConfirmDialogComponent} from "../../dialogs/delete-dialog/confirm-dialog.component";
 import {Router} from "@angular/router";
-import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
 import {Shift} from "../../models/shift.model";
 import {AuthService} from "../../services/auth.service";
 import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
+import {ConfirmDialogComponent} from "../../dialogs/delete-dialog/confirm-dialog.component";
+import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
+
 
 @Component({
   selector: 'app-shifts',
   templateUrl: './shifts.component.html',
-  styleUrls: ['./shifts.component.scss']
+  styleUrls: ['./shifts.component.scss'],
+
 })
 export class ShiftsComponent implements OnInit {
 
@@ -22,9 +23,9 @@ export class ShiftsComponent implements OnInit {
   id: string;
   shift:any;
   venue: string;
-  date: Date;
   time: string;
-
+  day: string;
+  shifts =[];
 
   constructor( public dialog: MatDialog,
                private us: UserService,
@@ -36,7 +37,12 @@ export class ShiftsComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.us.getShifts().subscribe(data => this.dataSource.data = data)
+    this.us.getShifts().subscribe(data => {
+      this.dataSource.data = data;
+      for(let i=0; i<data.length;i++){
+        this.shifts.push(data[i]);
+      }
+    });
   }
 
   ngAfterViewInit(){
@@ -58,6 +64,63 @@ export class ShiftsComponent implements OnInit {
   onRowClicked(row){
     console.log('Row clicked: ', row);
     this.ngOnInit();
+  }
+
+  DeleteShift(_id) {
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.as.deleteShift(_id)
+        .subscribe(data => {
+          if (data.success) {
+            this.ngOnInit();
+            this.snackBar.open('User has been deleted', '', {duration: 3000});
+          } else{
+            this.snackBar.open('ERROR', '',{duration:2000} )
+          }
+        });
+
+    });
+  }
+
+  updateShift(shift){
+
+    console.log(shift, shift._id, shift.venue, shift.time, shift.day);
+    let dialogRef = this.dialog.open(EditUserComponent, {
+      width: '500px',
+      data: {
+        id: shift._id,
+        venue: shift.venue,
+        time: shift.time,
+        day: shift.day,
+
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.shift = {
+        venue: result.venue,
+        time: result.time,
+        day: result.day
+      } ;
+      this.id = result.id;
+
+      // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
+      this.as.updateShift(result.id, this.shift)
+        .subscribe(data => {
+          if (data.success){
+            this.snackBar.open('user has been updated!' , 'Cool', {duration: 2000});
+            this.dialog.closeAll();
+            this.ngOnInit();
+          }
+          else{
+            this.snackBar.open('something went wrong');
+          }
+        })
+
+    });
   }
 
 

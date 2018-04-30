@@ -1,7 +1,7 @@
 <div fxLayoutAlign="center center" xmlns="http://www.w3.org/1999/html">
   <mat-card class="avail-card" fxLayout="column" fxLayoutGap="20px">
     <h1 mat-card-title>
-      {{user.name}} {{user.last}}'s Availability
+      {{user?.name}} {{user?.last}}'s Availability
     </h1>
     <div class="example-spacer"></div>
     <button mat-raised-button color="primary" [disabled]="!disabled"(click)="enable()">
