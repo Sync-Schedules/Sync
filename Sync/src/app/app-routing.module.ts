@@ -14,7 +14,7 @@ import {PortalHomeComponent} from "./portal/portal-home/portal-home.component";
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'portal',
     pathMatch: 'full'
   },
   {

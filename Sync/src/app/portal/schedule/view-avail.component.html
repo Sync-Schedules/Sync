@@ -1,30 +1,74 @@
-<mat-card class="Info-card">
-  <mat-toolbar color="primary" (click)="openPanel()">
-    <span>Assign Shift</span><span fxFlex class="example-spacer"> </span><span>
+<mat-card class="Info-card" *ngIf="user?.role === 'Manager'">
+  <mat-toolbar>
+    <span (click)="openPanel()"><u>View Availability</u></span><span fxFlex class="example-spacer"> </span><span>
+    <button mat-icon-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>
       <button mat-icon-button *ngIf="!open"><mat-icon (click)="openPanel()">keyboard_arrow_down</mat-icon></button>
       <button mat-icon-button *ngIf="open"><mat-icon (click)="openPanel()">keyboard_arrow_up</mat-icon></button></span>
   </mat-toolbar>
   <mat-card-content *ngIf="open">
     <mat-card class="profile-attribute" fxLayout="row">
       <mat-card class="label" fxLayoutAlign="center center">
-        <mat-icon>work</mat-icon>
+        DJ
       </mat-card>
-      <mat-card class="info">
-        HI
+      <mat-card class="info" fxLayoutAlign="center center" *ngFor="let dj of djs">
+        <h3>{{dj}}</h3>
       </mat-card>
-      <mat-card>
-        <mat-select placeholder="Select DJ..." [(ngModel)]="dj">
-          <mat-option >
-            HIAL
-          </mat-option>
-        </mat-select>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        MON
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of monday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        TUE
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of tuesday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        WED
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of wednesday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        THU
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of thursday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        FRI
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of friday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        SAT
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of saturday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+      </mat-card>
+    </mat-card>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <mat-card class="label" fxLayoutAlign="center center">
+        SUN
+      </mat-card>
+      <mat-card class="info" *ngFor="let day of sunday">
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
       </mat-card>
     </mat-card>
   </mat-card-content>
-  <mat-toolbar class="actions" *ngIf="open">
-    <span fxFlex class="example-spacer"> </span>
-    <span>
-      <button mat-raised-button>submit</button>
-    </span>
-  </mat-toolbar>
 </mat-card>

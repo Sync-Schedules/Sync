@@ -53,6 +53,21 @@
   .profile-attribute{
     width: auto;
     background-color: whitesmoke;
+
+    .label{
+      width: auto;
+      background-color: #3f51b5;
+      color: white;
+      border-bottom-right-radius: 5px ;
+      border-top-right-radius: 5px ;
+    }
+    .info{
+      width: 75%;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom-left-radius: 5px ;
+      border-top-left-radius: 5px ;
+    }
     .week{
       width: 100%;
     }

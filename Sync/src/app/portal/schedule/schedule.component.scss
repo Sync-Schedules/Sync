@@ -68,6 +68,8 @@
   .mat-toolbar{
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
+    cursor: pointer;
+
 
   }
   h1{
@@ -76,8 +78,10 @@
   }
   .profile-attribute{
     width: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
     .label{
-      width: auto;
+      width: 20%;
       background-color: #3f51b5;
       color: white;
       border-bottom-right-radius: 0 ;
@@ -89,6 +93,9 @@
       font-size: 16px;
       border-bottom-left-radius: 0 ;
       border-top-left-radius: 0 ;
+      .mat-icon{
+        color: #0BA5DB;
+      }
     }
   }
 }

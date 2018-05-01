@@ -28,7 +28,10 @@
                    [ngClass]="{ today: day.today, selected: day.selected }">
                 <mat-card class="date-text">
                   <mat-card-header>
-                    {{ day.mDate.date() }}
+                    {{ day.mDate.date() }}<span fxFlex></span>
+                    <button mat-icon-button [matMenuTriggerFor]="menu">
+                      <mat-icon>more_vert</mat-icon>
+                    </button>
                   </mat-card-header>
                   <mat-card-content>
 
@@ -41,4 +44,24 @@
       </mat-card>
     </mat-card>
   </div>
+
+
+
+  <!--Menu-->
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="day" *ngFor="let venue of venues">{{venue}}</button>
+  </mat-menu>
+
+  <mat-menu #day="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="times" *ngFor="let day of dayNames">{{day}}</button>
+  </mat-menu>
+
+  <mat-menu #times="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="dj">9:00</button>
+  </mat-menu>
+
+  <mat-menu #dj="matMenu">
+    <button mat-menu-item *ngFor="let dj of djs">{{dj}}</button>
+  </mat-menu>
 

@@ -32,12 +32,12 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
   dj: any;
   djs = [];
   time: any;
-  times = ['9:00'];
 
   @Input() selectedDates: CalendarDate[] = [];
   @Output() onSelectDate = new EventEmitter<CalendarDate>();
 
   constructor( public vs: VenueService, public us: UserService, public as: AuthService, public snackBar: MatSnackBar) {}
+
 
   ngOnInit(): void {
     this.generateCalendar();
@@ -55,7 +55,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
       });
 
     this.us.getDJ().subscribe(data => {
-      console.log(data);
+      // console.log(data);
       for(let i=0; i<data.length; i++){
         // console.log(data[i].name);
         this.djs.push(data[i].username);

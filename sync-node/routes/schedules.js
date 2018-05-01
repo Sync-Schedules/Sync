@@ -3,32 +3,28 @@ const router = express.Router();
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const config = require('../config/database');
-const Shift = require('../models/shift');
+const Schedule = require('../models/schedule');
 
 // Register
-router.post('/createshift', (req, res, next) => {
-    let newShift = new Shift({
-        venue: req.body.venue,
-        day: req.body.day,
-        time: req.body.time,
+router.post('/createSchedule', (req, res, next) => {
+    let newSchedule = new Schedule({
+        shift: req.body.shift,
         dj: req.body.dj
     });
 
-    Shift.addShift(newShift, (err, shift) => {
+    Schedule.addSchedule(newSchedule, (err, schedule) => {
         if(err){
-            res.json({success: false, msg: 'Failed to register user'});
+            res.json({success: false, msg: 'Failed to Create Schedule'});
         } else {
-            res.json({success: true, msg: 'User registered'});
+            res.json({success: true, msg: 'Schedule Posted'});
         }
     });
 });
 
 
-
-
-//Get All shifts
-router.get('/shifts', function(req, res) {
-    Shift.find(function (err, shifts) {
+//Get Schedule
+router.get('/schedules', function(req, res) {
+    Schedule.find(function (err, shifts) {
         if(err){
             console.log(err);
         }else{
@@ -37,32 +33,11 @@ router.get('/shifts', function(req, res) {
     });
 });
 
-
-
-//DELETE shift BY ID
-router.delete('/delete/:id', function (req, res) {
-    console.log('deleting shift...');
-    Shift.findByIdAndRemove(req.params.id, function (err, deletedShift) {
-        if(err){
-            res.send({
-                success: false,
-                msg: 'Failed'
-            })
-        }else {
-            res.json({
-                success: true,
-                data: deletedShift,
-                msg: 'Success!'
-            });
-        }
-    });
-});
-
-//UPDATE shift BY ID
+//UPDATE Schedule BY ID
 
 router.put('/update/:id', function (req, res) {
-    console.log('updating user: ' + req.params.id, req.body);
-    Shift.findByIdAndUpdate(req.params.id, req.body, function (err, updatedShift) {
+    console.log('updating schedule: ' + req.params.id, req.body);
+    Schedule.findByIdAndUpdate(req.params.id, req.body, function (err, updatedSchedule) {
         if(err){
             res.json({
                 success: false,
@@ -72,10 +47,10 @@ router.put('/update/:id', function (req, res) {
         }else{
             res.json({
                 success: true,
-                data: updatedShift,
+                data: updatedSchedule,
                 msg: 'Success!'
             });
-            console.log('Updated Shift: ' + updatedShift);
+            console.log('Updated Schedule: ' + updatedSchedule);
         }
     });
 });

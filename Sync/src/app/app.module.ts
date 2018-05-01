@@ -64,6 +64,7 @@ import {DjsComponent} from "./portal/djs/djs.component";
 import { ShiftsComponent } from './portal/shifts/shifts.component';
 import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component";
 import { CalWeekComponent } from './shared/cal-week/cal-week.component';
+import { SelectDjComponent } from './dialogs/select-dj/select-dj.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +94,8 @@ import { CalWeekComponent } from './shared/cal-week/cal-week.component';
     ShiftsComponent,
     AvailabiltyComponent,
     CalWeekComponent,
-    ViewAvailability
+    ViewAvailability,
+    SelectDjComponent,
 
   ],
   imports: [
@@ -152,7 +154,7 @@ import { CalWeekComponent } from './shared/cal-week/cal-week.component';
     EditUserComponent,
     EditVenueComponent,
     AddShiftComponent,
-    CalWeekComponent
+    SelectDjComponent
   ]
 })
 export class AppModule { }

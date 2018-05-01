@@ -27,6 +27,7 @@ export class AddShiftComponent implements OnInit {
   venue: any;
   time: String;
   day: String;
+  dj: String = '';
 
 
 
@@ -79,6 +80,7 @@ export class AddShiftComponent implements OnInit {
        venue: this.venue,
        time: this.time,
        day: this.day,
+       dj: this.dj
      };
 
      console.log(this.venue);

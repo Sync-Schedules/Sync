@@ -4,7 +4,8 @@ import * as moment from 'moment';
 import * as _ from 'lodash';
 import {CalendarDate} from "../../shared/sync-calendar/sync-calendar.component";
 import {MatDialog} from "@angular/material";
-import {CalWeekComponent} from "../../dialogs/cal-week/cal-week.component";
+import {UserService} from "../../services/user.service";
+// import {CalWeekComponent} from "../../dialogs/cal-week/cal-week.component";
 
 export interface Weekly {
   wDate: moment.Moment;
@@ -31,7 +32,15 @@ export class PortalHomeComponent implements OnInit {
   @Input() selectedDates: Weekly[] = [];
   @Output() onSelectDate = new EventEmitter<Weekly>();
 
+  shift: any;
 
+  alert: boolean = false;
+  emptyshifts = [];
+  shiftsv =[];
+  shiftst =[];
+  shiftsdt = [];
+  shiftsdj=[];
+  shifthd=['Venue', 'Time', 'Date', 'DJ'];
 
   daysOfWeek =[
     'Sunday',
@@ -42,7 +51,7 @@ export class PortalHomeComponent implements OnInit {
     'Friday',
     'Saturday',
   ];
-  constructor(private auth: AuthService, private dialog: MatDialog) { }
+  constructor(private auth: AuthService, private dialog: MatDialog, private us: UserService) { }
 
   ngOnInit() {
     this.auth.getProfile().subscribe(profile => {
@@ -56,6 +65,22 @@ export class PortalHomeComponent implements OnInit {
     console.log(this.dayName);
     console.log(this.currentDate);
     this.generateWeek();
+
+    this.us.getShifts().subscribe(data =>{
+      this.shift = data;
+      for (let i=0; data.length; i++){
+        this.shiftsv.push(this.shift[i].venue);
+        this.shiftst.push(this.shift[i].time);
+        this.shiftsdt.push(this.shift[i].day);
+        this.shiftsdj.push(this.shift[i].dj);
+        if(this.shift[i].dj === ""){
+          this.emptyshifts.push(this.shift[i].venue + ' // ' + this.shift[i].day + ' // ' + this.shift[i].time);
+          this.alert = true;
+        }
+      }
+
+
+    });
 
   }
 
@@ -88,7 +113,7 @@ export class PortalHomeComponent implements OnInit {
   selectDate(date: Weekly){
     this.onSelectDate.emit(date);
     console.log(date.wDate.format('dddd'));
-    return this.dateClicked = date.wDate.format('dddd');
+    return this.dateClicked = date.wDate.format('dddd MMM Do YYYY');
   }
 
 //  Actions
