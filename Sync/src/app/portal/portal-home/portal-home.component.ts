@@ -3,6 +3,8 @@ import {AuthService} from "../../services/auth.service";
 import * as moment from 'moment';
 import * as _ from 'lodash';
 import {CalendarDate} from "../../shared/sync-calendar/sync-calendar.component";
+import {MatDialog} from "@angular/material";
+import {CalWeekComponent} from "../../dialogs/cal-week/cal-week.component";
 
 export interface Weekly {
   wDate: moment.Moment;
@@ -13,7 +15,7 @@ export interface Weekly {
 @Component({
   selector: 'app-portal-home',
   templateUrl: './portal-home.component.html',
-  styleUrls: ['./portal-home.component.scss']
+  styleUrls: ['./portal-home.component.scss'],
 })
 export class PortalHomeComponent implements OnInit {
 
@@ -40,7 +42,7 @@ export class PortalHomeComponent implements OnInit {
     'Friday',
     'Saturday',
   ];
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService, private dialog: MatDialog) { }
 
   ngOnInit() {
     this.auth.getProfile().subscribe(profile => {
@@ -129,5 +131,6 @@ export class PortalHomeComponent implements OnInit {
         };
       });
   }
+
 
 }

@@ -21,7 +21,7 @@ export interface CalendarDate {
 export class SyncCalendarComponent implements OnInit, OnChanges {
 
   currentDate = moment();
-  dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   weeks: CalendarDate[][] = [];
   sortedDates: CalendarDate[] = [];
   dateClicked: any;

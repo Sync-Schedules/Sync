@@ -8,9 +8,11 @@ import {AuthService} from "../services/auth.service";
 })
 export class PortalComponent implements OnInit {
 
-  constructor() {
+  constructor(private as: AuthService) {
   }
 
   ngOnInit() {
+    this.as.loggedIn()
   }
+
 }

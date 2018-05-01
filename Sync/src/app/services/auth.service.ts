@@ -83,7 +83,6 @@ export class AuthService {
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/users/update/'+id,body,{headers:headers})
     // return this.http.put('users/update/'+id,body,{headers:headers})
-
       .map(res => res.json());
 }
   updateVenue(id, body){

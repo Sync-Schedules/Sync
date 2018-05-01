@@ -1,5 +1,7 @@
 @import "../../../styles";
 
+$width: 100%;
+
   h1{
     font-family: 'Roboto', sans-serif;
     font-size: 24px;
@@ -51,9 +53,18 @@
     width: auto;
     background-color: whitesmoke;
 
+    .daynames{
+      height: auto;
+      width: 100%;
+      font-size: 18px;
+      background-color: #0BA5DB;
+      color: white;
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      border-radius: 0;
+    }
     .date-text {
       padding: 0;
-      width: 120px;
+      width: 100%;
       height: 100px;
       font-size: 12px;
 
@@ -67,23 +78,17 @@
   }
 }
 
-.daynames{
-  height: auto;
-  width: 120px;
-  font-size: 18px;
-  background-color: #0BA5DB;
-  color: white;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  border-radius: 0;
-}
+
 
 .week-date{
+  width: 100%;
   .disabled{
     color: #777777;
     font-family: Righteous, sans-serif;
   }
 }
 
-.week{
+.week, .weeks{
   margin-top: 20px;
+  width: 100%;
 }

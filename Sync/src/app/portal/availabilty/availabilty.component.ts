@@ -68,7 +68,7 @@ export class AvailabiltyComponent implements OnInit {
 
   saveAvailability(user){
     console.log('USER TEST: ' + 'user:' + user + ' name:' + user.name + ' avail: ' + user.availability);
-    this.user.availability = [{
+    this.user.availability = {
       monday: this.monday,
       tuesday: this.tuesday,
       wednesday: this.wednesday,
@@ -76,9 +76,9 @@ export class AvailabiltyComponent implements OnInit {
       friday: this.friday,
       saturday: this.saturday,
       sunday: this.sunday}
-    ];
+    ;
 
-    console.log(this.availability);
+    console.log(this.user.availability);
     this.disable();
 
     this.as.updateUser(this.user._id, this.user.availability)

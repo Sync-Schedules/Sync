@@ -14,7 +14,14 @@ router.post('/register', (req, res, next) => {
         username: req.body.username,
         password: req.body.password,
         role: req.body.role,
-        availability: req.body.availability
+            monday: req.body.monday,
+            tuesday: req.body.tuesday,
+        wednesday: req.body.wednesday,
+            thursday: req.body.thursday,
+            friday: req.body.friday,
+            saturday: req.body.saturday,
+            sunday: req.body.sunday
+
     });
 
     User.addUser(newUser, (err, user) => {

@@ -55,7 +55,7 @@ import {AdminGuard} from "./guards/admin.guard";
 import { SyncCalendarComponent } from './shared/sync-calendar/sync-calendar.component';
 import { EditUserComponent } from './dialogs/edit-user/edit-user.component';
 import { NavComponent } from './portal/nav/nav.component';
-import { ScheduleComponent } from './portal/schedule/schedule.component';
+import { ScheduleComponent, ViewAvailability } from './portal/schedule/schedule.component';
 import { EditVenueComponent } from './dialogs/edit-venue/edit-venue.component';
 import { PhoneNumComponent } from './shared/phone-num/phone-num.component';
 import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
@@ -92,7 +92,8 @@ import { CalWeekComponent } from './shared/cal-week/cal-week.component';
     DjsComponent,
     ShiftsComponent,
     AvailabiltyComponent,
-    CalWeekComponent
+    CalWeekComponent,
+    ViewAvailability
 
   ],
   imports: [
@@ -150,7 +151,8 @@ import { CalWeekComponent } from './shared/cal-week/cal-week.component';
     ConfirmDialogComponent,
     EditUserComponent,
     EditVenueComponent,
-    AddShiftComponent
+    AddShiftComponent,
+    CalWeekComponent
   ]
 })
 export class AppModule { }

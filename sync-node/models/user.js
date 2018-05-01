@@ -28,7 +28,15 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability:[ { type: Boolean}]
+
+     monday: Boolean,
+     tuesday: Boolean,
+    wednesday: Boolean,
+    thursday: Boolean,
+    friday: Boolean,
+    saturday: Boolean,
+    sunday: Boolean,
+
 
 });
 

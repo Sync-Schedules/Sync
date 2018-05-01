@@ -92,3 +92,20 @@ export class ScheduleComponent implements OnInit {
     this.open= !this.open
   }
 }
+
+@Component({
+  selector: 'view-avail',
+  providers: [VenueService],
+  templateUrl: './view-avail.component.html',
+  styleUrls: ['./schedule.component.scss']
+})
+
+export class ViewAvailability implements OnInit{
+
+  constructor() { }
+
+  ngOnInit(){
+
+}
+}
+
