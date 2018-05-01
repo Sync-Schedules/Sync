@@ -4,11 +4,13 @@
   <mat-tab label="HOME" *ngIf="user?.role === 'Manager' || user?.role === 'DJ'"><app-portal-home></app-portal-home></mat-tab>
   <mat-tab label="USERS" *ngIf="user?.role === 'Admin'"><usertable></usertable></mat-tab>
   <mat-tab label="SCHEDULE" *ngIf="user?.role === 'Manager' || user?.role === 'DJ'"><app-schedule></app-schedule></mat-tab>
+  <mat-tab label="DJ AVAILABILITY" *ngIf="user?.role === 'Manager'"><view-avail></view-avail></mat-tab>
   <mat-tab label="AVAILABILITY" *ngIf="user?.role === 'DJ'"><app-availabilty></app-availabilty> </mat-tab>
   <mat-tab label="CALENDAR" *ngIf="user?.role === 'Manager'|| user?.role === 'DJ'"><app-sync-calendar></app-sync-calendar> </mat-tab>
   <mat-tab label="VENUES" *ngIf="user?.role === 'Admin' || user?.role ==='Manager'"><app-venue-data></app-venue-data> </mat-tab>
   <mat-tab label="EMPLOYEES" *ngIf="user?.role === 'Manager'"><app-djs></app-djs> </mat-tab>
   <mat-tab label="SHIFTS" *ngIf="user?.role === 'Admin'"><app-shifts></app-shifts></mat-tab>
+
 
 
 </mat-tab-group>

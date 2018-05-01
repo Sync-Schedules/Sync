@@ -2,10 +2,8 @@ import {Component, EventEmitter, Input, OnInit, Output, SimpleChanges} from '@an
 import {AuthService} from "../../services/auth.service";
 import * as moment from 'moment';
 import * as _ from 'lodash';
-import {CalendarDate} from "../../shared/sync-calendar/sync-calendar.component";
-import {MatDialog, MatSnackBar} from "@angular/material";
-import {UserService} from "../../services/user.service";
-// import {CalWeekComponent} from "../../dialogs/cal-week/cal-week.component";
+import {CalendarDate} from "../sync-calendar/sync-calendar.component";
+
 
 export interface Weekly {
   wDate: moment.Moment;
@@ -14,27 +12,17 @@ export interface Weekly {
 }
 
 @Component({
-  selector: 'app-portal-home',
-  templateUrl: './portal-home.component.html',
-  styleUrls: ['./portal-home.component.scss'],
+  selector: 'app-cal-week',
+  templateUrl: './cal-week.component.html',
+  styleUrls: ['./cal-week.component.scss']
 })
-export class PortalHomeComponent implements OnInit {
+export class CalWeekComponent implements OnInit {
 
-  // user: any;
-  shift: any;
-  venue: any;
-  time: String;
-  // date: Date;
-  open: boolean = false;
-  djs = [];
-  venues = [];
-  dj: any;
-  id: string;
   dayName = moment().format('dddd');
   date = moment().format('MMM Do YY');
   currentDate = moment();
 
-  user: any;
+  user: Object;
   weeks: Weekly[][] = [];
   sortedDates: Weekly[] = [];
   dateClicked: any;
@@ -43,13 +31,6 @@ export class PortalHomeComponent implements OnInit {
   @Output() onSelectDate = new EventEmitter<Weekly>();
 
 
-  alert: boolean = false;
-  emptyshifts = [];
-  shiftsv =[];
-  shiftst =[];
-  shiftsdt = [];
-  shiftsdj=[];
-  shifthd=['Venue', 'Time', 'Date', 'DJ'];
 
   daysOfWeek =[
     'Sunday',
@@ -60,7 +41,8 @@ export class PortalHomeComponent implements OnInit {
     'Friday',
     'Saturday',
   ];
-  constructor(private auth: AuthService, private dialog: MatDialog, private us: UserService, private snackBar: MatSnackBar) { }
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
     this.auth.getProfile().subscribe(profile => {
@@ -75,22 +57,6 @@ export class PortalHomeComponent implements OnInit {
     console.log(this.currentDate);
     this.generateWeek();
 
-    this.us.getShifts().subscribe(data =>{
-      this.shift = data;
-      for (let i=0; data.length; i++){
-        this.shiftsv.push(this.shift[i].venue);
-        this.shiftst.push(this.shift[i].time);
-        this.shiftsdt.push(this.shift[i].day);
-        this.shiftsdj.push(this.shift[i].dj);
-        if(this.shift[i].dj === ""){
-          this.emptyshifts.push(this.shift[i].venue + ' // ' + this.shift[i].day + ' // ' + this.shift[i].time);
-          this.alert = true;
-        }
-      }
-
-
-    });
-
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -103,7 +69,7 @@ export class PortalHomeComponent implements OnInit {
     }
   }
 
-   isToday(date: moment.Moment): boolean {
+  isToday(date: moment.Moment): boolean {
     return moment().isSame(moment(date), 'day');
   }
 
@@ -122,7 +88,7 @@ export class PortalHomeComponent implements OnInit {
   selectDate(date: Weekly){
     this.onSelectDate.emit(date);
     console.log(date.wDate.format('dddd'));
-    return this.dateClicked = date.wDate.format('dddd MMM Do YYYY');
+    return this.dateClicked = date.wDate.format('dddd');
   }
 
 //  Actions
@@ -166,26 +132,5 @@ export class PortalHomeComponent implements OnInit {
       });
   }
 
-  pickUpShift(shift){
-
-      this.shift = {
-        dj: this.user.username
-      };
-      this.id = shift._id;
-      this.auth.updateShift(this.id, this.shift)
-        .subscribe(data => {
-          if (data.success){
-            this.snackBar.open(shift.dj + 'has dropped shift at '+ shift.venue
-              +'!' , 'Send Request');
-            this.ngOnInit();
-          }
-          else{
-            this.snackBar.open('something went wrong');
-          }
-        });
-
-  }
-
-
-
 }
+

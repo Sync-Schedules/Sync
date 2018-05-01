@@ -189,6 +189,7 @@ export class ShiftsComponent implements OnInit {
         if (data.success){
           this.snackBar.open(shift.dj + 'has dropped shift at '+ shift.venue
             +'!' , 'Send Request');
+          this.dialog.closeAll();
           this.sendRequest();
           this.ngOnInit();
         }
@@ -200,7 +201,7 @@ export class ShiftsComponent implements OnInit {
   }
 
   sendRequest(){
-    window.alert('Request sent')
+
   }
 
 
