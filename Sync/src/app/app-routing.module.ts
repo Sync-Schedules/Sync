@@ -9,6 +9,7 @@ import {ProfileComponent} from "./profile/profile.component";
 import { AuthGuard} from "./guards/auth.guard";
 import {AdminGuard} from "./guards/admin.guard";
 import {PortalHomeComponent} from "./portal/portal-home/portal-home.component";
+import {HelpComponent} from "./help/help.component";
 
 
 const routes: Routes = [
@@ -20,6 +21,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'help',
+    component: HelpComponent
   },
   {
     path: 'employees',

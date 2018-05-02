@@ -65,6 +65,7 @@ import { ShiftsComponent } from './portal/shifts/shifts.component';
 import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component";
 import { CalWeekComponent } from './shared/cal-week/cal-week.component';
 import { SelectDjComponent } from './dialogs/select-dj/select-dj.component';
+import { HelpComponent } from './help/help.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +97,7 @@ import { SelectDjComponent } from './dialogs/select-dj/select-dj.component';
     CalWeekComponent,
     ViewAvailability,
     SelectDjComponent,
+    HelpComponent,
 
   ],
   imports: [

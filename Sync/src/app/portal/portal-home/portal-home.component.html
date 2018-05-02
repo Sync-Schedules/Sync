@@ -14,7 +14,7 @@
 
             <mat-card class="profile-attribute"  *ngIf="this.alert == true" fxFlex>
               <mat-card class="profile-attribute" fxLayout="row">
-                <mat-card fxFlex="25%" class="label" fxLayoutAlign="center center">
+                <mat-card style="{background-color: white}" fxFlex="25%" class="label warn" fxLayoutAlign="center center">
                   <mat-icon color="warn">error</mat-icon>
                 </mat-card>
                 <mat-card class="info">
@@ -137,7 +137,7 @@
               <p>{{empty}}</p>
               <mat-card-actions fxLayoutAlign="end">
                 <button matTooltip="Pick Up Shift" mat-icon-button color="primary" (click)="pickUpShift(shift)">
-                  <mat-icon>thumb_up</mat-icon>
+                  <mat-icon>open_in_browser</mat-icon>
                 </button>
               </mat-card-actions>
             </mat-card>
