@@ -1,9 +1,11 @@
 <form (submit)="onEditSubmit()" class="example-form" fxLayout="column" fxLayoutGap="20px" action="\app\send" method="post">
   <h1 mat-dialog-title>Edit Shift</h1>
+  <br />
+  <span [(ngModel)]="data.venue" placeholder="venue" name="venue">{{data.venue}}</span>
   <mat-dialog-content fxLayout="column" fxLayoutAlign="center">
-    <mat-form-field class="example-full-width">
+    <!--<mat-form-field class="example-full-width">
       <input matInput [(ngModel)]="data.venue" placeholder="venue" name="venue" value="{{data.venue}}">
-    </mat-form-field>
+    </mat-form-field>-->
     <mat-form-field class="example-full-width">
       <input matInput type="text" [(ngModel)]="data.date" placeholder="date" name="date" value="{{data.date}}">
     </mat-form-field>
