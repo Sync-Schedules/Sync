@@ -20,7 +20,7 @@ export interface CalendarDate {
 })
 export class SyncCalendarComponent implements OnInit, OnChanges {
 
-  currentDate = moment();
+    currentDate = moment();
   dayNames = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
   weeks: CalendarDate[][] = [];
   sortedDates: CalendarDate[] = [];
@@ -163,7 +163,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
     this.user = {
       dj: this.dj,
       venue: this.venue,
-      date: this.currentDate,
+      date: this.dateClicked,
       time: this.time
     } ;
     this.id = this.user._id;
