@@ -4,7 +4,8 @@ import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from 
 import {AddUserComponent} from "../../dialogs/add-user/add-user.component";
 import { ConfirmDialogComponent} from "../../dialogs/delete-dialog/confirm-dialog.component";
 import {Router} from "@angular/router";
-import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
+import { EditUserComponent } from "../../dialogs/edit-user/edit-user.component";
+import {EditShiftComponent} from "../../dialogs/edit-shift/edit-shift.component";
 import {UserService} from "../../services/user.service";
 import {Shift} from "../../models/shift.model";
 import {AuthService} from "../../services/auth.service";
@@ -60,5 +61,32 @@ export class ShiftsComponent implements OnInit {
     this.ngOnInit();
   }
 
+  updateUser(shift) {
 
+      console.log(shift);
+      let dialogRef = this.dialog.open(EditShiftComponent, {
+          width: '500px',
+          data: {
+              id: shift._id,
+              venue: shift.venue,
+              date: shift.date,
+              time: shift.time,
+          }
+      });
+      dialogRef.afterClosed().subscribe(result => {
+          this.shift = {
+              venue: result.venue,
+              date: result.date,
+              time: result.time
+          };
+          this.id = result.id;
+          this.as.updateShift(result.id, this.shift).subscribe
+              (data => {
+                  if (data.success) { this.dialog.closeAll(); this.ngOnInit() }
+                  else console.log("oops");
+              }
+              )
+      });
+
+  }
 }
