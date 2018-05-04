@@ -2,42 +2,49 @@
   flex: 1 1 auto;
 }
 
-.syncbar{
-  background-color: white;
-  height: 80px;
-  display: flex;
-  color: #555555;
-  font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
-  margin: 0;
-  padding-right: 24px;
-  padding-bottom: 1px;
-  .nav-item{
-    text-transform: uppercase;
-    color: black;
-    font-size: 14px;
-    padding: 20px;
-    text-decoration: none;
-    &:hover{
-      border-bottom: 3px solid #0BA5DB;
-    }
-  }
-  .loginbutton {
-    font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
-    background:#fff;
-    border: 2px solid #0BA5DB;
-    color: black;
-    padding: 8px 35px;
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    border-radius: 4px;
-    margin-left: 5px;
-
-
-  }
+.sync-logo{
+  font-family: Righteous, sans-serif;
+  font-weight: bold;
+  font-size: 24px;
+  letter-spacing: 0;
 }
 
-.menu{
-  color: #0BA5DB;
-  font-size: 48px;
-}
+//.syncbar{
+//  background-color: white;
+//  height: 80px;
+//  display: flex;
+//  color: #555555;
+//  font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
+//  margin: 0;
+//  padding-right: 24px;
+//  padding-bottom: 1px;
+//  .nav-item{
+//    text-transform: uppercase;
+//    color: black;
+//    font-size: 14px;
+//    padding: 20px;
+//    text-decoration: none;
+//    &:hover{
+//      border-bottom: 3px solid #0BA5DB;
+//    }
+//  }
+//  .loginbutton {
+//    font-family: 'Source Sans Pro', "Helvetica Neue", Helvetica, Arial, sans-serif;
+//    background:#fff;
+//    border: 2px solid #0BA5DB;
+//    color: black;
+//    padding: 8px 35px;
+//    font-size: 12px;
+//    letter-spacing: 2px;
+//    text-transform: uppercase;
+//    border-radius: 4px;
+//    margin-left: 5px;
+//
+//
+//  }
+//}
+//
+//.menu{
+//  color: #0BA5DB;
+//  font-size: 48px;
+//}

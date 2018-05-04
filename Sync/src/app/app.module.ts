@@ -56,10 +56,13 @@ import { SyncCalendarComponent } from './shared/sync-calendar/sync-calendar.comp
 import { EditUserComponent } from './dialogs/edit-user/edit-user.component';
 import { NavComponent } from './portal/nav/nav.component';
 import { ScheduleComponent } from './portal/schedule/schedule.component';
-import { AvailabiltyComponent } from './portal/availabilty/availabilty.component';
 import { EditVenueComponent } from './dialogs/edit-venue/edit-venue.component';
 import { PhoneNumComponent } from './shared/phone-num/phone-num.component';
 import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
+import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
+import {DjsComponent} from "./portal/djs/djs.component";
+import { ShiftsComponent } from './portal/shifts/shifts.component';
+import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component";
 
 @NgModule({
   declarations: [
@@ -68,7 +71,6 @@ import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
     HomeComponent,
     PortalComponent,
     LoginBarComponent,
-    EmployeesComponent,
     RegisterComponent,
     NavbarComponent,
     ProfileComponent,
@@ -83,7 +85,12 @@ import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
     AvailabiltyComponent,
     EditVenueComponent,
     PhoneNumComponent,
-    PortalHomeComponent
+    PortalHomeComponent,
+    AddShiftComponent,
+    EmployeesComponent,
+    DjsComponent,
+    ShiftsComponent,
+    AvailabiltyComponent
 
   ],
   imports: [
@@ -140,7 +147,8 @@ import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
     AddUserComponent,
     ConfirmDialogComponent,
     EditUserComponent,
-    EditVenueComponent
+    EditVenueComponent,
+    AddShiftComponent
   ]
 })
 export class AppModule { }

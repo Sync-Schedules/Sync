@@ -1,10 +1,79 @@
 @import "../../styles.scss";
 
 .profile-content{
-  width: 85%;
-  height: 100%
+  width: auto;
+  height: auto;
 }
 
-.profile-card, .profile-options{
+.Info-card{
+  width: auto;
+  height: auto;
+  padding: 16px;
+  //margin-bottom: 20px;
+  margin-top: 20px;
+  .mat-raised-button{
+    background-color: #0BA5DB;
+    color: white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .mat-toolbar{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+  h1{
+    color: white;
+    font-weight: bold;
+  }
+  .profile-attribute{
+    width: auto;
+    .label{
+      width: auto;
+      background-color: #3f51b5;
+      color: white;
+      border-bottom-right-radius: 0 ;
+      border-top-right-radius: 0 ;
+    }
+    .info{
+      width: 75%;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom-left-radius: 0 ;
+      border-top-left-radius: 0 ;
+    }
+  }
+}
+
+.profile-options {
+  width: auto;
+  height: auto;
+}
+
+.portal-bar{
+  margin-top: 10px;
+}
+
+.preferences{
+  width: 100%
+}
+
+.avail-card{
   width: 500px;
+  margin: 16px;
+  .mat-card-header{
+    font-weight: bolder;
+  }
+  .day-avail{
+    width: auto;
+    .day {
+      width: 50%;
+      font-size: 20px;
+      font-weight: 300;
+    }
+  }
+}
+
+.all{
+  background-color: #3f51b5;
+  color: white;
 }

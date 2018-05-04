@@ -1,32 +1,11 @@
-<!--<mat-sidenav-container class="example-container">-->
-  <!--<mat-sidenav #sidenav mode="side" opened="true" class="app-sidenav" fxLayout="column"-->
-               <!--[fixedInViewport]="true">-->
-    <!--<div class="sidenav-container" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20">-->
-      <!--<div class="nav-item" *ngIf="authService.loggedIn()" fxLayout="column" fxLayoutAlign="center center">-->
-        <!--<div>-->
-          <!--<mat-icon>home</mat-icon>-->
-        <!--</div>-->
-        <!--<div>-->
-          <!--<a routerLink="../portal">home</a>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="nav-item" *ngIf="authService.loggedIn()">-->
-        <!--<div>-->
-          <!--<mat-icon>account_cirlce</mat-icon>-->
-        <!--</div>-->
-        <!--<a routerLink="../profile">profile</a>-->
-      <!--</div>-->
-      <!--<a href="" (click)="onLogoutClick()">-->
-        <!--<div class="loginbutton" *ngIf="authService.loggedIn()">-->
-          <!--Logout-->
-        <!--</div>-->
-      <!--</a>-->
-    <!--</div>-->
+<div class="page-wrap">
+  <header role="banner">
+    <app-navbar></app-navbar>
+  </header>
+  <main class="router">
+    <router-outlet></router-outlet>
+  </main>
+</div>
 
-  <!--</mat-sidenav>-->
 
-  <!--<mat-sidenav-content>-->
-<app-navbar></app-navbar>
-   <router-outlet></router-outlet>
-  <!--</mat-sidenav-content>-->
-<!--</mat-sidenav-container>-->
+

@@ -1,3 +1,24 @@
-<p>
-  schedule works!
-</p>
+<div fxFlex>
+  <mat-card class="Info-card">
+    <mat-toolbar color="primary">
+      <h1>Assign Shift</h1>
+    </mat-toolbar>
+    <mat-card-content>
+      <mat-card class="profile-attribute" *ngFor="let shift of shifts" fxLayout="row">
+        <mat-card class="label" fxLayoutAlign="center center">
+          <mat-icon>work</mat-icon>
+        </mat-card>
+        <mat-card class="info">
+          {{shift}}
+        </mat-card>
+        <mat-card>
+          <mat-select placeholder="Select DJ...">
+            <mat-option *ngFor="let dj of djs" [value]="dj">
+            {{dj.username}}
+            </mat-option>
+          </mat-select>
+        </mat-card>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>

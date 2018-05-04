@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {AuthService} from "../../services/auth.service";
 
 @Component({
   selector: 'app-portal-home',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PortalHomeComponent implements OnInit {
 
-  constructor() { }
+  user: Object;
+
+  constructor(private auth: AuthService) { }
 
   ngOnInit() {
+    this.auth.getProfile().subscribe(profile => {
+        this.user = profile.user;
+      },
+      err =>{
+        console.log(err);
+        return false;
+      });
   }
-
 }

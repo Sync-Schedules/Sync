@@ -28,6 +28,9 @@ const VenueSchema = mongoose.Schema({
     email: {
         type: String,
         required: true
+    },
+    time: {
+        type: String
     }
 });
 

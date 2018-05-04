@@ -8,6 +8,7 @@ import {PortalComponent} from "./portal/portal.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { AuthGuard} from "./guards/auth.guard";
 import {AdminGuard} from "./guards/admin.guard";
+import {PortalHomeComponent} from "./portal/portal-home/portal-home.component";
 
 
 const routes: Routes = [
@@ -35,6 +36,10 @@ const routes: Routes = [
   {
     path: 'portal',
     component: PortalComponent
+  },
+  {
+    path: 'portal-home',
+    component: PortalHomeComponent
   },
   {
     path: 'profile',

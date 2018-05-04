@@ -18,6 +18,8 @@ const app = express();
 
 const users = require('./routes/users');
 const venues = require('./routes/venues');
+const shifts = require('./routes/shifts');
+const mailer = require('./routes/mailer');
 
 // Port Number
 const port = 3000;
@@ -39,6 +41,7 @@ require('./config/passport')(passport);
 
 app.use('/users', users);
 app.use('/venues', venues);
+app.use('/shifts', shifts);
 
 //View Engine
 app.engine('handlebars', exphbs());
