@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
-import {MatSnackBar} from "@angular/material";
+import {MatDatepickerInputEvent, MatSnackBar} from "@angular/material";
+import {FormControl} from "@angular/forms";
 
 @Component({
   selector: 'app-availabilty',
@@ -9,27 +10,19 @@ import {MatSnackBar} from "@angular/material";
 })
 export class AvailabiltyComponent implements OnInit {
   disabled = true;
-  all: boolean = false;
-  monday: boolean = false;
-  tuesday: boolean = false;
-  wednesday: boolean = false;
-  thursday: boolean = false;
-  friday: boolean = false;
-  saturday: boolean = false;
-  sunday: boolean = false;
 
   constructor(private as: AuthService,  private snackBar: MatSnackBar) { }
 
   user: any;
-
+  date = new Date();
+  dates = [];
+  serializedDate =new Date().toISOString();
+  minDate = new Date();
+  m = new Date().getMonth()
+  maxDate = this.m+1;
+  showDates = [];
   availability = [
-    this.monday,
-    this.tuesday,
-    this.wednesday,
-    this.thursday,
-    this.friday,
-    this.saturday,
-    this.sunday
+    this.dates
 ];
 
   ngOnInit() {
@@ -42,11 +35,14 @@ export class AvailabiltyComponent implements OnInit {
         return false;
       });
 
+console.log(this.maxDate)
+
   }
 
   enable(){
     this.disabled = false;
-    console.log(this.availability);
+    this.dates.length = 0;
+
 
   }
 
@@ -54,28 +50,21 @@ export class AvailabiltyComponent implements OnInit {
     this.disabled = true;
   }
 
-  enableAll(){
-    console.log(this.all);
-      this.monday = this.all;
-      this.tuesday = this.all;
-      this.wednesday = this.all;
-      this.thursday = this.all;
-      this.friday = this.all;
-      this.saturday = this.all;
-      this.sunday = this.all;
+  getDate(date){
 
+    let month = this.date.getMonth() + 1
+    this.dates.push(date);
+    this.showDates.push(month + '/'+ date.getDate() + '/' + date.getFullYear());
+    console.log('Date selected: ' + this.date);
+    console.log('Dates selected: ' +this.dates);
   }
+
 
   saveAvailability(user){
     console.log('USER TEST: ' + 'user:' + user + ' name:' + user.name + ' avail: ' + user.availability);
     this.user.availability = {
-      monday: this.monday,
-      tuesday: this.tuesday,
-      wednesday: this.wednesday,
-      thursday: this.thursday,
-      friday: this.friday,
-      saturday: this.saturday,
-      sunday: this.sunday}
+      dates: this.dates
+    }
     ;
 
     console.log(this.user.availability);

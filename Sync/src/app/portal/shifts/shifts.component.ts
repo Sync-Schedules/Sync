@@ -25,7 +25,7 @@ export class ShiftsComponent implements OnInit {
   shift:any;
   venue: string;
   time: string;
-  day: string;
+  date: string;
   shifts =[];
   user: any;
   dj: string = '';

@@ -26,8 +26,8 @@ export class AddShiftComponent implements OnInit {
   shift: any;
   venue: any;
   time: String;
-  day: String;
-  dj: String = '';
+  date: Date;
+  dj: any;
 
 
 
@@ -40,6 +40,7 @@ export class AddShiftComponent implements OnInit {
               @Inject(MAT_DIALOG_DATA)public data: any) { }
 
 
+  djs = [];
   venues = [];
 
   times = ['12:00','1:00','2:00','3:00','4:00','5:00','6:00','7:00','8:00','9:00','10:00','11:00'];
@@ -62,7 +63,20 @@ export class AddShiftComponent implements OnInit {
         return false;
       });
 
+    this.us.getDJ().subscribe(data =>{
+      this.dj = data;
+      for(let i = 0; i<this.dj.length; i++){
+        this.djs.push(this.dj[i].username);
+        console.log(this.dj[i].username);
+      }
+    })
+
   }
+
+  close(){
+    this.dialog.closeAll();
+  }
+
 
   getDayName(dateStr, locale)  {
     let date = new Date(dateStr);
@@ -74,24 +88,5 @@ export class AddShiftComponent implements OnInit {
 
 
 
-  addShift() {
 
-     const shift = {
-       venue: this.venue,
-       time: this.time,
-       day: this.day,
-       dj: this.dj
-     };
-
-     console.log(this.venue);
-     this.as.addShift(shift).subscribe(data => {
-       if (data.success) {
-         this.snackBar.open('shift created', '', {duration: 3000});
-         this.dialog.closeAll();
-         console.log(shift);
-       } else {
-         this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
-       }
-     });
-  }
 }

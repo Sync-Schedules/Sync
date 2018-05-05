@@ -25,6 +25,7 @@ export class SelectDjComponent implements OnInit {
   ngOnInit() {
     this.us.getDJ().subscribe(data => {
       for(let i=0; i<data.length; i++){
+
         this.djs.push(data[i].username);
       }
     });

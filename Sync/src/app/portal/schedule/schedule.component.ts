@@ -149,7 +149,7 @@ export class ViewAvailability implements OnInit {
   djs =[];
   user:any;
 
-  constructor(private us: UserService, private as: AuthService) {
+  constructor(private us: UserService, private as: AuthService, private dialog: MatDialog) {
   }
 
   ngOnInit() {
@@ -174,6 +174,8 @@ export class ViewAvailability implements OnInit {
       });
   }
 
+  addShift(){
+    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});  }
 
   openPanel() {
     this.open = !this.open

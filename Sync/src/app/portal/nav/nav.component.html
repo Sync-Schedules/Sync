@@ -10,7 +10,7 @@
   <mat-tab label="VENUES" *ngIf="user?.role === 'Admin' || user?.role ==='Manager'"><app-venue-data></app-venue-data> </mat-tab>
   <mat-tab label="EMPLOYEES" *ngIf="user?.role === 'Manager'"><app-djs></app-djs> </mat-tab>
   <mat-tab label="SHIFTS" *ngIf="user?.role === 'Admin'"><app-shifts></app-shifts></mat-tab>
-
+<!--<mat-tab label ="cal2"><app-table-cal></app-table-cal></mat-tab>-->
 
 
 </mat-tab-group>

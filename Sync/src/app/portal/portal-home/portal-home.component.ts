@@ -38,6 +38,7 @@ export class PortalHomeComponent implements OnInit {
   weeks: Weekly[][] = [];
   sortedDates: Weekly[] = [];
   dateClicked: any;
+  dateClickedDay: any;
 
   @Input() selectedDates: Weekly[] = [];
   @Output() onSelectDate = new EventEmitter<Weekly>();
@@ -63,6 +64,7 @@ export class PortalHomeComponent implements OnInit {
   constructor(private auth: AuthService, private dialog: MatDialog, private us: UserService, private snackBar: MatSnackBar) { }
 
   ngOnInit() {
+
     this.auth.getProfile().subscribe(profile => {
         this.user = profile.user;
       },
@@ -74,6 +76,9 @@ export class PortalHomeComponent implements OnInit {
     console.log(this.dayName);
     console.log(this.currentDate);
     this.generateWeek();
+
+    this.emptyshifts.length=0;
+
 
     this.us.getShifts().subscribe(data =>{
       this.shift = data;
@@ -87,6 +92,8 @@ export class PortalHomeComponent implements OnInit {
           this.alert = true;
         }
       }
+
+      this.ngOnInit()
 
 
     });

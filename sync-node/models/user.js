@@ -13,7 +13,8 @@ const UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     username: {
         type: String,
@@ -28,15 +29,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-
-     monday: Boolean,
-     tuesday: Boolean,
-    wednesday: Boolean,
-    thursday: Boolean,
-    friday: Boolean,
-    saturday: Boolean,
-    sunday: Boolean,
-
+    availability: [{type: Date}]
 
 });
 

@@ -14,13 +14,7 @@ router.post('/register', (req, res, next) => {
         username: req.body.username,
         password: req.body.password,
         role: req.body.role,
-            monday: req.body.monday,
-            tuesday: req.body.tuesday,
-        wednesday: req.body.wednesday,
-            thursday: req.body.thursday,
-            friday: req.body.friday,
-            saturday: req.body.saturday,
-            sunday: req.body.sunday
+        availability: req.body.availability
 
     });
 
@@ -49,7 +43,7 @@ router.post('/authenticate', (req, res, next) => {
             if(err) throw err;
             if(isMatch){
                 const token = jwt.sign({data: user}, config.secret, {
-                    expiresIn: 604800 // 1 week
+                    expiresIn: 3600 // 1 hr
                 });
 
                 res.json({

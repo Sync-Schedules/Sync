@@ -10,12 +10,13 @@ import { AuthGuard} from "./guards/auth.guard";
 import {AdminGuard} from "./guards/admin.guard";
 import {PortalHomeComponent} from "./portal/portal-home/portal-home.component";
 import {HelpComponent} from "./help/help.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'portal',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     // canActivate:[AuthGuard]
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent
   }
 ];
 

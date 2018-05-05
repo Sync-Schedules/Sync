@@ -43,6 +43,7 @@ require('./config/passport')(passport);
 app.use('/users', users);
 app.use('/venues', venues);
 app.use('/shifts', shifts);
+app.use('/mailer', mailer)
 
 //View Engine
 app.engine('handlebars', exphbs());

@@ -9,7 +9,7 @@ const Shift = require('../models/shift');
 router.post('/createshift', (req, res, next) => {
     let newShift = new Shift({
         venue: req.body.venue,
-        day: req.body.day,
+        date: req.body.date,
         time: req.body.time,
         dj: req.body.dj
     });
@@ -18,7 +18,7 @@ router.post('/createshift', (req, res, next) => {
         if(err){
             res.json({success: false, msg: 'Failed to register user'});
         } else {
-            res.json({success: true, msg: 'User registered'});
+            res.json({success: true, msg: 'Shift registered'});
         }
     });
 });

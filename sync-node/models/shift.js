@@ -10,8 +10,8 @@ const ShiftSchema = mongoose.Schema({
         required: true
 
     },
-     day: {
-        type: String,
+     date: {
+        type: Date,
          required: true
     },
     time: {

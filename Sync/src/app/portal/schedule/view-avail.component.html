@@ -19,7 +19,7 @@
         MON
       </mat-card>
       <mat-card class="info" *ngFor="let day of monday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><button mat-icon-button (click)="addShift()"><mat-icon>add</mat-icon></button></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -27,7 +27,7 @@
         TUE
       </mat-card>
       <mat-card class="info" *ngFor="let day of tuesday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -35,7 +35,7 @@
         WED
       </mat-card>
       <mat-card class="info" *ngFor="let day of wednesday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -43,7 +43,7 @@
         THU
       </mat-card>
       <mat-card class="info" *ngFor="let day of thursday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -51,7 +51,7 @@
         FRI
       </mat-card>
       <mat-card class="info" *ngFor="let day of friday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -59,7 +59,7 @@
         SAT
       </mat-card>
       <mat-card class="info" *ngFor="let day of saturday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
     <mat-card class="profile-attribute" fxLayout="row">
@@ -67,7 +67,7 @@
         SUN
       </mat-card>
       <mat-card class="info" *ngFor="let day of sunday">
-        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>check_circle</mat-icon></div>
+        <div *ngIf="day === true" fxLayoutAlign="center center"><mat-icon>add</mat-icon></div>
       </mat-card>
     </mat-card>
   </mat-card-content>
