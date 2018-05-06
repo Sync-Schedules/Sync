@@ -2,6 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import 'rxjs/add/observable/of';
 import {MatDialog, MatPaginator, MatSnackBar, MatSort, MatTableDataSource} from "@angular/material";
 import {Router} from "@angular/router";
+import { EditUserComponent } from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
 import {Shift} from "../../models/shift.model";
 import {AuthService} from "../../services/auth.service";
@@ -202,8 +203,5 @@ export class ShiftsComponent implements OnInit {
 
   sendRequest(){
 
-  }
-
-
-
+  } 
 }
