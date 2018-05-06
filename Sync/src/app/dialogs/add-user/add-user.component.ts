@@ -112,7 +112,7 @@ export class AddUserComponent implements OnInit {
         this.sendEmail();
         console.log(user);
       } else {
-        this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
+        this.snackBar.open('Something went wrong' , 'try again', {duration: 3000});
         }
     });
 

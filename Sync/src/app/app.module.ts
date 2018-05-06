@@ -65,6 +65,7 @@ import { HelpComponent } from './help/help.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CalendarModule } from 'angular-calendar';
 import {MasterCalendarModule} from "./master-calendar/master-calendar.module";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -138,6 +139,7 @@ import {MasterCalendarModule} from "./master-calendar/master-calendar.module";
     MatSlideToggleModule,
     CalendarModule.forRoot(),
     MasterCalendarModule,
+    MatMomentDateModule
   ],
   providers: [
     FormBuilder,

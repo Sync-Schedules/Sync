@@ -18,8 +18,8 @@ export class AvailabiltyComponent implements OnInit {
   dates = [];
   serializedDate =new Date().toISOString();
   minDate = new Date();
-  m = new Date().getMonth()
-  maxDate = this.m+1;
+  // m = new Date().getMonth();
+  // maxDate = this.m;
   showDates = [];
   availability = [
     this.dates
@@ -35,7 +35,7 @@ export class AvailabiltyComponent implements OnInit {
         return false;
       });
 
-console.log(this.maxDate)
+// console.log(this.maxDate)
 
   }
 
@@ -52,9 +52,9 @@ console.log(this.maxDate)
 
   getDate(date){
 
-    let month = this.date.getMonth() + 1
+    // let month = this.date.getMonth() + 1
     this.dates.push(date);
-    this.showDates.push(month + '/'+ date.getDate() + '/' + date.getFullYear());
+    // this.showDates.push(month + '/'+ date.getDate() + '/' + date.getFullYear());
     console.log('Date selected: ' + this.date);
     console.log('Dates selected: ' +this.dates);
   }
@@ -63,7 +63,7 @@ console.log(this.maxDate)
   saveAvailability(user){
     console.log('USER TEST: ' + 'user:' + user + ' name:' + user.name + ' avail: ' + user.availability);
     this.user.availability = {
-      dates: this.dates
+      availability: this.dates
     }
     ;
 

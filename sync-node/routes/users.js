@@ -16,6 +16,8 @@ router.post('/register', (req, res, next) => {
         role: req.body.role,
         availability: req.body.availability
 
+
+
     });
 
     User.addUser(newUser, (err, user) => {

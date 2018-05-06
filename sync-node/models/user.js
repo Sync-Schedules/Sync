@@ -29,7 +29,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability: [{type: Date}]
+    availability: [Date]
 
 });
 

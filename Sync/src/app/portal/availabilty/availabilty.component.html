@@ -1,48 +1,60 @@
-<h1 mat-card-title xmlns="http://www.w3.org/1999/html">
+<h1 mat-card-title fxLayoutAlign="center center">
   {{user?.name}} {{user?.last}}'s Availability
 </h1>
-<div class="full-height" fxLayoutAlign="center start" xmlns="http://www.w3.org/1999/html">
-  <mat-card class="avail-card" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
-    <h2 mat-card-title>
-      Select dates to block
-    </h2>
-    <div class="example-spacer"></div>
-    <div fxLayout="column" fxLayoutAlign="center center">
-      <button mat-raised-button color="primary" [disabled]="!disabled"(click)="enable()">
-        Edit Availability<span>  </span><mat-icon>mode_edit</mat-icon>
-      </button>
-      <form (submit)="saveAvailability(user)">
-        <mat-form-field class ="example-full-width">
-          <input matInput
-                 [matDatepicker]="picker"
-                 placeholder="Choose dates"
-                 [(ngModel)]="date"
-                 (dateInput)="getDate(date)"
-                 [disabled]="disabled"
-                 [min]="minDate"
-                 [max]="maxDate" name="date" >
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <mat-card-actions fxLayout="row">
-          <span fxFlex></span>
-          <button mat-raised-button color="primary" [disabled]="disabled" type="submit"><mat-icon>send</mat-icon><span> </span>Submit Availability</button>
-        </mat-card-actions>
-      </form>
-    </div>
-  </mat-card>
+<div class="full-height" fxLayout="column" fxLayoutAlign="center start">
+  <mat-card class="content-card" fxLayout="column" fxLayoutAlign="center space-evenly" fxLayoutGap="20px">
+    <h2 mat-card-title>Select dates to block</h2>
+    <h3 mat-card-subtitle>(choose as many as you'd like...)</h3>
 
-  <mat-card class="example-events" fxFlex="50">
-    <mat-card-header>
-      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
-        <mat-icon color="warn">not_interested</mat-icon>
-        <h2 mat-card-title>  Blocked Dates: </h2>
+    <mat-card class="Info-card" fxLayout="column">
+      <mat-toolbar color="primary">
+        <span>Edit Availability</span>
+        <span class="example-spacer"></span>
+        <button mat-icon-button [disabled]="!disabled" (click)="enable()">
+          <mat-icon>mode_edit</mat-icon>
+        </button>
+      </mat-toolbar>
+      <mat-card class="profile-attribute" fxFlex>
+        <form (submit)="saveAvailability(user)" fxLayoutGap="30">
+          <mat-form-field class ="example-full-width">
+            <input matInput
+                   [matDatepicker]="picker"
+                   placeholder="Choose dates"
+                   [(ngModel)]="date"
+                   (dateInput)="getDate(date)"
+                   [disabled]="disabled"
+                   [min]="minDate"
+                   name="date" >
+            <mat-datepicker-toggle matSuffix [for]="picker">
+              <mat-icon matDatepickerToggleIcon>add</mat-icon>
+            </mat-datepicker-toggle>
+            <mat-datepicker #picker touchUi="true"></mat-datepicker>
+          </mat-form-field>
+          <button mat-raised-button color="primary" [disabled]="disabled" type="submit">
+            <mat-icon>send</mat-icon><span> </span>Submit Availability</button>
+        </form>
+      </mat-card>
+      <mat-card class="profile-attribute" fxFlex>
+        <mat-card class="profile-attribute"  *ngFor="let date of dates" style="width: 95%; background-color: white">
+          {{date}} <span class="example-spacer"> </span>
+          <button mat-icon-button (click)="dropDate(date)"><mat-icon>clear</mat-icon></button>
+        </mat-card>
+      </mat-card>
+    </mat-card>
 
-      </div>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-card *ngFor="let date of showDates">{{date}}</mat-card>
-    </mat-card-content>
+    <mat-card class="Info-card" fxLayout="column">
+      <mat-toolbar color="warn">
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+          <mat-icon>not_interested</mat-icon>
+          <h2 mat-card-title>  Blocked Dates: </h2>
+        </div>
+      </mat-toolbar>
+      <mat-card class="profile-attribute" fxFlex>
+        <mat-card class="profile-attribute"  *ngIf="user?.availability" style="width: 95%; background-color: white">
+          {{user?.availability}} <span class="example-spacer"> </span>
+        </mat-card>
+      </mat-card>
+    </mat-card>
   </mat-card>
 
 

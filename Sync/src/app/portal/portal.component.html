@@ -1,1 +1,5 @@
 <app-nav></app-nav>
+<div class="must-log-in" *ngIf="!authService.loggedIn()" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="50px">
+  <h1> You must log in to see this content</h1>
+  <button routerLink="../login" mat-raised-button color="primary">Login</button>
+</div>

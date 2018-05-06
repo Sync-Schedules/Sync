@@ -31,8 +31,8 @@
   }
 
 .Info-card{
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   //margin-bottom: 20px;
   .mat-raised-button{
     background-color: #0BA5DB;
@@ -51,11 +51,11 @@
     font-weight: bold;
   }
   .profile-attribute{
-    width: auto;
+    width: 100%;
     background-color: whitesmoke;
 
     .label{
-      width: auto;
+      width: 100%;
       background-color: #3f51b5;
       color: white;
       border-bottom-right-radius: 5px ;

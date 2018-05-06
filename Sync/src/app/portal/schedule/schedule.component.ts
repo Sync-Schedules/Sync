@@ -138,33 +138,45 @@ export class ScheduleComponent implements OnInit {
 
 export class ViewAvailability implements OnInit {
 
+  displayedColumns = ['name', 'last', 'availability'];
+  dataSource = new MatTableDataSource<User>();
+  name: any;
+  last: any;
+  availability: any;
+
   open: boolean = false;
-  monday = [];
-  tuesday = [];
-  wednesday = [];
-  thursday = [];
-  friday = [];
-  saturday = [];
-  sunday = [];
   djs =[];
-  user:any;
+  dj:any;
+  a=[];
+  user: any;
 
   constructor(private us: UserService, private as: AuthService, private dialog: MatDialog) {
   }
 
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  ngAfterViewInit(){
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // Datasource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
+
+
+  onRowClicked(row){
+    console.log('Row clicked: ', row);
+    this.ngOnInit();
+  }
+
   ngOnInit() {
-    this.us.getDJ().subscribe(data => {
-      for (let i = 0; i < data.length; i++) {
-        this.monday.push(data[i].monday);
-        this.tuesday.push(data[i].tuesday);
-        this.wednesday.push(data[i].wednesday);
-        this.thursday.push(data[i].thursday);
-        this.friday.push(data[i].friday);
-        this.saturday.push(data[i].saturday);
-        this.sunday.push(data[i].sunday);
-        this.djs.push(data[i].name + ' ' + data[i].last);
-      }
-    });
+
+    this.us.getDJ().subscribe(data => this.dataSource.data = data);
+
     this.as.getProfile().subscribe(profile => {
         this.user = profile.user;
       },
@@ -174,11 +186,5 @@ export class ViewAvailability implements OnInit {
       });
   }
 
-  addShift(){
-    let dialogRef = this.dialog.open(AddShiftComponent, {width: '500px'});  }
-
-  openPanel() {
-    this.open = !this.open
-  }
 }
 

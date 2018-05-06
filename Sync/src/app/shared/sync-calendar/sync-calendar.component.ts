@@ -124,7 +124,7 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
 
   addShift(){
 
-    console.log(this.v + this.date + this.t + this.d)
+    // console.log(this.v + this.date + this.t + this.d)
     let dialogRef = this.dialog.open(AddShiftComponent ,{
       width: '500px',
       data: {
