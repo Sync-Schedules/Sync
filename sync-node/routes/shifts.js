@@ -11,57 +11,19 @@ router.post('/createshift', (req, res, next) => {
         venue: req.body.venue,
         date: req.body.date,
         time: req.body.time,
+        dj: req.body.dj
     });
 
     Shift.addShift(newShift, (err, shift) => {
         if(err){
             res.json({success: false, msg: 'Failed to register user'});
         } else {
-            res.json({success: true, msg: 'User registered'});
+            res.json({success: true, msg: 'Shift registered'});
         }
     });
 });
 
-// Authenticate
-router.post('/authenticate', (req, res, next) => {
-    const dj = req.body.dj;
-    const location = req.body.location;
-    const date = req.body.email;
 
-    Shift.getUserByUsername(dj, (err, shift) => {
-        if(err) throw err;
-        if(!shift){
-            return res.json({success: false, msg: 'User not found'});
-        }
-
-        Shift.comparePassword(location, shift.location, (err, isMatch) => {
-            if(err) throw err;
-            if(isMatch){
-                const token = jwt.sign({data: shift}, config.secret, {
-                    expiresIn: 604800 // 1 week
-                });
-
-                res.json({
-                    success: true,
-                    token: 'Bearer ' + token,
-                    user: {
-                        id: shift._id,
-                        dj: shift.dj,
-                        location: shift.location,
-                        date: shift.date
-                    }
-                });
-            } else {
-                return res.json({success: false, msg: 'Wrong password'});
-            }
-        });
-    });
-});
-
-// Profile
-router.get('/profile', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    res.json({shift: req.shift});
-});
 
 
 //Get All shifts
@@ -75,16 +37,7 @@ router.get('/shifts', function(req, res) {
     });
 });
 
-//Get shift only
-// router.get('/djs', function(req, res) {
-//     User.find({role: 'DJ'}, function (err, role){
-//         if(err){
-//             console.log(err);
-//         } else{
-//             res.json(role);
-//         }
-//     });
-// });
+
 
 //DELETE shift BY ID
 router.delete('/delete/:id', function (req, res) {
@@ -122,7 +75,7 @@ router.put('/update/:id', function (req, res) {
                 data: updatedShift,
                 msg: 'Success!'
             });
-            console.log('Updated User: ' + updatedUser);
+            console.log('Updated Shift: ' + updatedShift);
         }
     });
 });

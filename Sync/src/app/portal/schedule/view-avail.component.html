@@ -1,0 +1,49 @@
+<div class="example-header" fxLayout="row">
+  <mat-form-field>
+    <mat-icon matPrefix>search</mat-icon>
+    <input matInput (keyup)="applyFilter($event.target.value)" label="Filter">
+  </mat-form-field>
+  <!--<div>-->
+    <!--<button mat-mini-fab (click)="openDialog()"><mat-icon>add</mat-icon></button>-->
+  <!--</div>-->
+</div>
+
+<div class="table-container">
+  <mat-table [dataSource]="dataSource" matSort>
+
+
+    <!--[Name Column]-->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.name}}</mat-cell>
+    </ng-container>
+
+    <!--[Last Name Column]-->
+    <ng-container matColumnDef="last">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> Last </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.last}}</mat-cell>
+    </ng-container>
+
+    <!--[Availability Column]-->
+    <ng-container matColumnDef="availability">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> N/A </mat-header-cell>
+      <mat-cell *matCellDef="let user">{{user.availability}}</mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns" (click)="onRowClicked(row)"></mat-row>
+
+  </mat-table>
+  <mat-paginator [pageSizeOptions]="[10, 25, 100]"></mat-paginator>
+</div>
+
+
+<!--<div class="phone-responsive" fxShow="false" fxFlex fxShow.lt-md="true" fxLayout="column" fxLayoutAlign="center">-->
+<!--<mat-list>-->
+<!--<mat-list-item *ngFor="let user of users">-->
+<!--<mat-icon mat-list-icon>account_circle</mat-icon>-->
+<!--<h4 mat-line>{{user.name}} {{user.last}}</h4>-->
+<!--</mat-list-item>-->
+<!--</mat-list>-->
+<!--</div>-->

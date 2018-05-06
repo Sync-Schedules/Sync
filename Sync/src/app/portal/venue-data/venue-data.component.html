@@ -1,3 +1,4 @@
+<div class="container" fxShow="true" fxHide.lt-md>
 <div class="example-header" fxLayout="row">
   <mat-form-field>
     <mat-icon matPrefix>search</mat-icon>
@@ -70,4 +71,28 @@
   </mat-table>
 
   <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+</div>
+</div>
+
+
+<div class="mobile" fxShow="false" fxLayout="column" fxLayoutGap="20px" fxShow.lt-md>
+  <div>
+    <button color="primary" fxFlex mat-raised-button (click)="openDialog()"><mat-icon>add</mat-icon></button>
+  </div>
+  <mat-accordion>
+    <mat-expansion-panel *ngFor="let venue of venues">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h4>{{venue.name}}</h4>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <p><b>Address:</b><br>{{venue.address}} <br> {{venue.city}}, {{venue.state}} <br> {{venue.zip}}</p>
+      <p><b>Contact:</b><br> </p>
+      <span><mat-icon>phone</mat-icon> {{venue.phone}}</span><br>
+      <span><mat-icon>email</mat-icon> {{venue.email}}</span>
+      <mat-action-row>
+        <button mat-icon-button color="primary"(click)="updateVenue(venue)"><mat-icon>mode_edit</mat-icon></button>
+        <button mat-icon-button color="warn"(click)="DeleteVenue(venue._id)"><mat-icon>delete</mat-icon></button>      </mat-action-row>
+    </mat-expansion-panel>
+  </mat-accordion>
 </div>

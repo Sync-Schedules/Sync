@@ -28,7 +28,7 @@ export class EmployeesComponent implements OnInit {
   email: string;
   role: string;
 
-  users =[]
+  users =[];
   roles =[];
 
   constructor(

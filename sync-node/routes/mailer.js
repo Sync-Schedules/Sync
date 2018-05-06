@@ -2,67 +2,71 @@ const express = require('express');
 const router = express.Router();
 const nodemailer = require('nodemailer');
 
-let transport = nodemailer.createTransport({
-    service: 'Gmail',
-    auth:{
-        user:"",
-        pass:""
+let recipient ='';
+
+router.post('/registration', function (req, res, next) {
+
+    let recipient = req.body.user.email;
+    let subjectTime = new Date();
+
+    let n = new Date();
+    let y = n.getFullYear();
+    let m = n.getMonth();
+    let d = n.getDate();
+
+    let htmlBody =
+        '<hr>'
+        + '<div class="reg-box" style="max-width: 900px;margin: auto;padding: 30px;border:1px solid #eee; box-shadow: 0 0 10px rgba(0,0,0,.15)' +
+        ';font-size: 16px;line-height: 24px;font-family: Roboto,sans-serif;">' +
+        '<div fxLayout="column">' +
+        '<h1>Hello, </h1>' + req.body.user.name + ' ' + req.body.user.last +
+        '<h1>Your manager has created an account for you!</h1>' +
+        '<h2>Here is your information: </h2>'+
+        '<table>' +
+        '<tr>' +
+        '<td> Username: </td>' +
+        '<td>' + req.body.user.username + '</td>'+
+        '</tr>'+
+        '<tr>' +
+        '<td> Password: </td>' +
+        '<td>' + req.body.user.password + '</td>'+
+        '</tr>'+
+        '</table>'+
+        '<h2>Click here to log in and change your password</h2>' +
+        '<a href="http://localhost:4200/resetPassword" style="padding: 16px;background-color: white;color: #0BA5DB; border: 2px solid #0BA5DB;text-decoration: none;">Change Password</a>' +
+        '</div>' +
+        '</div>'
+    ;
+
+
+    sendMail();
+
+   function sendMail() {
+        let transporter = nodemailer.createTransport({
+            service:'gmail',
+            auth:{
+                user: 'syncscheduleteam@gmail.com',
+                pass: '12345!@#$%'
+            }
+        });
+
+        let mailOptions = {
+            from: '"Sync Schedules" <syncscheduleteam@gmail.com>',
+            to: recipient,
+            cc: 'syncscheduleteam@gmail.com',
+            subject: 'Account Created',
+            html: htmlBody
+        };
+
+        transporter.sendMail(mailOptions, function (err,info) {
+            if(err){
+                return console.log(err);
+            }
+            console.log('Message sent to: ' + info.response);
+            console.log('email sent to: ' + mailOptions.to + '...' + new Date());
+        });
     }
-});
-
-let rand, mailOptions, host, link;
-
-router.get('/', (req,res) =>{
-    res.sendFile('index.html')
-});
-
-
-router.get('/send', function (req, res) {
-    rand=Math.floor((Math.random()*100)+54);
-    console.log(rand);
-    host = req.get('host');
-    link = "http://"+host+"verify?id"+rand;
-    mailOptions={
-        to: req.query.to,
-        subject: "Confirm Email",
-        html: "Hello,<br> Please Click on the link to verify your email.<br><a href=\"+link+\">Click here to verify</a>"
-    };
-
-    console.log(mailOptions);
-    transport.sendMail(mailOptions, function(err, res){
-        if(err){
-            console.log(err);
-            res.send(err);
-        } else {
-            console.log("Message sent: " + res.message);
-            res.send("Sent");
-        }
-    });
 
 });
 
-router.get('/verify', (req, res) => {
-    console.log(req.protocol+":/"+req.get('host'));
-    if((req.protocol+"://"+req.get('host'))==("http://"+host))
-    {
-        console.log("Domain is matched. Information is from Authentic email");
-        if(req.query.id==rand)
-        {
-            console.log("email is verified");
-            res.end("<h1>Email "+mailOptions.to+" is been Successfully verified");
-        }
-        else
-        {
-            console.log("email is not verified");
-            res.end("<h1>Bad Request</h1>");
-        }
-    }
-    else
-    {
-        res.end("<h1>Request is from unknown source");
-    }
-});
-
-
-
-
+module.exports = router;

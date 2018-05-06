@@ -13,7 +13,8 @@ const UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     username: {
         type: String,
@@ -28,7 +29,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability:[ { type: Boolean}]
+    availability: [Date]
 
 });
 

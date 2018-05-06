@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PhoneNumComponent } from './phone-num.component';
+import { CalWeekComponent } from './cal-week.component';
 
-describe('PhoneNumComponent', () => {
-  let component: PhoneNumComponent;
-  let fixture: ComponentFixture<PhoneNumComponent>;
+describe('CalWeekComponent', () => {
+  let component: CalWeekComponent;
+  let fixture: ComponentFixture<CalWeekComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PhoneNumComponent ]
+      declarations: [ CalWeekComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PhoneNumComponent);
+    fixture = TestBed.createComponent(CalWeekComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

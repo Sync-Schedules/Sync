@@ -1,6 +1,6 @@
 <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
   <form (submit)="onLoginSubmit()" class="example-form" fxLayoutGap="20px">
-    <div class="login-bar" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center" fxLayout.lt-md ="column">
+    <div class="login-bar" fxLayout="row" fxLayoutGap="25px" fxLayoutAlign="center center" fxLayout.lt-md ="column">
       <mat-form-field fxFlex="40">
     <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Username" required="required">
   </mat-form-field>

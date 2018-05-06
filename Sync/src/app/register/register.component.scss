@@ -1,7 +1,6 @@
 @import "../../styles";
 .example-form {
   min-width: 150px;
-  max-width: 500px;
   width: 100%;
 }
 
@@ -16,4 +15,8 @@
   color: white;
   font-family: Roboto, "Helvetica Neue", sans-serif;
   border: none;
+}
+
+.container{
+  width: 95%;
 }

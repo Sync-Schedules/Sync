@@ -11,9 +11,14 @@ const ShiftSchema = mongoose.Schema({
 
     },
      date: {
-        type: Date
+        type: Date,
+         required: true
     },
     time: {
+        type: String,
+        required: true
+    },
+    dj: {
         type: String
     }
 });

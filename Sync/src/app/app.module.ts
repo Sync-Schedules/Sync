@@ -29,8 +29,6 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatSnackBarModule} from "@angular/material";
 import {MatSlideToggleModule} from '@angular/material/slide-toggle'
-import { CalendarModule} from "angular-calendar";
-import { DemoModule} from "./shared/calendar/calendar.module";
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatTableModule} from "@angular/material";
 import {LoginComponent} from './login/login.component';
@@ -41,7 +39,6 @@ import { EmployeesComponent } from './portal/users/users.component';
 import { RegisterComponent } from './register/register.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ProfileComponent } from './profile/profile.component';
-import { CalendarComponent } from './shared/calendar/calendar.component';
 import { VenueDataComponent } from './portal/venue-data/venue-data.component';
 import { AddVenueComponent } from './dialogs/add-venue/add-venue.component';
 import { ValidateService } from "./services/validate.service";
@@ -55,14 +52,20 @@ import {AdminGuard} from "./guards/admin.guard";
 import { SyncCalendarComponent } from './shared/sync-calendar/sync-calendar.component';
 import { EditUserComponent } from './dialogs/edit-user/edit-user.component';
 import { NavComponent } from './portal/nav/nav.component';
-import { ScheduleComponent } from './portal/schedule/schedule.component';
+import { ScheduleComponent, ViewAvailability } from './portal/schedule/schedule.component';
 import { EditVenueComponent } from './dialogs/edit-venue/edit-venue.component';
-import { PhoneNumComponent } from './shared/phone-num/phone-num.component';
 import { PortalHomeComponent} from "./portal/portal-home/portal-home.component";
 import { AddShiftComponent } from './dialogs/add-shift/add-shift.component';
 import {DjsComponent} from "./portal/djs/djs.component";
 import { ShiftsComponent } from './portal/shifts/shifts.component';
 import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component";
+import { CalWeekComponent } from './shared/cal-week/cal-week.component';
+import { SelectDjComponent } from './dialogs/select-dj/select-dj.component';
+import { HelpComponent } from './help/help.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { CalendarModule } from 'angular-calendar';
+import {MasterCalendarModule} from "./master-calendar/master-calendar.module";
+import {MatMomentDateModule} from "@angular/material-moment-adapter";
 
 @NgModule({
   declarations: [
@@ -84,13 +87,17 @@ import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component"
     ScheduleComponent,
     AvailabiltyComponent,
     EditVenueComponent,
-    PhoneNumComponent,
     PortalHomeComponent,
     AddShiftComponent,
     EmployeesComponent,
     DjsComponent,
     ShiftsComponent,
-    AvailabiltyComponent
+    AvailabiltyComponent,
+    CalWeekComponent,
+    ViewAvailability,
+    SelectDjComponent,
+    HelpComponent,
+    ResetPasswordComponent,
 
   ],
   imports: [
@@ -124,13 +131,15 @@ import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component"
     MatNativeDateModule,
     MatSnackBarModule,
     HttpModule,
-    DemoModule,
     MatTabsModule,
     MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatRadioModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    CalendarModule.forRoot(),
+    MasterCalendarModule,
+    MatMomentDateModule
   ],
   providers: [
     FormBuilder,
@@ -148,7 +157,8 @@ import { AvailabiltyComponent} from "./portal/availabilty/availabilty.component"
     ConfirmDialogComponent,
     EditUserComponent,
     EditVenueComponent,
-    AddShiftComponent
+    AddShiftComponent,
+    SelectDjComponent
   ]
 })
 export class AppModule { }
