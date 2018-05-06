@@ -1,25 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="42755a3d-c967-48ad-b63b-6f6e6d8fd0a8" name="Default" comment="">
+    <list default="true" id="42755a3d-c967-48ad-b63b-6f6e6d8fd0a8" name="Default" comment="new Manager Branch">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/app.module.ts" afterPath="$PROJECT_DIR$/Sync/src/app/app.module.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/dialogs/add-shift/add-shift.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/dialogs/add-shift/add-shift.component.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/dialogs/add-user/add-user.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/dialogs/add-user/add-user.component.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/models/user.model.ts" afterPath="$PROJECT_DIR$/Sync/src/app/models/user.model.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.html" afterPath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.html" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.scss" afterPath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.scss" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/portal-home/portal-home.component.scss" afterPath="$PROJECT_DIR$/Sync/src/app/portal/portal-home/portal-home.component.scss" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.html" afterPath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.html" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.scss" afterPath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.scss" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/portal/portal.component.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/schedule/schedule.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/portal/schedule/schedule.component.ts" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/portal/schedule/view-avail.component.html" afterPath="$PROJECT_DIR$/Sync/src/app/portal/schedule/view-avail.component.html" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.html" afterPath="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.html" />
-      <change beforePath="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.ts" afterPath="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.ts" />
-      <change beforePath="$PROJECT_DIR$/sync-node/models/user.js" afterPath="$PROJECT_DIR$/sync-node/models/user.js" />
-      <change beforePath="$PROJECT_DIR$/sync-node/routes/users.js" afterPath="$PROJECT_DIR$/sync-node/routes/users.js" />
+      <change beforePath="$PROJECT_DIR$/Sync/src/app/profile/profile.component.html" afterPath="$PROJECT_DIR$/Sync/src/app/profile/profile.component.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -30,7 +14,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="availabilty.component.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="availabilty.component.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Sync/src/app/portal/availabilty/availabilty.component.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="986">
@@ -38,6 +22,38 @@
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.component.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-901">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.component.scss" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.scss">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="profile.component.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -139,7 +155,7 @@
     </option>
     <option name="RECENT_COMMON_BRANCH" value="master" />
     <push-targets>
-      <push-target-info target-remote="origin" target-branch="newBranch" repo="$PROJECT_DIR$" source="managerPortal" />
+      <push-target-info target-remote="origin" target-branch="develop" repo="$PROJECT_DIR$" source="managerPortal" />
     </push-targets>
   </component>
   <component name="GradleLocalSettings">
@@ -150,7 +166,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Sync/src/app/app.component.scss" />
         <option value="$PROJECT_DIR$/Sync/src/app/master-calendar/mastercalendar.components.ts.html" />
         <option value="$PROJECT_DIR$/Sync/src/app/master-calendar/demo-utils/demo-utils.module.ts" />
         <option value="$PROJECT_DIR$/Sync/src/app/master-calendar/demo-utils/date-time-picker.component.ts" />
@@ -201,6 +216,7 @@
         <option value="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.html" />
         <option value="$PROJECT_DIR$/Sync/src/app/shared/sync-calendar/sync-calendar.component.ts" />
         <option value="$PROJECT_DIR$/Sync/src/app/dialogs/add-shift/add-shift.component.ts" />
+        <option value="$PROJECT_DIR$/Sync/src/app/profile/profile.component.html" />
       </list>
     </option>
   </component>
@@ -328,6 +344,14 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="portal" type="462c0819:PsiDirectoryNode" />
               <item name="shifts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Workspace" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="Sync" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="profile" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Workspace" type="b2602c69:ProjectViewProjectNode" />
@@ -637,7 +661,7 @@
       <workItem from="1524504920693" duration="4458000" />
       <workItem from="1525132854562" duration="23592000" />
       <workItem from="1525160797127" duration="34015000" />
-      <workItem from="1525383180310" duration="72045000" />
+      <workItem from="1525383180310" duration="72821000" />
     </task>
     <task id="LOCAL-00001" summary="master is done">
       <created>1522645621074</created>
@@ -744,11 +768,25 @@
       <option name="project" value="LOCAL" />
       <updated>1525498038532</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="new Manager Branch">
+      <created>1525639113595</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1525639113595</updated>
+    </task>
+    <task id="LOCAL-00017" summary="new Manager Branch">
+      <created>1525639538175</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1525639538175</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="562339000" />
+    <option name="totallyTimeSpent" value="563115000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -862,30 +900,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Sync/src/app/portal/availabilty/week4/week4.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="83" column="0" lean-forward="false" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sync/src/app/portal/availabilty/week/week.component.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="0" lean-forward="true" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Sync/src/app/portal/availabilty/week/week.component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="10" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Sync/src/app/portal/availabilty/week4/week4.component.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1298,6 +1312,32 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-901">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Sync/src/app/profile/profile.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="63" column="18" lean-forward="false" selection-start-line="63" selection-start-column="18" selection-end-line="63" selection-end-column="18" />
+          <folding />
         </state>
       </provider>
     </entry>
