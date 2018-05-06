@@ -54,19 +54,7 @@
                 <mat-toolbar [ngStyle]="{'background-color': getColor(user?.role)}">
                   <h1>Preferences</h1>
                 </mat-toolbar>
-                <mat-card-content>
-                  <mat-card class="profile-attribute" fxLayout="row">
-                    <mat-card class="label" fxLayoutAlign="center center">
-                      <mat-icon>email</mat-icon>
-                    </mat-card>
-                    <mat-card class="info">
-                      Email Notifications:
-                      <mat-slide-toggle>
-                        yes
-                      </mat-slide-toggle>
-                    </mat-card>
-                  </mat-card>
-                </mat-card-content>
+
                 <mat-card-actions fxLayoutAlign="center center">
                   <button mat-raised-button fxFlex (click)="updateUser(user)">
                     <mat-icon>save</mat-icon><span> </span>Save
