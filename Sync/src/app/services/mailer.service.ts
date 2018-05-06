@@ -9,12 +9,12 @@ export class MailerService {
 
   constructor(private http: Http) { }
 
-  sendEmail(name, email, message){
+  sendEmail(user){
+    let data = {user};
+    let body = JSON.stringify(data);
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
-    return this.http.post('http://localhost:3000/mailer/send', email, {headers: headers})
-      .map(res => res.json());
-
+    return this.http.post('http://localhost:3000/mailer/registration',body,{headers:headers})
   }
   // sendEmail (name, email, message) {
   //   fetch('http://localhost:3000/mailer/send', {

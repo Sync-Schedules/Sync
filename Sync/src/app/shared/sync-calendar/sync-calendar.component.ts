@@ -4,7 +4,8 @@ import * as _ from 'lodash';
 import {VenueService} from "../../services/venue.service";
 import {UserService} from "../../services/user.service";
 import {AuthService} from "../../services/auth.service";
-import {MatSnackBar} from "@angular/material";
+import {MatDialog, MatSnackBar} from "@angular/material";
+import {AddShiftComponent} from "../../dialogs/add-shift/add-shift.component";
 
 export interface CalendarDate {
   mDate: moment.Moment;
@@ -32,21 +33,31 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
   dj: any;
   djs = [];
   time: any;
-  times = ['9:00'];
+  shift: any;
+  shifts = [];
+
+  v: any;
+  d: any;
+  t: any;
+
+
+  date = this.dateClicked;
 
   @Input() selectedDates: CalendarDate[] = [];
   @Output() onSelectDate = new EventEmitter<CalendarDate>();
 
-  constructor( public vs: VenueService, public us: UserService, public as: AuthService, public snackBar: MatSnackBar) {}
+  constructor( public vs: VenueService, public us: UserService, public as: AuthService,
+               public snackBar: MatSnackBar, private dialog: MatDialog) {}
+
 
   ngOnInit(): void {
     this.generateCalendar();
 
-    this.vs.getVenue().subscribe(data =>{
-        this.venue = data;
+    this.vs.getVenue().subscribe(VenueData =>{
+        this.venue = VenueData;
         for (let i = 0; i < this.venue.length; i++ ) {
           this.venues.push(this.venue[i].name);
-          console.log(this.venue[i].name);
+          // console.log(this.venue[i].name);
         }
       } ,
       err =>{
@@ -54,14 +65,21 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
         return false;
       });
 
-    this.us.getDJ().subscribe(data => {
-      console.log(data);
-      for(let i=0; i<data.length; i++){
-        console.log(data[i].name);
-        this.djs.push(data[i].username);
+    this.us.getDJ().subscribe(DJData => {
+      for(let i=0; i<DJData.length; i++){
+        this.djs.push(DJData[i].username);
       }
-      return this.user = data;
+      return this.dj = DJData;
     });
+
+    this.us.getShifts().subscribe(ShiftData => {
+      this.shift = ShiftData;
+      for(let i=0; i<ShiftData.length;i++){
+        this.shifts.push(ShiftData[i].date)
+        console.log(ShiftData[i].date)
+      }
+      return this.shift = ShiftData;
+    })
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -96,9 +114,53 @@ export class SyncCalendarComponent implements OnInit, OnChanges {
   }
 
   selectDate(date: CalendarDate){
+
+
     this.onSelectDate.emit(date);
     console.log(date.mDate.format('l'));
     return this.dateClicked = date.mDate.format('l');
+
+  }
+
+  addShift(){
+
+    // console.log(this.v + this.date + this.t + this.d)
+    let dialogRef = this.dialog.open(AddShiftComponent ,{
+      width: '500px',
+      data: {
+        venue: this.v,
+        date: this.dateClicked,
+        time: this.t,
+        dj: this.d
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.shift = {
+        venue: result.venue,
+        date: this.dateClicked,
+        time: result.time,
+        dj: result.dj,
+      } ;
+
+      console.log(this.shift);
+
+
+      // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
+      this.as.addShift(this.shift)
+        .subscribe(data => {
+          if (data.success){
+            this.snackBar.open('shift has been added!' , 'Cool', {duration: 2000});
+            this.dialog.closeAll();
+            this.ngOnInit();
+          }
+          else{
+            this.snackBar.open('something went wrong', 'Oh no', {duration: 1000});
+          }
+        })
+
+    });
   }
 
   // actions from calendar

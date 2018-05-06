@@ -15,6 +15,9 @@ router.post('/register', (req, res, next) => {
         password: req.body.password,
         role: req.body.role,
         availability: req.body.availability
+
+
+
     });
 
     User.addUser(newUser, (err, user) => {
@@ -42,7 +45,7 @@ router.post('/authenticate', (req, res, next) => {
             if(err) throw err;
             if(isMatch){
                 const token = jwt.sign({data: user}, config.secret, {
-                    expiresIn: 604800 // 1 week
+                    expiresIn: 3600 // 1 hr
                 });
 
                 res.json({

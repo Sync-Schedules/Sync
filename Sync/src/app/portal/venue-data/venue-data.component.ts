@@ -32,6 +32,7 @@ export class VenueDataComponent implements OnInit {
   email: string;
 
 
+  venues = [];
   constructor(
     public dialog: MatDialog,
     private vs: VenueService,
@@ -47,7 +48,13 @@ export class VenueDataComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.vs.getVenue().subscribe(data => this.dataSource.data = data);
+    this.vs.getVenue().subscribe(data => {
+      this.dataSource.data = data;
+      for(let i=0; i<data.length; i++){
+        // console.log(data[i]);
+        this.venues.push(data[i]);
+      }
+    });
   }
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
@@ -120,7 +127,6 @@ export class VenueDataComponent implements OnInit {
           if (data.success){
             this.snackBar.open('venue has been updated!' , 'Cool', {duration: 2000});
             this.dialog.closeAll();
-            this.ngOnInit();
           }
           else{
             this.snackBar.open('something went wrong');

@@ -11,7 +11,7 @@
 
   }
   .wrapper{
-    max-width: 500px;
+    width: 100%;
     .mat-card-title{
       color: black;
       font-family: 'Roboto', sans-serif;
@@ -21,3 +21,69 @@
   }
 }
 
+.mat-sidenav{
+  width: 50%;
+}
+
+  .portal-bar{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+  }
+
+.Info-card{
+  width: 100%;
+  height: 100%;
+  //margin-bottom: 20px;
+  .mat-raised-button{
+    background-color: #0BA5DB;
+    color: white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .mat-toolbar{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: auto;
+
+  }
+  h1{
+    color: white;
+    font-weight: bold;
+  }
+  .profile-attribute{
+    width: 100%;
+    background-color: whitesmoke;
+
+    .label{
+      width: 100%;
+      background-color: #3f51b5;
+      color: white;
+      border-bottom-right-radius: 5px ;
+      border-top-right-radius: 5px ;
+    }
+    .info{
+      width: 75%;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom-left-radius: 5px ;
+      border-top-left-radius: 5px ;
+    }
+    .warn{
+      background-color: white;
+    }
+    .week{
+      width: 100%;
+    }
+    .date-text {
+      padding: 0;
+      width: 100%;
+      height: 100px;
+      font-size: 12px;
+      .mat-card-header{
+        font-family: Righteous, sans-serif;
+        color: #3f51b5;
+      }
+
+    }
+  }
+}

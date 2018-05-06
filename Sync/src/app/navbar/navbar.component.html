@@ -1,5 +1,5 @@
-<mat-toolbar scroll class="mat-elevation-z6" color="primary">
-  <span class="sync-logo" fxLayout="row" fxShow="true" fxHide.lt-md *ngIf="authService.loggedIn()">
+<mat-toolbar scroll class="mat-elevation-z6">
+  <span class="sync-logo" fxLayout="row" fxShow="true" *ngIf="authService.loggedIn()">
     Sync
     </span>
 
@@ -28,5 +28,9 @@
   <button mat-menu-item (click)="onLogoutClick()">
     <mat-icon>exit_to_app</mat-icon>
     <span>logout</span>
+  </button>
+  <button mat-menu-item routerLink="../help">
+    <mat-icon>help</mat-icon>
+    <span>help</span>
   </button>
 </mat-menu>

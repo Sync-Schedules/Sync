@@ -20,6 +20,8 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/register', user, {headers: headers})
+      //    return this.http.post('users/register', user, {headers: headers})
+
       .map(res => res.json());
   }
 
@@ -28,6 +30,8 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/venues/addVenue', venue, {headers: headers})
+    //    return this.http.post('venues/addVenue', venue, {headers: headers})
+
       .map(res => res.json());
   }
 
@@ -35,6 +39,8 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/shifts/createshift', shift, {headers: headers})
+    //    return this.http.post('shifts/createshift', shift, {headers: headers})
+
       .map(res => res.json());
   }
 
@@ -46,16 +52,27 @@ export class AuthService {
     headers.append('Authorization', this.authToken);
     headers.append('Content-Type', 'application/json');
     return this.http.get('http://localhost:3000/users/profile', {headers: headers})
+    //    return this.http.get('users/profile' {headers: headers})
+
       .map(res => res.json());
   }
 
   getUsers(){
     return this.http.get('http://localhost:3000/users/usersList')
+    // return this.http.get('users/usersList')
+
       .map(res => res.json());
   }
 
   getDJ(){
     return this.http.get('http://localhost:3000/users/djs')
+    // return this.http.get('users/djs')
+
+      .map(res => res.json());
+  }
+
+  getShifts(){
+    return this.http.get('http://localhost:3000/shifts/shifts')
       .map(res => res.json());
   }
 
@@ -65,12 +82,24 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/users/update/'+id,body,{headers:headers})
+    // return this.http.put('users/update/'+id,body,{headers:headers})
       .map(res => res.json());
 }
   updateVenue(id, body){
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.put('http://localhost:3000/venues/update/'+id,body,{headers:headers})
+      //    return this.http.put('venues/update/'+id,body,{headers:headers})
+
+      .map(res => res.json());
+  }
+
+  updateShift(id, body){
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.put('http://localhost:3000/shifts/update/'+id,body,{headers:headers})
+    //    return this.http.put('venues/update/'+id,body,{headers:headers})
+
       .map(res => res.json());
   }
 
@@ -78,11 +107,18 @@ export class AuthService {
 
   deleteVenue(id){
     return this.http.delete('http://localhost:3000/venues/venue/'+id)
+      //return this.http.delete('venues/venue/'+id)
       .map(res => res.json());
   }
 
   deleteUser(id){
     return this.http.delete('http://localhost:3000/users/user/'+id)
+    //return this.http.delete('users/user/'+id)
+      .map(res => res.json());
+  }
+
+  deleteShift(id){
+    return this.http.delete('http://localhost:3000/shifts/delete/'+id)
       .map(res => res.json());
   }
 
@@ -92,6 +128,8 @@ export class AuthService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     return this.http.post('http://localhost:3000/users/authenticate', user, {headers: headers})
+      //    return this.http.post('users/authenticate', user, {headers: headers})
+
       .map(res => res.json());
   }
 

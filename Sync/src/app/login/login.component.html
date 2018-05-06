@@ -1,4 +1,4 @@
-<div fxLayoutAlign="center center" fxLayout="column">
+<div class="backdrop" fxLayoutAlign="center center" fxLayout="column">
 <mat-card class="login-card" fxFlex>
   <mat-card-header fxLayoutAlign="center center">
     <span class="sync-logo">
@@ -6,7 +6,7 @@
     </span>
   </mat-card-header>
   <mat-card-content>
-    <form (submit)="onLoginSubmit()" class="example-form" fxLayoutGap="20px">
+    <form (submit)="onLoginSubmit()" class="example-form" fxLayoutGap="30px">
       <div class="login-bar" fxLayout="column" fxLayoutGap="25px" fxLayoutAlign="center center">
         <mat-form-field class="example-full-width">
           <input matInput type="text" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Username" required="required">
@@ -25,3 +25,4 @@
   </mat-card-content>
 </mat-card>
 </div>
+

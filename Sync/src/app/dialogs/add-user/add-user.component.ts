@@ -55,21 +55,25 @@ export class AddUserComponent implements OnInit {
   sendEmail(){
     const mail = {
       name: this.name,
+      last: this.last,
+      username: this.username,
+      password: this.password,
       email: this.email,
-      message: this.username
+      message: this.username,
+      role: this.role
     };
 
-    console.log('!!!!MAILING!!!' + this.name, this.email, this.role);
-    this.mail.sendEmail(mail.name, mail.email, mail.message).subscribe(data => {
+    console.log('!!!!MAILING!!!' + this.name, this.last, this.role);
+    this.mail.sendEmail(mail).subscribe(data => {
       console.log(mail);
-
-      if (data.success) {
-        this.snackBar.open('Email Sent', '', {duration: 3000});
-        this.dialog.closeAll();
-        console.log(mail);
-      } else {
-        this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
-      }
+      //
+      // if (data.success) {
+      //   this.snackBar.open('Email Sent', '', {duration: 3000});
+      //   this.dialog.closeAll();
+      //   console.log(mail);
+      // } else {
+      //   this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
+      // }
     });
   }
   onRegisterSubmit() {
@@ -105,13 +109,14 @@ export class AddUserComponent implements OnInit {
       if (data.success) {
         this.snackBar.open('Registration Successful', '', {duration: 3000});
          this.dialog.closeAll();
+        this.sendEmail();
         console.log(user);
       } else {
-        this.snackBar.open('Something went wrong', 'try again', {duration: 3000});
+        this.snackBar.open('Something went wrong' , 'try again', {duration: 3000});
         }
     });
 
-    this.sendEmail();
+
     // console.log(user);
   }
 
