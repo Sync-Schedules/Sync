@@ -37,7 +37,7 @@ router.get('/profile', (req, res, next) => {
 router.get('/venues', function(req, res) {
     Venue.find(function (err, venues) {
         if(err){
-            res.json({success: false, msg: 'Failed to get Venues'})
+            res.json({success: false, msg: 'Failed to get Venues'});
             console.log(err);
         }else{
             res.json(venues);

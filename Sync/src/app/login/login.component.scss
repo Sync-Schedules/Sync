@@ -1,17 +1,13 @@
 @import "../../../src/styles.scss";
 
-.login-page{
-  background-color: #0BA5DB;
-  height: 100vh;
-}
-
 .login-card {
   margin-top: 60px;
-  width: 400px;
+  width: 75%;
+  height: 100%;
   border-radius: 5px;
   form{
     .mat-form-field{
-      width: 80%;
+      width: 50%;
     }
     .mat-raised-button {
       color: white;
@@ -26,4 +22,12 @@
   }
 }
 
+
+.sync-logo{
+  font-family: Righteous, sans-serif;
+  font-weight: bold;
+  font-size: 48px;
+  letter-spacing: 0;
+  color: #0BA5DB;
+}
 

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const config = require('../config/database');
 
+
 // User Schema
 const UserSchema = mongoose.Schema({
     name: {
@@ -12,7 +13,8 @@ const UserSchema = mongoose.Schema({
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique:true
     },
     username: {
         type: String,
@@ -27,15 +29,8 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: true
     },
-    availability: {
-        monday: Boolean,
-        tuesday: Boolean,
-        wednesday: Boolean,
-        thursday: Boolean,
-        friday: Boolean,
-        saturday: Boolean,
-        sunday: Boolean
-    }
+    availability: [Date]
+
 });
 
 const User = module.exports = mongoose.model('User', UserSchema);
@@ -54,6 +49,10 @@ module.exports.FindUserByIdAndDelete = function (id, callback) {
 };
 
 module.exports.FindUserByIdAndUpdate = function (id, callback) {
+    User.findOneAndUpdate(id, callback)
+};
+
+module.exports.FindShiftByIdAndUpdate = function (id, callback){
     User.findOneAndUpdate(id, callback)
 };
 

@@ -1,145 +1,94 @@
-@import '../../../styles.scss';
-@import '~@angular/material/theming';
+@import "../../../styles";
 
-$dayBase: 50px;
-$base: 90px;
+$width: 100%;
 
-.calendar {
-  display: block;
-  width:  85%;
-  margin: 0 auto;
-
-  * {
-    box-sizing: border-box;
-  }
-
-  .calendar-navs {
-    background-color: white;
-  }
-
-  .month-nav {
-    //padding;
-    font-family: Righteous, sans-serif;
+  h1{
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    font-weight: 200;
     color: #0BA5DB;
-    font-size: 16px;
-  }
-
-  .year-nav {
-    //padding: $base;
-    font-family: Righteous, sans-serif;
-    color: #0BA5DB;
-    font-size: 16px;
 
   }
+  .wrapper{
+    width: 100%;
+    .mat-card-title{
+      color: black;
+      font-family: 'Roboto', sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
 
-  .month-grid {
-    .day-names {
-      //display: flex;
+
+.mat-sidenav{
+  width: 50%;
+}
+
+.portal-bar{
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.Info-card{
+  width: auto;
+  height: auto;
+  //margin-bottom: 20px;
+  .mat-raised-button{
+    background-color: #0BA5DB;
+    color: white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .mat-toolbar{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    width: auto;
+
+  }
+  h1{
+    color: white;
+    font-weight: bold;
+  }
+  .profile-attribute{
+    width: auto;
+    background-color: whitesmoke;
+
+    .daynames{
+      height: auto;
+      width: 100%;
+      font-size: 18px;
       background-color: #0BA5DB;
       color: white;
-      font-family: Righteous, sans-serif;
-      font-size: 16px;
-      font-weight: bold;
-      border-bottom-right-radius: 3px;
-      border-bottom-left-radius: 3px;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
-      &:active{
-        @include mat-elevation(8);
-      }
+      font-family: Roboto, "Helvetica Neue", sans-serif;
+      border-radius: 0;
     }
-    .weeks {
-      //border: 1px solid #0BA5DB;
-      background-color: #0BA5DB;
-      border-bottom-right-radius: 3px;
-      border-bottom-left-radius: 3px;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
+    .date-text {
+      padding: 0;
+      width: 100%;
+      height: 100px;
+      font-size: 14px;
 
 
-    }
-    .week {
-      background-color: white;
-      @include mat-elevation-transition;
-      @include mat-elevation(1);
-
-
-    }
-
-    .week-date{
-      text-align: center;
-      padding: $base;
-      width: $dayBase;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      //border: 1px solid darkmagenta;
-      @include mat-elevation-transition;
-      @include mat-elevation(2);
-      &:active{
-        @include mat-elevation(8);
-      }
-    }
-    .day-name {
-      padding: $base;
-      width: $dayBase;
-
-    }
-
-    .week-date {
-      height: $dayBase;
-      position: relative;
-
-      .date-text {
-        //z-index: 10;
-        font-size: 13px;
-        font-weight: 600;
-        font-family: Roboto, "Helvetica Neue", sans-serif
-
+      .mat-card-header{
+        font-family: Righteous, sans-serif;
+        color: #3f51b5;
       }
 
-      &:after {
-        content: '';
-        height: $dayBase * 0.9;
-        width: $dayBase * 0.9;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        border-radius: 50%;
-        transition: background-color 150ms linear, color 150ms linear;
-        z-index: 1;
-      }
-
-      &.enabled {
-        cursor: pointer;
-        color: darkblue;
-        &:hover {
-          &:after {
-            color: white;
-          }
-        }
-      }
-      &.selected {
-        color: white;
-        &:after {
-          background-color: teal;
-        }
-        &:hover {
-          &:after {
-            background-color: teal;
-          }
-        }
-      }
-
-      &.disabled {
-        color: lightgrey;
-      }
-    }
-
-    .today {
-      font-weight: bold;
-      color: red;
     }
   }
+}
+
+
+
+.week-date{
+  width: 100%;
+  .disabled{
+    color: #777777;
+    font-family: Righteous, sans-serif;
+  }
+}
+
+.week, .weeks{
+  margin-top: 20px;
+  width: 100%;
 }

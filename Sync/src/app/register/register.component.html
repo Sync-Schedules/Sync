@@ -1,7 +1,5 @@
-<div class="login-page" fxLayout="column" fxLayoutAlign="center center">
 
-<mat-card class="login-card">
-  <div fxLayout="column" fxLayoutAlign="space-evenly" fxLayoutGap="10px" fxFlex>
+<mat-card class="example-form" fxLayoutAlign="center center" fxLayout="column">
   <mat-card-header><h1>Register</h1></mat-card-header>
   <mat-card-content>
     <form (submit)="onRegisterSubmit()" class="example-form" fxLayoutGap="20px">
@@ -40,8 +38,6 @@
     </form>
   </mat-card-content>
     <div fxLayoutAlign="center center">
-    <a routerLink="" class="cancel">cancel</a>
+    <a routerLink="login" class="cancel">cancel</a>
     </div>
-  </div>
 </mat-card>
-</div>

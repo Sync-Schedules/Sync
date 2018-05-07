@@ -1,0 +1,50 @@
+<div class="wrapper" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20x">
+  <mat-card class="Info-card">
+    <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+      <button mat-icon-button style="{color: white}" (click)="prevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+      <span class="p4">Week of {{currentDate.format("MMM Do YY")}} </span>
+      <button mat-icon-button (click)="nextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+    </mat-toolbar>
+    <mat-card class="profile-attribute" fxLayout="row">
+      <div class="week" fxLayout="column" fxFlex fxLayoutAlign="space-evenly center">
+        <div *ngFor="let week of weeks" class="week" fxLayout="row">
+          <ng-container *ngFor="let day of week">
+            <!--Disabled-->
+            <div class="week-date disabled" fxFlex *ngIf="!isSelectedWeek(day.wDate)" fxLayoutAlign="center center">
+              <mat-card class="date-text" fxFlex>
+                <mat-card-header>
+                  {{ day.wDate.date() }}
+                </mat-card-header>
+                <mat-card-content>
+                  fgh
+                </mat-card-content>
+              </mat-card>
+            </div>
+            <!--Enabled-->
+            <div class="week-date enabled"
+                 *ngIf="isSelectedWeek(day.wDate)"
+                 (click)="selectDate(day)"
+                 [ngClass]="{ today: day.today, selected: day.selected }"
+                 fxFlex>
+              <mat-card class="date-text" fxFlex (click)="sidenav.open()">
+                <mat-card-header>
+                  <h1 mat-card-title>{{ day.wDate.date() }}</h1>
+                </mat-card-header>
+                <mat-card-content fxLayoutAlign="center center">
+
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </mat-card>
+  </mat-card>
+
+  <mat-card>
+    <h1 mat-card-title>Pickup Shifts</h1>
+  </mat-card>
+  <mat-card>
+    <h1 mat-card-title>Alerts</h1>
+  </mat-card>
+</div>

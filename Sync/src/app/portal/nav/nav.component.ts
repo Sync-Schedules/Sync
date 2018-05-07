@@ -22,4 +22,16 @@ export class NavComponent implements OnInit {
         return false;
       });
   }
+
+  getColor(user){
+    switch(user){
+      case 'Admin':
+        return 'purple';
+      case 'Manager':
+        return 'green';
+      case 'DJ':
+        return '#0BA5DB';
+
+    }
+  }
 }

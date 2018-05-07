@@ -1,60 +1,111 @@
-<div  class="profile-container" fxFlex>
-  <mat-card class="profile-content">
-    <mat-card-header>
-      <h1>{{user?.role}}</h1>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-tab-group>
+<mat-toolbar class="portal-bar" color="primary" [ngStyle]="{'background-color': getColor(user?.role)}"><span>{{user?.role}}</span></mat-toolbar>
+<mat-tab-group>
         <mat-tab label="Profile">
-          <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-around center">
+          <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="10px">
             <div fxFlex="50">
-              <mat-card class="profile-card">
-                <h1 mat-card-title>Hello, {{user?.name}}</h1>
+              <mat-card class="Info-card">
+                <mat-toolbar [ngStyle]="{'background-color': getColor(user?.role)}">
+                  <h1>Profile</h1>
+                </mat-toolbar>
                 <mat-card-content>
-                  <mat-list>
-                    <mat-list-item><b>Username: </b> {{user?.username}}</mat-list-item>
-                    <mat-list-item>ID: {{user?._id}}</mat-list-item>
-                    <mat-list-item>Email: {{user?.email}}</mat-list-item>
-                    <!--<mat-list-item>Password: {{user.password}}</mat-list-item>-->
-                    <mat-list-item>Role: {{user?.role}}</mat-list-item>
-                  </mat-list>
+                  <mat-card class="profile-attribute" fxLayout="row">
+                    <mat-card class="label" fxLayoutAlign="center center">
+                      <mat-icon>font_download</mat-icon>
+                    </mat-card>
+                    <mat-card class="info">
+                      <p>{{user?.name}}<span>  </span> {{user?.last}}</p>
+                    </mat-card>
+                  </mat-card>
+                  <mat-card class="profile-attribute" fxLayout="row">
+                    <mat-card class="label" fxLayoutAlign="center center">
+                      <mat-icon>account_box</mat-icon>
+                    </mat-card>
+                    <mat-card class="info">
+                      {{user?.username}}
+                    </mat-card>
+                  </mat-card>
+                    <mat-card class="profile-attribute" fxLayout="row">
+                      <mat-card class="label" fxLayoutAlign="center center">
+                        <mat-icon>email</mat-icon>
+                      </mat-card>
+                      <mat-card class="info">
+                        {{user?.email}}
+                      </mat-card>
+                    </mat-card>
+                      <mat-card class="profile-attribute" fxLayout="row">
+                        <mat-card class="label" fxLayoutAlign="center center">
+                          <mat-icon>work</mat-icon>
+                        </mat-card>
+                        <mat-card class="info">
+                          {{user?.role}}
+                        </mat-card>
+                      </mat-card>
                 </mat-card-content>
-                <mat-card-actions>
-                  <button mat-raised-button>Edit</button>
+                <mat-card-actions fxLayoutAlign="center center">
+                  <button mat-raised-button fxFlex (click)="updateUser(user)">
+                    <mat-icon>mode_edit</mat-icon><span> </span>Edit
+                  </button>
                 </mat-card-actions>
               </mat-card>
             </div>
-            <div fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="space-evenly center">
-              <div>
-              <mat-card class="profile-options">
-                <h1 mat-card-title>Notifications</h1>
-                <mat-card-content>
-                  <mat-list>
-                    <mat-list-item>
-                      E-mail Notifications
-                      <mat-slide-toggle>
-                        yes
-                      </mat-slide-toggle>
-                    </mat-list-item>
-                  </mat-list>
-                </mat-card-content>
+
+            <div *ngIf="user?.role === 'DJ'" fxFlex="50" fxLayoutGap="10px" fxLayout="column" fxLayoutAlign="start center">
+              <mat-card class="Info-card preferences" fxLayout="column">
+                <mat-toolbar [ngStyle]="{'background-color': getColor(user?.role)}">
+                  <h1>Preferences</h1>
+                </mat-toolbar>
+
+                <mat-card-actions fxLayoutAlign="center center">
+                  <button mat-raised-button fxFlex (click)="updateUser(user)">
+                    <mat-icon>save</mat-icon><span> </span>Save
+                  </button>
+                </mat-card-actions>
               </mat-card>
-              </div>
-              <div>
-              <mat-card class="profile-options">
-                <h1 mat-card-title>Preferences</h1>
-                <mat-card-content>
-                  <mat-list>
-                    <mat-list-item>Let employees see my email address<mat-slide-toggle>yes</mat-slide-toggle></mat-list-item>
-                    <mat-list-item>Let employees see my phone #<mat-slide-toggle>yes</mat-slide-toggle></mat-list-item>
-                  </mat-list>
-                </mat-card-content>
-              </mat-card>
-              </div>
             </div>
+            <div *ngIf="user?.role === 'Manager'" fxFlex="50" fxLayoutGap="10px" fxLayout="column">
+              <div fxLayout="column">
+                <mat-card class="Info-card preferences" fxLayout="column">
+                  <mat-toolbar [ngStyle]="{'background-color': getColor(user?.role)}">
+                    <h1>Set Availability Deadline</h1>
+                  </mat-toolbar>
+                  <mat-card-content>
+                    <mat-card class="profile-attribute" fxLayout="row">
+                      <mat-card-header class="info">
+                        Set Deadline
+                      </mat-card-header>
+                      <div>
+                        <mat-slide-toggle [(ngModel)]= "checked" (change)="toggle()">Yes</mat-slide-toggle>
+                      </div>
+                    </mat-card>
+                  </mat-card-content>
+                  <div *ngIf="checked" style="max-height: 70vh">
+                    <mat-card class="profile-options">
+                      <h2 mat-card-title>Choose Dates: </h2>
+                      <mat-card-content fxLayout="column">
+                        <form (submit)="onSubmit()" fxLayout="column">
+                          <!--Start-->
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="startpicker" [min]="minDate" placeholder="Choose a start date">
+                            <mat-datepicker-toggle matSuffix [for]="startpicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startpicker touchUi="true"></mat-datepicker>
+                          </mat-form-field>
+                          <!--End-->
+                          <mat-form-field>
+                            <input matInput [matDatepicker]="endpicker" [min]="minDate" placeholder="Choose end date">
+                            <mat-datepicker-toggle matSuffix [for]="endpicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endpicker touchUi="true"></mat-datepicker>
+                          </mat-form-field>
+
+                          <button mat-raised-button type="submit" color="primary">Submit</button>
+                        </form>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </mat-card>
+              </div>
+
+            </div>
+
           </div>
         </mat-tab>
       </mat-tab-group>
-    </mat-card-content>
-  </mat-card>
-</div>

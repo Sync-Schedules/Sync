@@ -1,3 +1,157 @@
-<p>
-  home works!
-</p>
+<mat-sidenav-container  fxFlex (keydown.escape)="sidenav.close()">
+  <mat-sidenav #sidenav position="end">
+    {{dateClicked}}
+  </mat-sidenav>
+  <div class ="manager" *ngIf="user?.role === 'Manager'">
+    <div class="portalhome" fxShow="true" fxHide.lt-md>
+      <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
+      <div class="wrapper" fxLayout="column" fxLayoutGap="20px">
+        <div class="wrapper" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20x">
+          <mat-card class="Info-card" fxLayout="column">
+            <mat-toolbar color="warn" fxLayoutAlign="space-around center">
+              Alerts
+            </mat-toolbar>
+
+            <mat-card class="profile-attribute"  *ngIf="this.alert == true" fxFlex>
+              <mat-card class="profile-attribute" fxLayout="row">
+                <mat-card style="{background-color: white}" fxFlex="25%" class="label warn" fxLayoutAlign="center center">
+                  <mat-icon color="warn">error</mat-icon>
+                </mat-card>
+                <mat-card class="info" (click)="ngOnInit()">
+                  <h3>Shifts need to be assigned</h3>
+                </mat-card>
+              </mat-card>
+            </mat-card>
+
+          </mat-card>
+          <mat-card class="Info-card">
+            <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+              <button mat-icon-button style="{color: white}" (click)="prevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+              <span class="p4">Weekly <!--of {{currentDate.format("MMM Do YY")}}--> </span>
+              <button mat-icon-button (click)="nextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+            </mat-toolbar>
+          <mat-card class="profile-attribute" fxLayoutAlign="center" fxLayout="row">
+            <div class="week" fxLayout="column" fxFlex fxLayoutAlign="space-evenly center">
+              <div *ngFor="let week of weeks" class="week" fxLayout="row">
+                <ng-container *ngFor="let day of week">
+                  <!--Disabled-->
+                  <div class="week-date disabled" fxFlex *ngIf="!isSelectedWeek(day.wDate)" fxLayoutAlign="center center">
+                    <mat-card class="date-text" fxFlex>
+                      <mat-card-header>
+                        {{ day.wDate.date() }}
+                      </mat-card-header>
+                      <mat-card-content>
+                        fgh
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <!--Enabled-->
+                  <div class="week-date enabled"
+                     *ngIf="isSelectedWeek(day.wDate)"
+                     (click)="selectDate(day)"
+                     [ngClass]="{ today: day.today, selected: day.selected }"
+                     fxFlex>
+                    <mat-card class="date-text" fxFlex (click)="sidenav.open()">
+                      <mat-card-header>
+                        <h1 mat-card-title>{{ day.wDate.date() }}</h1>
+                      </mat-card-header>
+                      <mat-card-content fxLayoutAlign="center center">
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-card>
+          </mat-card>
+          <mat-card class="Info-card" fxLayout="column">
+            <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+              Available Shifts
+            </mat-toolbar>
+
+            <mat-card class="profile-attribute"  fxFlex *ngFor="let empty of emptyshifts">
+              <mat-card class="info">
+                {{empty}}
+              </mat-card>
+            </mat-card>
+
+          </mat-card>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="djportal" *ngIf="user?.role === 'DJ'" fxLayoutAlign="center">
+    <div class="portalhome">
+      <h1 mat-card-title>Welcome, {{user?.name}}!</h1>
+      <div class="wrapper" fxLayout="column" fxLayoutAlign="center" fxLayoutGap="20x">
+        <mat-card class="Info-card">
+          <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+            <button mat-icon-button style="{color: white}" (click)="prevWeek()"><mat-icon>keyboard_arrow_left</mat-icon></button>
+            <span class="p4">Week of {{currentDate.format("MMM Do YY")}} </span>
+            <button mat-icon-button (click)="nextWeek()"><mat-icon>keyboard_arrow_right</mat-icon></button>
+          </mat-toolbar>
+          <mat-card class="profile-attribute" fxLayout="row">
+            <div class="week-container" fxLayout="column" fxFlex fxLayoutAlign="space-evenly center">
+              <div *ngFor="let week of weeks" class="week" fxLayout="row">
+                <ng-container *ngFor="let day of week">
+                  <!--Disabled-->
+                  <div class="week-date disabled" fxFlex *ngIf="!isSelectedWeek(day.wDate)" fxLayoutAlign="center center">
+                    <mat-card class="date-text" fxFlex>
+                      <mat-card-header>
+                        {{ day.wDate.date() }}
+                      </mat-card-header>
+                      <mat-card-content>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                  <!--Enabled-->
+                  <div class="week-date enabled"
+                       *ngIf="isSelectedWeek(day.wDate)"
+                       (click)="selectDate(day)"
+                       [ngClass]="{ today: day.today, selected: day.selected }"
+                       fxFlex>
+                    <mat-card class="date-text" fxFlex (click)="sidenav.open()">
+                      <mat-card-header>
+                        <h1 mat-card-title>{{ day.wDate.date() }}</h1>
+                        <span> </span>
+                        <h1>{{day.wDate.format('dddd')}}</h1>
+                      </mat-card-header>
+                      <mat-card-content fxLayoutAlign="center center">
+                          <div ></div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </mat-card>
+        </mat-card>
+        <mat-card class="Info-card" fxLayout="column">
+          <mat-toolbar color="primary" fxLayoutAlign="space-around center">
+            Available Shifts
+          </mat-toolbar>
+
+          <mat-card class="profile-attribute" fxLayout="row">
+            <mat-card class="info" *ngFor="let empty of emptyshifts">
+              <p>{{empty}}</p>
+              <mat-card-actions fxLayoutAlign="end">
+                <button matTooltip="Pick Up Shift" mat-icon-button color="primary" (click)="pickUpShift(shift)">
+                  <mat-icon>open_in_browser</mat-icon>
+                </button>
+              </mat-card-actions>
+            </mat-card>
+            <!--<mat-card class="label" fxLayoutAlign="center center">-->
+              <!--<mat-icon>thumb_up</mat-icon>-->
+            <!--</mat-card>-->
+          </mat-card>
+
+        </mat-card>
+
+      </div>
+    </div>
+  </div>
+
+
+</mat-sidenav-container>

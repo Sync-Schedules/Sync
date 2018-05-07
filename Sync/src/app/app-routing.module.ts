@@ -8,12 +8,15 @@ import {PortalComponent} from "./portal/portal.component";
 import {ProfileComponent} from "./profile/profile.component";
 import { AuthGuard} from "./guards/auth.guard";
 import {AdminGuard} from "./guards/admin.guard";
+import {PortalHomeComponent} from "./portal/portal-home/portal-home.component";
+import {HelpComponent} from "./help/help.component";
+import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full'
   },
   {
@@ -21,8 +24,8 @@ const routes: Routes = [
     component: LoginComponent
   },
   {
-    path: 'home',
-    component: HomeComponent
+    path: 'help',
+    component: HelpComponent
   },
   {
     path: 'employees',
@@ -37,9 +40,17 @@ const routes: Routes = [
     component: PortalComponent
   },
   {
+    path: 'portal-home',
+    component: PortalHomeComponent
+  },
+  {
     path: 'profile',
     component: ProfileComponent,
     // canActivate:[AuthGuard]
+  },
+  {
+    path: 'resetPassword',
+    component: ResetPasswordComponent
   }
 ];
 

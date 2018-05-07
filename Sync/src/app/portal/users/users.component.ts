@@ -8,6 +8,7 @@ import {EditUserComponent} from "../../dialogs/edit-user/edit-user.component";
 import {UserService} from "../../services/user.service";
 import {User} from "../../models/user.model";
 import {AuthService} from "../../services/auth.service";
+import {Angular2Csv} from "angular2-csv";
 
 @Component({
   selector: 'usertable',
@@ -27,6 +28,8 @@ export class EmployeesComponent implements OnInit {
   email: string;
   role: string;
 
+  users =[];
+  roles =[];
 
   constructor(
     public dialog: MatDialog,
@@ -44,9 +47,27 @@ export class EmployeesComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.us.getUser().subscribe(data => this.dataSource.data = data);
+    this.us.getUser().subscribe(data => {
+      this.dataSource.data = data;
+      // console.log(data);
+      for(let i=0; i<data.length; i++){
+        // console.log(data[i]);
+        this.users.push(data[i]);
+      }
+    });
   }
 
+  getColor(user){
+    switch(user){
+      case 'Admin':
+        return 'purple';
+      case 'Manager':
+        return 'green';
+      case 'DJ':
+        return '#0BA5DB';
+
+    }
+  }
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
@@ -60,25 +81,48 @@ export class EmployeesComponent implements OnInit {
 
   openDialog(): void {
     let dialogRef = this.dialog.open(AddUserComponent, {width: '500px'});
-    this.ngOnInit();
+
   }
 
 
+exportUsers(){
+    const options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: true,
+      useBom: true
+    };
+
+    new Angular2Csv(this.users, 'Users', options)
+  console.log(this.users);
+    console.log(Angular2Csv);
+}
+
   onRowClicked(row){
-    console.log('Row clicked: ', row);
+    // console.log('Row clicked: ', row);
     this.ngOnInit();
   }
 
   DeleteUser(_id) {
-    this.as.deleteUser(_id)
-      .subscribe(data => {
-        if (data.success) {
-          this.ngOnInit();
-          this.snackBar.open('User has been deleted', '', {duration: 3000});
-        } else{
-          this.snackBar.open('ERROR', '',{duration:2000} )
-        }
-      });
+    let dialogRef = this.dialog.open(ConfirmDialogComponent, {
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      this.as.deleteUser(_id)
+        .subscribe(data => {
+          if (data.success) {
+            this.ngOnInit();
+            this.snackBar.open('User has been deleted', '', {duration: 3000});
+          } else{
+            this.snackBar.open('ERROR', '',{duration:2000} )
+          }
+        });
+
+    });
+
     // this.router.navigate(['./admin']);
   }
 
@@ -108,7 +152,7 @@ export class EmployeesComponent implements OnInit {
       } ;
       this.id = result.id;
 
-      console.log('new user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
+      // console.log('updated user: ' + this.user + ',' + this.id + ',' +this.name + ',' + this.last + ',' + this.username + ',' + this.email + ',' + this.role);
       this.as.updateUser(result.id, this.user)
         .subscribe(data => {
           if (data.success){

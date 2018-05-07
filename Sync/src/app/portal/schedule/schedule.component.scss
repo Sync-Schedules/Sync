@@ -1,0 +1,119 @@
+
+.example-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+
+::ng-deep .mat-sort-header-arrow.ng-trigger.ng-trigger-arrowPosition {
+  opacity: 0;
+}
+.example-header {
+  min-height: 64px;
+  padding: 8px 24px 0;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  //overflow: auto;
+  max-height: 500px;
+}
+.mat-card{
+  width: 90%;
+}
+.mat-mini-fab{
+  background-color: #0BA5DB;
+  color: white;
+}
+.phone-responsive{
+  width: 100%;
+}
+
+.s-container{
+  height: 100vh;
+}
+
+.mat-card {
+  width: 200px;
+  border-radius: 5px;
+  font-weight: 300;
+  font-size: 16px;
+}
+  .emp-card {
+    background-color: #0BA5DB;
+    color: white;
+  }
+  .day-card,.card-header{
+    background-color: white;
+    color: #0BA5DB;
+  }
+
+
+.Info-card{
+  width: auto;
+  height: auto;
+  padding: 16px;
+  //margin-bottom: 20px;
+  margin-top: 20px;
+  .mat-raised-button{
+    background-color: #0BA5DB;
+    color: white;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+  }
+  .mat-toolbar{
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    cursor: pointer;
+
+
+  }
+  h1{
+    color: white;
+    font-weight: bold;
+  }
+  .profile-attribute{
+    width: auto;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    .label{
+      width: 20%;
+      background-color: #3f51b5;
+      color: white;
+      border-bottom-right-radius: 0 ;
+      border-top-right-radius: 0 ;
+    }
+    .info{
+      width: 75%;
+      font-weight: bold;
+      font-size: 16px;
+      border-bottom-left-radius: 0 ;
+      border-top-left-radius: 0 ;
+      .mat-icon{
+        color: #0BA5DB;
+      }
+    }
+  }
+}
+
+.preferences{
+  width: 100%
+}
+
+.actions{
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #0BA5DB;
+  .mat-raised-button{
+    background-color: whitesmoke;
+    color: black;
+  }
+}
+
+.container{
+  width: 95%;
+}

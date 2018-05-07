@@ -1,3 +1,38 @@
-<p>
-  schedule works!
-</p>
+<div fxFlex>
+  <!--<mat-card class="Info-card" *ngIf="user?.role === 'Manager' ">-->
+    <!--<mat-toolbar class="mat-elevation-z6" color="primary" >-->
+      <!--<span (click)="openPanel()"><u>Assign Shift</u></span><span fxFlex class="example-spacer"> </span><span>-->
+      <!--<button mat-icon-button (click)="refresh()"><mat-icon>refresh</mat-icon></button>-->
+      <!--<button mat-icon-button *ngIf="!open"><mat-icon (click)="openPanel()">keyboard_arrow_down</mat-icon></button>-->
+      <!--<button mat-icon-button *ngIf="open"><mat-icon (click)="openPanel()">keyboard_arrow_up</mat-icon></button></span>-->
+    <!--</mat-toolbar>-->
+    <!--<mat-card-content *ngIf="open">-->
+      <!--<mat-card class="profile-attribute" *ngFor="let shift of shifts" fxLayout="row">-->
+        <!--<mat-card class="label" fxLayoutAlign="center center">-->
+          <!--<mat-icon>work</mat-icon>-->
+        <!--</mat-card>-->
+        <!--<mat-card class="info">-->
+          <!--{{shift}}-->
+        <!--</mat-card>-->
+        <!--<mat-card>-->
+          <!--<mat-select placeholder="Select DJ..." [(ngModel)]="dj">-->
+            <!--<mat-option *ngFor="let dj of djs" [value]="dj">-->
+            <!--{{dj?.username}}-->
+            <!--</mat-option>-->
+          <!--</mat-select>-->
+        <!--</mat-card>-->
+      <!--</mat-card>-->
+    <!--</mat-card-content>-->
+    <!--<mat-toolbar class="actions" *ngIf="open">-->
+      <!--<span fxFlex class="example-spacer"> </span>-->
+      <!--<span>-->
+      <!--<button mat-raised-button (click)="getSchedule()">submit</button>-->
+    <!--</span>-->
+    <!--</mat-toolbar>-->
+  <!--</mat-card>-->
+  <app-shifts></app-shifts>
+
+  <!--<view-avail></view-avail>-->
+
+  <!--DJ-->
+</div>

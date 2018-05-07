@@ -13,7 +13,11 @@ router.post('/register', (req, res, next) => {
         email: req.body.email,
         username: req.body.username,
         password: req.body.password,
-        role: req.body.role
+        role: req.body.role,
+        availability: req.body.availability
+
+
+
     });
 
     User.addUser(newUser, (err, user) => {
@@ -41,7 +45,7 @@ router.post('/authenticate', (req, res, next) => {
             if(err) throw err;
             if(isMatch){
                 const token = jwt.sign({data: user}, config.secret, {
-                    expiresIn: 604800 // 1 week
+                    expiresIn: 3600 // 1 hr
                 });
 
                 res.json({
@@ -78,6 +82,17 @@ router.get('/users', function(req, res) {
     });
 });
 
+//Get DJs only
+router.get('/djs', function(req, res) {
+    User.find({role: 'DJ'}, function (err, role){
+    if(err){
+        console.log(err);
+    } else{
+        res.json(role);
+    }
+    });
+});
+
 //DELETE USER BY ID
 router.delete('/user/:id', function (req, res) {
     console.log('deleting user...');
@@ -107,7 +122,7 @@ router.put('/update/:id', function (req, res) {
                 success: false,
                 msg: 'Failed'
             });
-            console.log(err + res)
+            console.log('ERROR ' + err + res)
         }else{
             res.json({
                 success: true,
@@ -119,6 +134,34 @@ router.put('/update/:id', function (req, res) {
     });
 });
 
+
+//POST SCHEDULE
+
+router.post('/addShift', function (req, res) {
+   console.log('Adding Shift: ' + req.params.id, req.body);
+   User.findByIdAndUpdate(req.params.id, req.body, function (err, addedShift) {
+       if(err){
+           res.json({success: false, msg: 'Failed'});
+       } else{
+           res.json({success: true, data: addedShift, msg: 'Success!'});
+           console.log('Shift added: ' + addedShift);
+       }
+   });
+});
+
+
+// GET SCHEDULE
+
+router.get('/getShifts', function(req, res) {
+    console.log('req: ' + req + 'res: '+ res);
+   User.find(function (err, shift){
+        if(err){
+            console.log(err);
+        } else{
+            res.json(shift);
+        }
+    });
+});
 
 module.exports = router;
 

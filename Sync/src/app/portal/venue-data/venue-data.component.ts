@@ -32,6 +32,7 @@ export class VenueDataComponent implements OnInit {
   email: string;
 
 
+  venues = [];
   constructor(
     public dialog: MatDialog,
     private vs: VenueService,
@@ -47,7 +48,13 @@ export class VenueDataComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.vs.getVenue().subscribe(data => this.dataSource.data = data);
+    this.vs.getVenue().subscribe(data => {
+      this.dataSource.data = data;
+      for(let i=0; i<data.length; i++){
+        // console.log(data[i]);
+        this.venues.push(data[i]);
+      }
+    });
   }
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
@@ -74,7 +81,7 @@ export class VenueDataComponent implements OnInit {
       .subscribe(data => {
         if (data.success){
           this.ngOnInit();
-          this.snackBar.open('User has been deleted', '', {duration: 3000});
+          this.snackBar.open('Venue has been deleted', '', {duration: 3000});
 
         } else {
           this.snackBar.open('Error', 'Close', {duration: 2000})
@@ -88,7 +95,7 @@ export class VenueDataComponent implements OnInit {
 
   updateVenue(venue){
 
-    console.log(venue, venue._id, venue.name, venue.last);
+    // console.log(venue, venue._id, venue.name, venue.last);
     let dialogRef = this.dialog.open(EditVenueComponent, {
       width: '500px',
       data: {
@@ -114,13 +121,12 @@ export class VenueDataComponent implements OnInit {
       } ;
       this.id = result.id;
 
-      console.log('updated: ' + this.venue + ',' + this.id + ',' +this.name);
+      // console.log('updated: ' + this.venue + ',' + this.id + ',' +this.name);
       this.as.updateVenue(result.id, this.venue)
         .subscribe(data => {
           if (data.success){
             this.snackBar.open('venue has been updated!' , 'Cool', {duration: 2000});
             this.dialog.closeAll();
-            this.ngOnInit();
           }
           else{
             this.snackBar.open('something went wrong');
