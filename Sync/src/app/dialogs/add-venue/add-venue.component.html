@@ -19,11 +19,11 @@
     </mat-select>  </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput #postalCode type="number" maxlength="5" [(ngModel)]="zip" [ngModelOptions]="{standalone: true}" placeholder="Zip" required="required">
+    <input matInput #postalCode type="text" pattern="[0-9]{5}" maxlength="5" [(ngModel)]="zip" [ngModelOptions]="{standalone: true}" placeholder="Zip" required="required">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">
-    <input matInput type="number" [(ngModel)]="phone" maxlength="10" [ngModelOptions]="{standalone: true}" placeholder="Phone (###-###-####)" required="required">
+    <input matInput type="tel" [(ngModel)]="phone" maxlength="10" [ngModelOptions]="{standalone: true}" placeholder="Phone number" required="required">
   </mat-form-field>
 
   <mat-form-field class="example-full-width">

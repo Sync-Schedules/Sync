@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {AuthService} from "../../services/auth.service";
 import {MatDatepickerInputEvent, MatSnackBar} from "@angular/material";
-import {FormControl} from "@angular/forms";
+import { FormControl } from "@angular/forms";
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-availabilty',
@@ -14,15 +15,16 @@ export class AvailabiltyComponent implements OnInit {
   constructor(private as: AuthService,  private snackBar: MatSnackBar) { }
 
   user: any;
-  date = new Date();
+  //date = new Date();
+  date = moment();
   dates = [];
-  serializedDate =new Date().toISOString();
-  minDate = new Date();
+ // serializedDate =new Date().toISOString();
+ // minDate = new Date();
   // m = new Date().getMonth();
   // maxDate = this.m;
   showDates = [];
   availability = [
-    this.dates
+      this.dates
 ];
 
   ngOnInit() {
@@ -51,9 +53,9 @@ export class AvailabiltyComponent implements OnInit {
   }
 
   getDate(date){
-
-    // let month = this.date.getMonth() + 1
-    this.dates.push(date);
+      
+      // let month = this.date.getMonth() + 1
+      this.dates.push(date.format('MM/DD/YYYY'));
     // this.showDates.push(month + '/'+ date.getDate() + '/' + date.getFullYear());
     console.log('Date selected: ' + this.date);
     console.log('Dates selected: ' +this.dates);
