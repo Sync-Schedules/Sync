@@ -6,8 +6,12 @@
           <option name="url" value="https://github.com/promerorgz/prestige-schedules.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/promerorgz/web-resume.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
-    <option name="cloneParentDir" value="C:\Users\Pablo\Documents\Workspace" />
+    <option name="cloneParentDir" value="C:\Users\Pablo\Desktop\resume" />
   </component>
 </application>
